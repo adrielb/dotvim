@@ -28,7 +28,7 @@ function! functions#ReadLocalVimrc()
   endif
 endfunction
 
-" MySpell()
+" Toggle spell mode
 function! functions#MySpell()
   setlocal spell!
   if &spell
@@ -120,3 +120,8 @@ function! functions#NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
+"http://blog.tommcdo.com/2014/03/manage-small-groups-of-related-files.html
+" Manage small groups of related files with Vim's argument list
+function! StatuslineArglistIndicator()
+    return '%{argc()>0?("A[".repeat("-",argidx()).(expand("%")==argv(argidx())?"+":"~").repeat("-",argc()-argidx()-1)."]"):""}'
+endfunction
