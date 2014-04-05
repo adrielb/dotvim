@@ -12,5 +12,6 @@ imap <silent> <buffer> ¶ <C-R>=LatexBox_JumpToNextBraces(0)<CR>
 imap <silent> <buffer> § <C-R>=LatexBox_JumpToNextBraces(1)<CR>
 
 augroup TexAutoWrite
-  autocmd! TexAutoWrite InsertLeave <buffer> :update
+  autocmd!
+  autocmd InsertLeave <buffer> :update
 augroup END
