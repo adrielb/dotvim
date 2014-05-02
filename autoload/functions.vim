@@ -125,3 +125,13 @@ endfunction
 function! functions#StatuslineArglistIndicator()
     return '%{argc()>0?("A[".repeat("-",argidx()).(expand("%")==argv(argidx())?"+":"~").repeat("-",argc()-argidx()-1)."]"):""}'
 endfunction
+
+"http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
+function! functions#SwitchSourceHeader()
+  if (expand ("%:e") == "c")
+    find %:t:r.h
+  else
+    find %:t:r.c
+  endif
+endfunction
+
