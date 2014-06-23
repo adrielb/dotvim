@@ -1,9 +1,9 @@
 
 " PETSc error format
 " Match Petsc errors (stack trace)
-let s:efm = "%+G%m line %l in %f,"
-" Ignore all other lines with "[0]PETSC ERROR:..."
-let s:efm .= "%+G[0]PETSC ERROR:%m,"
+let s:efm = "%m line %l in %f,"
+" Ignore all other lines with [r]PETSC ERROR:...
+let s:efm .= "%+G[%.]PETSC ERROR:%m,"
 " Ignore -log_summary output
 "/home/abergman/projects/DCell/FiberField/tests/ao.x on a gcc-debug named Gigabyte with 2 processors, by abergman Mon May 12 14:30:52 2014 Ignore -log_summary output
                       "on a      named      with      processors, by 
