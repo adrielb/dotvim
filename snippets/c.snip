@@ -1,0 +1,19 @@
+snippet     chk
+options     head
+    ierr = ${1}; CHKERRQ(ierr);
+
+snippet     func
+abbr        petscfunc
+options     head
+    #undef __FUNCT__
+    #define __FUNCT__ "$1"
+    PetscErrorCode ${1:#:FunctionName}( ${0} )
+    {
+      PetscErrorCode ierr;
+
+      PetscFunctionBegin;
+       
+      PetscFunctionReturn(0);
+    }
+
+

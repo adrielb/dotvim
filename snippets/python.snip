@@ -1,0 +1,19 @@
+snippet     plot
+options     head
+    fig = plt.figure()
+    ax = fig.gca()
+    ax.set_title("")
+    ax.set_xlabel("")
+    ax.set_ylabel("")
+    ax.set_xlim(auto=True)
+    ax.set_ylim(auto=True)
+    ax.plot( ${1}, ${2}, label=''  , color='red' )
+    ax.legend(loc='upper left')
+    fig.show()
+
+snippet     impmath
+abbr        <`2:#:abbr`>
+options     head
+    import numpy  as np
+    import pandas as pd
+    import matplotlib.pyplot as plt
