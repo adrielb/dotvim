@@ -152,6 +152,7 @@ set showcmd          " display incomplete commands
 set mouse-=a
 set laststatus=2
                      " tabs
+set breakindent
 set autoindent
 set softtabstop=2
 set tabstop=2
@@ -661,7 +662,7 @@ endif
 " CtrlP {{{
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_open_multiple_files = '2vjr'
-let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(neocomplete|cache|cabal-sandbox)$' }
+let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(neocomplete|cache|cabal-sandbox|pulse)$' }
 let g:ctrlp_show_hidden = 1
 "let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_mruf_exclude = '/.*/share/vim/.*/doc/.*\|.vim/bundle/.*\|.git/.*\|/tmp/.*'
