@@ -13,7 +13,7 @@ let s:efm .= '%C%p^,'
 let s:efm .= '%+C    %.%#,'
 let s:efm .= '%+C  %.%#,'
 let s:efm .= '%Z%\S%\&%m,'
-let s:efm .= '%-G%.%#'
+let s:efm .= '%+G%.%#'
 
 let &efm .= ',' . s:efm
 
