@@ -154,9 +154,6 @@ set laststatus=2
                      " tabs
 set breakindent
 set autoindent
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2     " a tab is two spaces
 set expandtab        " use spaces, not tabs
 set shiftround
 set smarttab

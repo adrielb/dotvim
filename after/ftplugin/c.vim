@@ -1,4 +1,8 @@
 
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+
 " PETSc error format
 " Match Petsc errors (stack trace)
 let s:efm = "%m line %l in %f,"
