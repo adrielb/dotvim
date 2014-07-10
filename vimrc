@@ -272,6 +272,7 @@ onoremap aa a>
 nnoremap ' `
 nnoremap ` '
 nnoremap Q @q
+xnoremap Q :norm @q<CR>
 nnoremap Y y$
 nnoremap ZZ :wqa<CR>
 nnoremap n nzxzz
