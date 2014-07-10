@@ -154,6 +154,8 @@ set laststatus=2
                      " tabs
 set breakindent
 set autoindent
+set tabstop=4
+set shiftwidth=4
 set expandtab        " use spaces, not tabs
 set shiftround
 set smarttab
