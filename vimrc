@@ -670,6 +670,10 @@ let g:ctrlp_show_hidden = 1
 "let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_mruf_exclude = '/.*/share/vim/.*/doc/.*\|.vim/bundle/.*\|.git/.*\|/tmp/.*'
 let g:ctrlp_extensions = ['buffertagall', 'tag', 'rtscript', 'line']
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>'],
+    \ 'PrtClearCache()':      ['<c-s>'],
+    \ }
 "}}}
 
 " vimwiki {{{
