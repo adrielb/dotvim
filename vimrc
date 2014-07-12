@@ -35,6 +35,7 @@ function! LoadBundles()
   Plugin 'tpope/vim-git'
   Plugin 'tpope/vim-dispatch'
   Plugin 'tpope/vim-vinegar'
+  Plugin 'tpope/vim-repeat'
   "Plugin 'tpope/vim-obsession'
   Plugin 'sjl/gundo.vim'
   "Plugin 'a.vim'
@@ -58,7 +59,6 @@ function! LoadBundles()
   "Plugin 'kana/vim-altr'
   "Plugin 'rbonvall/vim-textobj-latex'
   "Plugin 'b4winckler/vim-angry'
-  "Plugin repeat
   Plugin 'mhinz/vim-signify'
   "Plugin 'justinmk/vim-sneak' 
   Plugin 'AndrewRadev/splitjoin.vim'
