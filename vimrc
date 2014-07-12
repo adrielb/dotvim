@@ -553,7 +553,7 @@ let g:Tex_Folding=0
 " set .m files to associate with Mathematica highlighting
 let filetype_m="mma"
 let g:mma_highlight_option="solarized"
-let g:mma_candy=1
+let g:mma_candy=0
 "}}}
 
 " vim {{{
