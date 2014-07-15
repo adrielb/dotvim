@@ -369,25 +369,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
                       \ "\<Plug>(neosnippet_jump_or_expand)"
                       \: "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-"These mappings dont work :(
-"nnoremap <C-1> 1gt
-"nnoremap <C-2> 2gt
-"nnoremap <C-3> 3gt
-"nnoremap <C-4> 4gt
-"nnoremap <C-5> 5gt
-
-
-" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
-" window
-" nmap <leader>sw<left>  :topleft  vnew<CR>
-" nmap <leader>sw<right> :botright vnew<CR>
-" nmap <leader>sw<up>    :topleft  new<CR>
-" nmap <leader>sw<down>  :botright new<CR>
-" " buffer
-" nmap <leader>s<left>   :leftabove  vnew<CR>
-" nmap <leader>s<right>  :rightbelow vnew<CR>
-" nmap <leader>s<up>     :leftabove  new<CR>
-" nmap <leader>s<down>   :rightbelow new<CR>
 " }}}
 
 " Plugin Options {{{ 
