@@ -128,10 +128,6 @@ endif
 filetype plugin indent on
 syntax on
 set background=dark
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-let g:solarized_hitrail=1
-"let g:solarized_termcolors=256
 "colorscheme solarized
 if has("gui_running" )
   "colorscheme molokai
@@ -141,8 +137,6 @@ else
   colorscheme molokai256
 endif
 hi MatchParen ctermfg=231
-"let g:molokai_original=1
-"let g:rehash256=1
 set t_Co=256
 set history=10000
 set nowrap
@@ -393,6 +387,15 @@ command! -range=% HighlightRepeats <line1>,<line2>call functions#HighlightRepeat
 " Increase numbers in next line to see more colors.
 command! VimColorTest call functions#VimColorTest('vim-color-test.tmp', 12, 16)
 command! GvimColorTest call functions#GvimColorTest('gvim-color-test.tmp')
+
+"colorschemes {{{
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+let g:solarized_hitrail=1
+"let g:solarized_termcolors=256
+"let g:molokai_original=1
+"let g:rehash256=1
+"}}}
 
 " easymotion {{{
 let g:EasyMotion_smartcase = 1
