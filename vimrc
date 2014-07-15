@@ -317,6 +317,8 @@ nnoremap <leader>er :CtrlP /<CR>
 nnoremap <leader>ep :CtrlP ~/apps/petsc/<CR>
 nnoremap <leader>b  :buffer <C-z><S-TAB>
 nnoremap <leader>f  :find <C-R>=expand('%:h').'/*'<CR><C-z>
+nnoremap <leader>c  :SyntasticCheck<CR>
+nnoremap <leader>C  :SyntasticReset<CR>
 nnoremap <leader>d  :m$<CR>'.
 xnoremap <leader>d  :m$<CR>'.
 nnoremap <leader>ga :Gwrite<CR>
