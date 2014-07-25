@@ -14,3 +14,10 @@ alias   \begin{figure} \figure
         } \label{fig:$1}
 	\end{figure}
 
+snippet tikzpicture
+alias   \begin{tikzpicture} \tikzpicture
+	\begin{tikzpicture}
+        \draw[style=help lines] (0,0) grid (4,3);
+		${1:TARGET}
+	\end{tikzpicture}
+
