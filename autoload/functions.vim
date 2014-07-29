@@ -36,17 +36,13 @@ function! functions#MySpell()
     nnoremap <buffer> k [s
     nnoremap <buffer> j ]s
     nnoremap <buffer> l 1z=
-    nnoremap <buffer> h z=
-    nnoremap <buffer> g zg
-    nnoremap <buffer> w zw
+    nnoremap <buffer> h ea<C-x><C-s>
   else
     echo "Spell off"
     nunmap <buffer> h
     nunmap <buffer> j
     nunmap <buffer> k
     nunmap <buffer> l
-    nunmap <buffer> g
-    nunmap <buffer> w
   endif
 endfunction
 
