@@ -178,6 +178,7 @@ set gdefault
 set undofile
 set foldmethod=marker
 set spelllang=en_us
+set spellfile=~/.vim/bundle/dotvim/en.utf-8.add
 set wildignore+=.git
 set wildignore+=*.hi,*.x
 set wildignore+=*.so,*.a,*.la,*.o
