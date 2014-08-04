@@ -75,7 +75,7 @@ function! LoadBundles()
   Plugin 'kana/vim-textobj-entire'
   Plugin 'kana/vim-textobj-indent'
   "Plugin 'wellle/targets.vim'
-  Plugin 'wellle/tmux-complete.vim'
+  " Plugin 'wellle/tmux-complete.vim'
   Plugin 'jiangmiao/auto-pairs'
   " Haskell plugins
   "Plugin 'Twinside/vim-haskellConceal'
