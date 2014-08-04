@@ -87,6 +87,7 @@ function! LoadBundles()
   Plugin 'eagletmt/neco-ghc'
   "Plugin 'kana/vim-filetype-haskell'
   Plugin 'pbrisbin/vim-syntax-shakespeare' 
+  Plugin 'pydave/vim-hiinterestingword'
 
   " Local plugins
   Plugin 'file:///home/abergman/projects/vimtips'
