@@ -88,6 +88,7 @@ function! LoadBundles()
   "Plugin 'kana/vim-filetype-haskell'
   Plugin 'pbrisbin/vim-syntax-shakespeare' 
   Plugin 'pydave/vim-hiinterestingword'
+  Plugin 'majutsushi/tagbar'
 
   " Local plugins
   Plugin 'file:///home/abergman/projects/vimtips'
