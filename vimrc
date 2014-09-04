@@ -240,7 +240,7 @@ nnoremap gaa :argadd % <Bar> next<CR>
 nnoremap gal :arglocal<CR>
 nnoremap gaL :arglocal! %<CR>
 nnoremap gac :argument<CR>
-nnoremap gav :1,999bd<CR>:argdo e<CR>
+nnoremap gav :1,999bd<CR>:argdo e<CR>:syntax enable<CR>
 nnoremap gad :<C-R>=argidx()+1<CR>argdelete<CR>
 nnoremap gap :args<CR>
 nnoremap gaf :windo first<CR>
