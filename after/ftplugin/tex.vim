@@ -1,3 +1,4 @@
+set conceallevel=0
 
 imap <buffer> [[     \begin{
 imap <buffer> ]]     <Plug>LatexCloseCurEnv
