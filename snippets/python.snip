@@ -1,6 +1,7 @@
 snippet     plot
 options     head
     fig = plt.figure()
+    fig.clear()
     ax = fig.gca()
     ax.set_title("")
     ax.set_xlabel("")
@@ -9,6 +10,7 @@ options     head
     ax.set_ylim(auto=True)
     ax.plot( ${1}, ${2}, label=''  , color='red' )
     ax.legend(loc='upper left')
+    fig.canvas.draw()
     fig.show()
 
 snippet     impmath
