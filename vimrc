@@ -537,6 +537,7 @@ let g:airline_section_y = functions#StatuslineArglistIndicator()
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_Folding=0
+let g:LatexBox_Folding=1
 "}}}
 
 " Mathematica {{{
