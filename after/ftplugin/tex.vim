@@ -14,5 +14,5 @@ imap <silent> <buffer> § <C-R>=LatexBox_JumpToNextBraces(1)<CR>
 
 augroup TexAutoWrite
   autocmd!
-  autocmd InsertLeave <buffer> :update
+  autocmd InsertLeave,CursorHoldI <buffer> :update
 augroup END
