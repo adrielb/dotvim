@@ -274,6 +274,10 @@ onoremap aa a>
 "onoremap - $
 nnoremap ' `
 nnoremap ` '
+nnoremap { k{<Space>0
+vnoremap { k{<Space>0
+nnoremap } j}<BS>0
+vnoremap } j}<BS>0
 nnoremap Q @q
 xnoremap Q :norm @q<CR>
 nnoremap Y y$
