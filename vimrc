@@ -89,6 +89,7 @@ function! LoadBundles()
   Plugin 'pbrisbin/vim-syntax-shakespeare' 
   Plugin 'pydave/vim-hiinterestingword'
   Plugin 'majutsushi/tagbar'
+  Plugin 'adrielb/stan.vim'
 
   " Local plugins
   Plugin 'file:///home/abergman/projects/vimtips'
