@@ -13,3 +13,13 @@ options     head
       ${0}
       return(  )
     }
+
+snippet     if
+    if(${1:condition}) {
+        ${0}
+    }
+
+snippet     for
+    for(${1:i} in ${2:range}) {
+        ${0}
+    }
