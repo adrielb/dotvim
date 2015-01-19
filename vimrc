@@ -89,11 +89,11 @@ function! LoadBundles()
   Plugin 'pbrisbin/vim-syntax-shakespeare' 
   Plugin 'pydave/vim-hiinterestingword'
   Plugin 'majutsushi/tagbar'
-  Plugin 'adrielb/stan.vim'
 
   " Local plugins
   Plugin 'file:///home/abergman/projects/vimtips'
   Plugin 'file:///home/abergman/projects/dotvim', {'pinned':1}
+  Plugin 'file:///home/abergman/projects/stan.vim', {'pinned':1}
 
   " runtime macros/matchit.vim
   "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -192,7 +192,7 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.aux,*.dvi,*.toc,*.pdf,*.ps,*.fdb_latexmk
 set wildignore+=*.mp3,*.m4a,*.wav,*.flac
 set wildignore+=*.mp4,*.avi
-set guifont=Droid\ Sans\ Mono\ 12
+set guifont=Droid\ Sans\ Mono\ Slashed\ 12
 set guioptions-=m " no menubar
 set guioptions-=T " no toolbar
 set guioptions-=L " no left scrollbar
@@ -425,7 +425,7 @@ let g:jedi#popup_select_first=0
 "}}}
 
 "Ack {{{
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --noenv"
+let g:ackprg="ack -H --nocolor --nogroup --column --smart-case --noenv"
 "}}}
 
 " Signify {{{
@@ -638,6 +638,7 @@ let NERDTreeChDirMode=2
 " netrw {{{
 let g:netrw_liststyle = 1
 let g:netrw_list_hide = netrw_gitignore#Hide() . '^\.git/$'
+" let g:netrw_list_hide = '\..*\.un\~,\..\.sw.'
 let g:netrw_banner    = 0
 let g:netrw_keepdir   = 0
 " }}}
