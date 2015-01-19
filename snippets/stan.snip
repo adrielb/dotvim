@@ -1,14 +1,32 @@
 snippet     blocks
 options     head
-    data {
+    functions { # {{{
+
+    } # }}}
+
+    data { #{{{
       ${0}
-    }
-    parameters {
+    } #}}}
 
-    }
-    model {
+    transformed data { #{{{
 
-    }
+    } #}}}
+
+    parameters { #{{{
+
+    } #}}}
+
+    transformed parameters { #{{{
+
+    } #}}}
+
+    model { #{{{
+
+    } #}}}
+
+    generated quantities { #{{{
+
+    } #}}}
 
 snippet     model
 options     head
@@ -35,6 +53,14 @@ snippet     printvar
 snippet     normal
      ~ normal( ${1:mu}, ${2:sigma} )
 
+snippet     normal_rng
+    normal_rng( ${1:mu}, ${2:sigma} )
+
+snippet     cauchy
+     ~ cauchy( ${1:mu}, ${2:sigma} )
+
 snippet     beta
      ~ beta( ${1:alpha}, ${2:beta} )
 
+snippet     gamma
+     ~ gamma( ${1:alpha}, ${2:beta} )
