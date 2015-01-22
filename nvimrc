@@ -6,6 +6,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'nielsmadan/harlequin'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-repeat'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug '~/projects/dotvim'
 
@@ -16,7 +23,6 @@ call plug#end()
 filetype plugin indent on
 syntax on
 colorscheme harlequin
-set background=dark
 set history=10000
 set nowrap
 set wildmenu
@@ -80,18 +86,64 @@ set wildcharm=<C-z>
 " }}}
 
 " Mappings {{{
+nnoremap gs :Gstatus<CR>
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <C-Q> :wincmd c<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <leader>v  :vertical resize 80<CR>
+nmap     <leader><CR>         <Plug>SlimeParagraphSend
+nmap     <leader><leader><CR> <Plug>SlimeLineSend
+xmap     <leader><CR>         <Plug>SlimeRegionSend
+nmap     <Leader><S-CR>       viw<leader><cr>
 " }}}
+
+" Plugin Options {{{
+" vim-slime {{{
+let g:slime_no_mappings = 1
+let g:slime_target="tmux"
+let g:slime_paste_file="/dev/shm/slime-paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1.0"}
+"}}}
 
 " Airline {{{
 let g:airline_theme='dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#whitespace#enabled = 0
+"}}}
+
+" vim {{{
+
+" Auto-Reload vimrc
+" http://www.bestofvim.com/tip/auto-reload-your-vimrc/
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost nvimrc nested source $MYVIMRC
+augroup END
+
+augroup localvimrc
+  autocmd!
+  autocmd VimEnter,BufNewFile,BufReadPost * nested call functions#ReadLocalVimrc()
+  autocmd BufWritePost local.vimrc nested :bufdo call functions#ReadLocalVimrc()
+augroup END
+
+augroup vimrcEx
+  au!
+  " Force markdown for *.md files instead of the default modula-2 file type
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup END
+"}}}
+
+" netrw {{{
+let g:netrw_liststyle = 1
+let g:netrw_list_hide = netrw_gitignore#Hide() . '^\.git/$'
+" let g:netrw_list_hide = '\..*\.un\~,\..\.sw.'
+let g:netrw_banner    = 0
+let g:netrw_keepdir   = 0
+" }}}
+
 "}}}
 
