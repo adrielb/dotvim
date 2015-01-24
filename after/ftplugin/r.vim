@@ -9,3 +9,4 @@ nnoremap <buffer> K :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> KK :SlimeSend1 q<CR>
 
 iabbrev <buffer> < <-
+iabbrev <buffer> > %>%
