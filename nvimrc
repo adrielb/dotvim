@@ -3,7 +3,7 @@ let mapleader = "\<Space>"
 " Installed Plugins {{{
 call plug#begin('~/.vim/plugged')
 
-Plug 'nielsmadan/harlequin'
+Plug 'nielsmadan/harlequin', { 'do' : 'git co matchparen' }
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -12,9 +12,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
-Plug 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug '~/projects/dotvim'
+Plug '~/projects/stan.vim'
 
 call plug#end()
 "}}}
@@ -86,14 +88,26 @@ set wildcharm=<C-z>
 " }}}
 
 " Mappings {{{
+nnoremap n nzxzz
+nnoremap N Nzxzz
 nnoremap gs :Gstatus<CR>
+nnoremap gb :buffers<CR>:buffer <C-Z>
+nnoremap Q @q
+xnoremap Q :norm @q<CR>
+nnoremap Y y$
+nnoremap ZZ :wqa<CR>
 inoremap <C-U> <C-G>u<C-U>
 nnoremap <C-Q> :wincmd c<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
+nnoremap <leader>m  :make<CR>:copen<CR>
+nnoremap <leader>s  :call functions#MySpell()<CR>
+nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 80<CR>
+nnoremap <leader>/  :Ggrep 
 nmap     <leader><CR>         <Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
