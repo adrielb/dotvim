@@ -15,6 +15,8 @@ Plug 'tpope/vim-repeat'
 Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
@@ -115,6 +117,14 @@ nmap     <Leader><S-CR>       viw<leader><cr>
 " }}}
 
 " Plugin Options {{{
+" UltiSnips"{{{
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetsDir=$HOME.'/projects/dotvim/UltiSnips'
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+"}}}
+
 " vim-slime {{{
 let g:slime_no_mappings = 1
 let g:slime_target="tmux"
