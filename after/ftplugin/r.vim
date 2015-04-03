@@ -6,11 +6,14 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 
-nnoremap <buffer> K :SlimeSend1 ?<C-R><C-W><CR>
-nnoremap <buffer> KK :SlimeSend1 q<CR>
+nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
+nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
+nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
 nnoremap <buffer> ,s :SlimeSend1 str(<C-R><C-W>)<CR>
+xnoremap <buffer> ,s y:<C-U>SlimeSend1 str(<C-R>")<CR>
 nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 
 iabbrev <buffer> < <-
 iabbrev <buffer> > %>%
@@ -42,4 +45,19 @@ nmap \w ,l'w<Space><CR>
 nmap \x ,l'x<Space><CR>
 nmap \y ,l'y<Space><CR>
 nmap \z ,l'z<Space><CR>
+
+function! RemapSlimeMap()
+  nmap <leader><CR> :call ResetSlimeMap()<CR>
+endfunction
+  
+function! ResetSlimeMap()
+  " quit the man page in the console
+  SlimeSend1 q
+
+  " remap back to original state (sync with vimrc)
+  nmap <leader><CR> <Plug>SlimeParagraphSend
+
+  " execute  the original mapping
+  exec ":normal \<Plug>SlimeParagraphSend"
+endfunction
 
