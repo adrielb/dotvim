@@ -14,3 +14,32 @@ nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
 
 iabbrev <buffer> < <-
 iabbrev <buffer> > %>%
+
+" clear REPL, jump to mark, send paragraph to REPL
+nmap \a ,l'a<Space><CR>
+nmap \b ,l'b<Space><CR>
+nmap \c ,l'c<Space><CR>
+nmap \d ,l'd<Space><CR>
+nmap \e ,l'e<Space><CR>
+nmap \f ,l'f<Space><CR>
+nmap \g ,l'g<Space><CR>
+nmap \h ,l'h<Space><CR>
+nmap \i ,l'i<Space><CR>
+nmap \j ,l'j<Space><CR>
+nmap \k ,l'k<Space><CR>
+nmap \l ,l'l<Space><CR>
+nmap \m ,l'm<Space><CR>
+nmap \n ,l'n<Space><CR>
+nmap \o ,l'o<Space><CR>
+nmap \p ,l'p<Space><CR>
+nmap \q ,l'q<Space><CR>
+nmap \r ,l'r<Space><CR>
+nmap \s ,l's<Space><CR>
+nmap \t ,l't<Space><CR>
+nmap \u ,l'u<Space><CR>
+nmap \v ,l'v<Space><CR>
+nmap \w ,l'w<Space><CR>
+nmap \x ,l'x<Space><CR>
+nmap \y ,l'y<Space><CR>
+nmap \z ,l'z<Space><CR>
+
