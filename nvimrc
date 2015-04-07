@@ -17,6 +17,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'kshenoy/vim-signature'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
