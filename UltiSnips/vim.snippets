@@ -1,0 +1,18 @@
+snippet function "vim function def" b
+function ${1:function_name}(${2})
+  ${3:" code}
+endfunction
+endsnippet
+
+snippet if "if"
+if ${1:condition}
+  ${0}
+endif
+endsnippet
+
+snippet ifelse "if else"
+if ${1:condition}
+  ${0}
+else
+endif
+endsnippet

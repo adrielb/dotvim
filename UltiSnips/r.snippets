@@ -22,11 +22,26 @@ endsnippet
 snippet mapply "mapply function"
 mapply(${1:function}, ${0:...})
 endsnippet
+
 snippet tapply "tapply function"
 tapply(${1:vector}, ${2:index}, ${0:function})
 endsnippet
+
 snippet rapply "rapply function"
 rapply(${1:list}, ${0:function})
 endsnippet
 
+snippet ode "deSolve ode()"
+ode( y=${1:ic}, times=${2:times}, func=${3:func} parms=${4:parameters})
+endsnippet
 
+snippet odefunc "deSolve ODE function" b
+${1:model} <- function (t, state, parameters) {
+  with( as.list( c(state, parameters) ), {
+    dX <- a*X + Y*Z
+    dY <- b * (Y-Z)
+    dZ <- -X*Y + c*Y - Z
+    list( c(dX, dY, dZ) )
+  }) # end with()
+}
+endsnippet
