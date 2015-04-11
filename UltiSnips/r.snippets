@@ -1,3 +1,22 @@
+global !p
+import os
+from vimsnippets import complete
+
+GEOM_TYPES=[
+	  'jitter'
+	, 'point'
+	, 'histogram'
+	, 'raster'
+]
+POS_TYPES=[
+	'dodge'
+	, 'fill'
+	, 'jitter'
+	, 'jitterdodge'
+	, 'stack'
+	, 'identity'
+]
+endglobal
 
 snippet mat "matrix function"
 matrix(${1:data}, nrow = ${2:rows}, ncol = ${0:cols})
@@ -31,6 +50,8 @@ snippet rapply "rapply function"
 rapply(${1:list}, ${0:function})
 endsnippet
 
+#
+# deSolve ODE {{{
 snippet ode "deSolve ode()"
 ode( y=${1:ic}, times=${2:times}, func=${3:func} parms=${4:parameters})
 endsnippet
@@ -45,3 +66,150 @@ ${1:model} <- function (t, state, parameters) {
   }) # end with()
 }
 endsnippet
+# }}}
+
+#
+# ggplot2 {{{
+snippet qplot "quick ggplot" b
+qplot( x=${1:x}, y=${2:y}, data=${3:df}, color=${4:group}, geom="$5`!p snip.rv=complete(t[5],GEOM_TYPES)`")
+endsnippet
+
+snippet ggplot "new ggplot" b
+ggplot( data=${1:df}, aes(x=${2:time}, y=${3:value})) +
+$0
+endsnippet
+
+# one variable plots
+snippet geom_density "geom_density" b
+geom_density()
+endsnippet
+
+snippet geom_histogram "geom_histogram" b
+geom_histogram( binwidth=5 )
+endsnippet
+
+snippet geom_bar "geom_bar" b
+geom_bar()
+endsnippet
+
+# graphical primitives
+snippet geom_path "geom_path" b
+geom_path( lineend='butt', linejoin='round', linemitre=1)
+endsnippet
+
+snippet geom_rect "geom_rect" b
+geom_rect()
+endsnippet
+
+# two variable plots
+snippet geom_blank "geom_blank" b
+geom_blank()
+endsnippet
+
+snippet geom_jitter "ggplot jitter" b
+geom_jitter( position=position_jitter(width=0.5, height=0.5))
+endsnippet
+
+snippet geom_point "geom_point" b
+geom_point()
+endsnippet
+
+snippet geom_quantile "geom_quantile" b
+geom_quantile()
+endsnippet
+
+snippet geom_rug "geom_rug" b
+geom_rug()
+endsnippet
+
+snippet geom_smooth "geom_smooth" b
+geom_smooth()
+endsnippet
+
+snippet geom_text "geom_text" b
+geom_text( aes(label=${1:lbl} )
+endsnippet
+
+snippet geom_bin2d "geom_bin2d" b
+geom_bin2d( binwidth=c(1,1) )
+endsnippet
+
+snippet geom_density2d "geom_density2d" b
+geom_density2d()
+endsnippet
+
+snippet geom_hex "geom_hex" b
+geom_hex()
+endsnippet
+
+snippet geom_line "geom_line" b
+geom_line()
+endsnippet
+
+snippet geom_boxplot "geom_boxplot" b
+geom_boxplot()
+endsnippet
+
+# three variable plots
+snippet geom_contour "geom_contour" b
+geom_contour(aes(z=${1:z}))
+endsnippet
+
+snippet geom_raster "geom_raster" b
+geom_raster( aes(fill=${1:z}), hjust=0.5, vjust=0.5, interpolate=FALSE)
+endsnippet
+
+snippet geom_tile "geom_tile" b
+geom_tile( aes(fill=${1:z}) )
+endsnippet
+
+# error bars
+snippet geom_crossbar "geom error bars" b
+geom_crossbar( fatten=2 )
+endsnippet
+
+snippet geom_errorbar "geom error bars" b
+geom_errorbar()
+endsnippet
+
+snippet geom_linerange "geom error bars" b
+geom_linerange()
+endsnippet
+
+snippet geom_pointrange "geom error bars" b
+geom_pointrange()
+endsnippet
+
+# faceting
+snippet facet_grid "subplots on discrete values" b
+facet_grid( .~${1:group} )
+endsnippet
+
+snippet face_wrap "subplots in rectangular layout" b
+facet_wrap( ~${1:group} )
+endsnippet
+
+# labels
+snippet ggtitle "plot title" b
+ggtitle( "${1:Plot title}" )
+endsnippet
+
+snippet xlab "X axis label" b
+xlab( "${1:X label}" )
+endsnippet
+
+snippet ylab "Y axis label" b
+ylab( "${1:Y label}" )
+endsnippet
+
+# save
+snippet ggsave "ggplot2 save" b
+ggsave( "${1:filename}.png", width=4, height=3, dpi=72)
+endsnippet
+
+# position of geoms that occupy the same space
+snippet position "arrange overlapping geoms"
+position=position_$1`!p snip.rv=complete(t[1],POS_TYPES)`()
+endsnippet
+
+# }}}
