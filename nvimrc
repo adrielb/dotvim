@@ -93,8 +93,9 @@ set wildcharm=<C-z>
 " Mappings {{{
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap gs :Gstatus<CR>
+nnoremap go :FZF<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
+nnoremap gs :Gstatus<CR>
 nnoremap Q @q
 xnoremap Q :norm @q<CR>
 nnoremap Y y$
