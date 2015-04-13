@@ -116,6 +116,8 @@ nmap     <leader><CR>         <Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
 nmap     <Leader><S-CR>       viw<leader><cr>
+nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
+nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
 " }}}
 
 " Plugin Options {{{
