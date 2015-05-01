@@ -104,6 +104,7 @@ nnoremap N Nzxzz
 nnoremap go :FZF<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
 nnoremap gs :Gstatus<CR>
+nnoremap gV `[v`]
 nnoremap Q @q
 xnoremap Q :norm @q<CR>
 nnoremap Y y$
