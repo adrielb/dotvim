@@ -132,7 +132,7 @@ nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
 " UltiSnips"{{{
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsSnippetsDir=$HOME.'/projects/dotvim/UltiSnips'
-let g:UltiSnipsExpandTrigger="<nop>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " https://github.com/SirVer/ultisnips/issues/376
