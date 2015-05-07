@@ -121,6 +121,7 @@ nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 80<CR>ze
 nnoremap <leader>/  :Ggrep 
+xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
 nmap     <leader><CR>         <Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
