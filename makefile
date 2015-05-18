@@ -2,8 +2,8 @@ all:
 
 link:
 	ln -sf ${PWD}/vimrc ~/.vimrc
-	ln -sf ${PWD} ~/.vim/bundle/dotvim
 	ln -sf ${PWD}/nvimrc ~/.nvimrc
+	ln -sf ${PWD} ~/.vim/bundle/dotvim
 
 thesaurus:
 	wget http://www.gutenberg.org/dirs/etext02/mthes10.zip
