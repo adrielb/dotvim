@@ -86,7 +86,7 @@ set shortmess+=I  " no intro msg
 set clipboard+=unnamedplus
 set report=0
 set noesckeys
-set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«
+set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«,nbsp:¬
 set fillchars=vert:│,fold:\_,diff:⣿
 set completeopt-=preview
 set lazyredraw
@@ -126,6 +126,7 @@ nmap     <leader><CR>         <Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
 nmap     <Leader><S-CR>       viw<leader><cr>
+imap   <esc><space>
 nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
 nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
 " }}}
