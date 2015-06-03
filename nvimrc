@@ -101,7 +101,7 @@ set wildcharm=<C-z>
 " Mappings {{{
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap go :FZF<CR>
+nnoremap go :vnew<bar>FZF ~/projects/<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
 nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
