@@ -101,7 +101,8 @@ set wildcharm=<C-z>
 " Mappings {{{
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap go :vnew<bar>FZF ~/projects/<CR>
+nnoremap go :vnew<bar>FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
+nnoremap gO :vnew<bar>FZF ~/projects/<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
 nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
