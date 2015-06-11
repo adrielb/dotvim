@@ -164,6 +164,13 @@ let g:airline_theme='dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_detect_crypt=0
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  for colors in values(a:palette.inactive)
+    let colors[2] = 245
+  endfor
+endfunction
 "}}}
 
 " vim {{{
