@@ -14,6 +14,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -101,6 +102,7 @@ set wildcharm=<C-z>
 " Mappings {{{
 nnoremap n nzxzz
 nnoremap N Nzxzz
+    nmap ga <Plug>(EasyAlign)
 nnoremap go :vnew<bar>FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
 nnoremap gO :vnew<bar>FZF ~/projects/<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
@@ -130,6 +132,7 @@ nmap     <Leader><S-CR>       viw<leader><cr>
 imap   <esc><space>
 nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
 nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
+    vmap <CR>       <Plug>(EasyAlign)
 " }}}
 
 " Plugin Options {{{
