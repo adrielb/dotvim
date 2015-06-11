@@ -156,6 +156,7 @@ let g:slime_no_mappings = 1
 let g:slime_target="tmux"
 let g:slime_paste_file="/dev/shm/slime-paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1.0"}
+au BufRead,BufNewFile,BufNew *.hss setl ft=haskell.script
 "}}}
 
 " Airline {{{
