@@ -122,7 +122,7 @@ nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
 nnoremap <leader>m  :silent make<BAR>copen<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
-nnoremap <leader>v  :vertical resize 80<CR>ze
+nnoremap <leader>v  :vertical resize 88<CR>ze
 nnoremap <leader>/  :Ggrep -i -- 
 xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
 nmap     <leader><CR>         <Plug>SlimeParagraphSend
