@@ -132,6 +132,8 @@ nmap     <Leader><S-CR>       viw<leader><cr>
 imap   <esc><space>
 nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
 nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
+nnoremap <left>     :bprev<CR>
+nnoremap <right>    :bnext<CR>
     vmap <CR>       <Plug>(EasyAlign)
 " }}}
 
