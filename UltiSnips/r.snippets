@@ -18,6 +18,10 @@ POS_TYPES=[
 ]
 endglobal
 
+snippet inst "install a R package"
+install.packages( "${1}" )
+endsnippet
+
 snippet mat "matrix function"
 matrix(${1:data}, nrow = ${2:rows}, ncol = ${0:cols})
 endsnippet
@@ -49,8 +53,6 @@ endsnippet
 snippet rapply "rapply function"
 rapply(${1:list}, ${0:function})
 endsnippet
-
-#
 # deSolve ODE {{{
 snippet ode "deSolve ode()"
 ode( y=${1:ic}, times=${2:times}, func=${3:func} parms=${4:parameters})
@@ -65,6 +67,16 @@ ${1:model} <- function (t, state, parameters) {
     list( c(dX, dY, dZ) )
   }) # end with()
 }
+endsnippet
+# }}}
+
+#
+# tidyr {{{
+snippet gather "gather cols into key-value pairs"
+gather( ${1:key}, ${2:value}, ${3:cols} )
+endsnippet
+
+snippet separate "split variables clumped into one col"
 endsnippet
 # }}}
 
