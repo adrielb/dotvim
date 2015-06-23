@@ -10,11 +10,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-dirvish'
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -135,6 +136,7 @@ nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
 nnoremap <left>     :bprev<CR>
 nnoremap <right>    :bnext<CR>
     vmap <CR>       <Plug>(EasyAlign)
+nnoremap -          :Dirvish %<CR>
 " }}}
 
 " Plugin Options {{{
