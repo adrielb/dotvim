@@ -12,6 +12,7 @@ nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
 nnoremap <buffer> ,s :SlimeSend1 str(<C-R><C-W>)<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 str(<C-R>")<CR>
 nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
+nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 
