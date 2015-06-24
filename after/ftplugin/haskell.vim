@@ -13,3 +13,9 @@ map <buffer> ,t :GhcModType<CR>
 map <buffer> ,T :GhcModTypeClear<CR>
 map <buffer>  K :silent HoogleInfo<CR>
 
+let s:efm = "%f:%l:%c:,"
+let s:efm .="%f:%l:%c:%m,"
+let s:efm .="%m %f:%l:%c,"
+let s:efm .="%m %f:%l:%c),"
+let s:efm .="%+G"
+let &efm=s:efm
