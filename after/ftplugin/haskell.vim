@@ -10,5 +10,6 @@ map <buffer> ,i :GhcModInfo<CR>
 map <buffer> ,l :GhcModClear<CR>
 map <buffer> ,L :GhcModLint<CR>
 map <buffer> ,t :GhcModType<CR>
+map <buffer> ,T :GhcModTypeClear<CR>
 map <buffer>  K :silent HoogleInfo<CR>
 
