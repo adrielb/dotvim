@@ -2,6 +2,8 @@
 setlocal keywordprg=":help"
 
 nnoremap <silent><buffer> q :q<CR>
-nnoremap <silent><buffer> <leader>v :vertical resize 78<CR>
+nnoremap <silent><buffer> <leader>v :vertical resize 78<CR>ze
 
 wincmd L
+vertical resize 78
+normal ze
