@@ -7,6 +7,7 @@ GEOM_TYPES=[
 	, 'point'
 	, 'histogram'
 	, 'raster'
+	, 'line'
 ]
 POS_TYPES=[
 	'dodge'
@@ -201,8 +202,8 @@ snippet facet_grid "subplots on discrete values" b
 facet_grid( .~${1:group} )
 endsnippet
 
-snippet face_wrap "subplots in rectangular layout" b
-facet_wrap( ~${1:group} )
+snippet facet_wrap "subplots in rectangular layout" b
+facet_wrap( ~${1:group}, scales="free_y" )
 endsnippet
 
 # labels
@@ -226,6 +227,10 @@ endsnippet
 # position of geoms that occupy the same space
 snippet position "arrange overlapping geoms"
 position=position_$1`!p snip.rv=complete(t[1],POS_TYPES)`()
+endsnippet
+
+snippet function "plot a function" b
+stat_function(fun=function(x) ${1:x}, geom="line", color="blue" )
 endsnippet
 
 # }}}

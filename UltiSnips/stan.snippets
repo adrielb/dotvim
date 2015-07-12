@@ -1,0 +1,83 @@
+snippet blocks "stan blocks" b
+functions { # {{{
+
+} # }}}
+
+data { #{{{
+	${0}
+} #}}}
+
+transformed data { #{{{
+
+} #}}}
+
+parameters { #{{{
+
+} #}}}
+
+transformed parameters { #{{{
+
+} #}}}
+
+model { #{{{
+
+} #}}}
+
+generated quantities { #{{{
+
+} #}}}
+endsnippet
+
+snippet model
+model {
+	
+}
+endsnippet
+
+snippet if
+if (${1:condition}) {
+	${0}
+}
+endsnippet
+
+snippet real
+real<lower=${1:lower},upper=${2:upper}> ${3:variable}[${4:dims}];
+endsnippet
+
+snippet vect "vector"
+vector[${1:N}] ${2:var};
+endsnippet
+
+snippet for
+for (${1:i} in ${2:1}:${3:N}) {
+	${0}
+}
+endsnippet
+
+snippet printvar
+print( "${1:var} = ", $1 );
+endsnippet
+
+snippet printlp "print lp" b
+print( "lp = ", get_lp());
+endsnippet
+
+snippet ~ "normal sampling"
+~ normal( ${1:mu}, ${2:sigma} );
+endsnippet
+
+snippet normal_rng
+normal_rng( ${1:mu}, ${2:sigma} );
+endsnippet
+
+snippet ~ "cauchy sampling"
+~ cauchy( ${1:mu}, ${2:sigma} );
+endsnippet
+
+snippet ~ "beta sampling"
+~ beta( ${1:alpha}, ${2:beta} );
+endsnippet
+
+snippet ~ "gamma sampling"
+~ gamma( ${1:alpha}, ${2:beta} );
+endsnippet
