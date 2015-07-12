@@ -45,7 +45,7 @@ set wildmode=list:longest:full
 set backspace=indent,eol,start
 set ruler
 set showcmd
-set mouse=a
+set mouse=n
 set laststatus=2
 set breakindent
 set ignorecase
