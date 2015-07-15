@@ -233,4 +233,8 @@ snippet function "plot a function" b
 stat_function(fun=function(x) ${1:x}, geom="line", color="blue" )
 endsnippet
 
+snippet qplotfunc "plot a function" b
+qplot(c(0, 1), stat = "function", fun=exp, geom = "line")
+endsnippet
+
 # }}}
