@@ -8,3 +8,6 @@ setlocal commentstring=//%s
 let s:efm = "%+GInput file=%f,"
 let s:efm .= "ERROR at line %l,"
 let &efm = s:efm . &efm
+iabbrev <buffer> < <-
+
+nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
