@@ -7,14 +7,19 @@ setlocal shiftwidth=2
 setlocal expandtab
 
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
-nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
-nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
-nnoremap <buffer> ,s :SlimeSend1 str(<C-R><C-W>)<CR>
-xnoremap <buffer> ,s y:<C-U>SlimeSend1 str(<C-R>")<CR>
-nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
-nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
-nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+nnoremap <buffer> ,a :read !tmux capture-pane -p<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
+nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
+nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
+nnoremap <buffer> ,s :SlimeSend1 str(<C-R><C-W>)<CR>
+nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
+nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
+xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
+xnoremap <buffer> ,p y:<C-U>SlimeSend1 print(<C-R>")<CR>
+xnoremap <buffer> ,s y:<C-U>SlimeSend1 str(<C-R>")<CR>
+xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
+xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
 
 iabbrev <buffer> < <-
 iabbrev <buffer> > %>%
