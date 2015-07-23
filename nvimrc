@@ -10,11 +10,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
-" Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug 'SirVer/ultisnips'
