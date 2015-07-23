@@ -17,13 +17,22 @@ POS_TYPES=[
 	, 'stack'
 	, 'identity'
 ]
+LINE_TYPES=[
+	'blank'
+	,'solid'
+	,'dashed'
+	,'dotted'
+	,'dotdash'
+	,'longdash'
+	,'twodash'
+]
 endglobal
 
 snippet inst "install a R package"
 install.packages( "${1}" )
 endsnippet
 
-snippet mat "matrix function"
+snippet matrix "matrix function"
 matrix(${1:data}, nrow = ${2:rows}, ncol = ${0:cols})
 endsnippet
 
@@ -83,6 +92,10 @@ endsnippet
 
 #
 # ggplot2 {{{
+snippet linetype "ggplot line types"
+linetype="$1`!p snip.rv=complete(t[1],LINE_TYPES)`")
+endsnippet
+
 snippet qplot "quick ggplot" b
 qplot( x=${1:x}, y=${2:y}, data=${3:df}, color=${4:group}, geom="$5`!p snip.rv=complete(t[5],GEOM_TYPES)`")
 endsnippet
@@ -115,7 +128,15 @@ geom_rect()
 endsnippet
 
 snippet geom_abline "geom_abline" b
-geom_abline( intercept=0, slope=1, size=2, color='red')
+geom_abline( intercept=0, slope=1, size=2, color='red', alpha=0.5)
+endsnippet
+
+snippet geom_hline "geom_hline" b
+geom_hline( yintercept=${1:0}, size=2, color='red', alpha=0.5)
+endsnippet
+
+snippet geom_vline "geom_vline" b
+geom_vline( xintercept=${1:0}, size=2, color='red', alpha=0.5)
 endsnippet
 
 # two variable plots
