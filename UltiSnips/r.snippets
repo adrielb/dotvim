@@ -26,6 +26,11 @@ LINE_TYPES=[
 	,'longdash'
 	,'twodash'
 ]
+SEPARATE_TYPES=[
+	'error'
+	,'drop'
+	,'merge'
+]
 endglobal
 
 snippet inst "install a R package"
@@ -81,12 +86,37 @@ endsnippet
 # }}}
 
 #
+# dplyr {{{
+snippet inner_join "returns all rows from x matching in y"
+inner_join( ${1:x}, ${2:y}, by=${3:NULL})
+endsnippet
+
+snippet left_join "returns all rows from x"
+left_join( ${1:x}, ${2:x}, by=${3:NULL})
+endsnippet
+
+snippet semi_join "retuns all rows from x matching in y"
+semi_join( ${1:x}, ${2:x}, by=${3:NULL})
+endsnippet
+
+snippet anti_join "returns all rows from x NOT matching in y"
+anti_join( ${1:x}, ${2:x}, by=${3:NULL})
+endsnippet
+# }}}
+
+#
 # tidyr {{{
 snippet gather "gather cols into key-value pairs"
 gather( ${1:key}, ${2:value}, ${3:cols} )
 endsnippet
 
 snippet separate "split variables clumped into one col"
+separate( ${1:col}, into=c("${2:param}", "${3:idx}"), sep =
+"[^[:alnum:]]+", remove=TRUE, convert=FALSE, extra="$4`!p snip.rv=complete(t[4],SEPARATE_TYPES)`")
+endsnippet
+
+snippet spread "spread a key-value pair across multiple columns"
+spread( ${1:key}, ${2:value}, fill=NA, convert=FALSE, drop=TRUE)
 endsnippet
 # }}}
 
