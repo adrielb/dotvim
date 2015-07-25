@@ -102,6 +102,16 @@ set wildcharm=<C-z>
 " }}}
 
 " Mappings {{{
+" line text object
+vnoremap al :<C-U>normal! 0v$h<CR>
+vnoremap il :<C-U>normal! ^vg_<CR>
+onoremap al :norm val<CR>
+onoremap il :norm vil<CR>
+" _af fold text-object
+vnoremap af :<C-U>silent! normal! [zV]z<CR>
+vnoremap if :<C-U>silent! normal! [zjV]zk<CR>
+omap     af :normal Vaf<CR>
+omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
     nmap ga <Plug>(EasyAlign)
