@@ -6,6 +6,9 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 
+nmap <buffer> <down> ]`zx
+nmap <buffer> <up> [`zx
+
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
