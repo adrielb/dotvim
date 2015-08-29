@@ -44,8 +44,12 @@ snippet real
 real<lower=${1:lower},upper=${2:upper}> ${3:variable}[${4:dims}];
 endsnippet
 
-snippet vect "vector"
+snippet vector "vector" b
 vector[${1:N}] ${2:var};
+endsnippet
+
+snippet matrix "matrix" b
+matrix[${1:N},$1] ${2:Sigma};
 endsnippet
 
 snippet cov_matrix "cov_matrix" b
@@ -66,8 +70,24 @@ snippet printlp "print lp" b
 print( "lp = ", get_lp());
 endsnippet
 
+snippet head "head"
+head(${1:vec},${2:n});
+endsnippet
+
+snippet tail "tail"
+tail(${1:vec},${2:n});
+endsnippet
+
+snippet segment "segment [i, i+n-1]"
+segment(${1:vec},${2:i},${3:n});
+endsnippet
+
 snippet ~ "normal sampling"
 ~ normal( ${1:mu}, ${2:sigma} );
+endsnippet
+
+snippet ~ "multi normal chol"
+~ multi_normal_cholesky( ${1:mu}, ${2:L} );
 endsnippet
 
 snippet normal_rng
