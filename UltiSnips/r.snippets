@@ -68,6 +68,15 @@ endsnippet
 snippet rapply "rapply function"
 rapply(${1:list}, ${0:function})
 endsnippet
+
+snippet runif "uniform dist"
+runif( ${1:n}, min=${2:0}, max=${3:1} )
+endsnippet
+
+snippet rnorm "generate normal deviates"
+rnorm(${1:n}, mean=${2:0}, sd=${3:1})
+endsnippet
+
 # deSolve ODE {{{
 snippet ode "deSolve ode()"
 ode( y=${1:ic}, times=${2:times}, func=${3:func} parms=${4:parameters})
