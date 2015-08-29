@@ -1,0 +1,11 @@
+snippet ct "create table" b
+create table ${1:name} (
+	id integer primary key autoincrement,
+	${2}
+);
+endsnippet
+
+snippet insert "insert into" b
+insert into ${1:table} (${2:col}) values
+	(val);
+endsnippet
