@@ -131,7 +131,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
-nnoremap <leader>m  :silent make<BAR>copen<CR>
+nnoremap <leader>m  :silent make<BAR>cc<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
