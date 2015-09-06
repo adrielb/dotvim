@@ -40,6 +40,10 @@ if (${1:condition}) {
 }
 endsnippet
 
+snippet if_else "if_else(cond,real,real)"
+if_else(${1:cond},${2:1.0},${3:0.0})
+endsnippet
+
 snippet real
 real<lower=${1:lower},upper=${2:upper}> ${3:variable}[${4:dims}];
 endsnippet
@@ -92,6 +96,14 @@ endsnippet
 
 snippet normal_rng
 normal_rng( ${1:mu}, ${2:sigma} );
+endsnippet
+
+snippet multi_normal_rng
+multi_normal_rng( ${1:mu}, ${2:Sigma} );
+endsnippet
+
+snippet multi_normal_cholesky_rng
+multi_normal_cholesky_rng( ${1:mu}, ${2:L} );
 endsnippet
 
 snippet ~ "cauchy sampling"
