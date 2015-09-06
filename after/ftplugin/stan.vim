@@ -12,7 +12,8 @@ let s:efm .= "%C,"
 let s:efm .= "%ZERROR at line %l,"
 let s:efm .= "%+C%m,"   "message
 " let &efm = s:efm . &efm
-let &efm = s:efm
+let &l:efm = s:efm
+
 iabbrev <buffer> < <-
 
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
