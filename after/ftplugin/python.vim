@@ -17,3 +17,7 @@ let s:efm .= '%+G%.%#'
 
 let &efm .= ',' . s:efm
 
+nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
+nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+nnoremap <buffer> ,p :SlimeSend1 <C-R><C-W><CR>
+xnoremap <buffer> ,p y:<C-U>SlimeSend1 <C-R>"<CR>
