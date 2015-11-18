@@ -305,17 +305,29 @@ snippet theme "no legend" b
 theme(legend.position="none")
 endsnippet
 
+snippet grid.arrange "grid of plots" b
+grid.arrange(${1:plots}, ncol=${2:1})
+endsnippet
+
 # }}}
 
 #
 # RStan {{{
 snippet sampling "sampling"
-sampling(${1:dso}
+chains <- ${3:4}
+iter <- ${4:2e1}
+warmup <- ${5:1e1}
+$6 <- NULL
+${6:samples} <- sampling(${1:dso}
 	, data=${2:datalist}
-	, chains=${3:4}
-	, iter=${4:2e1}
-	, warmup=${5:1e1}
+	, chains=chains
+	, iter=warmup+iter
+	, warmup=warmup
 )
+
+print($6)
+
+traceplot($6)
 endsnippet
 
 snippet traceplot "traceplot" b
@@ -323,6 +335,11 @@ traceplot(${1:samples}${2:, inc_warmup=FALSE, par="lp__"})
 endsnippet
 
 snippet extract "rstan extract"
-extract(${1:samples}${2:,c("lp__")})
+$3 <- NULL
+${3:df} <- extract(${1:samples}${2:,c("lp__")}) %>% as.data.frame() %>% tbl_df() %>% 
+	mutate(sample=factor(1:(chains*iter))) %>% 
+	gather( param, value, -sample) %>% 
+	separate( param, into=c("param", "d", "ti"), convert=TRUE, extra="merge") %>% 
+	print()
 endsnippet
 # }}}
