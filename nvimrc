@@ -21,6 +21,8 @@ Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
+Plug 'benekastah/neomake'
+Plug 'rking/ag.vim'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
@@ -114,6 +116,7 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
+nnoremap g/ :Ag  ~/projects<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
     nmap ga <Plug>(EasyAlign)
 nnoremap go :vnew<bar>FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
 nnoremap gO :vnew<bar>FZF ~/projects/<CR>
@@ -225,6 +228,10 @@ let g:netrw_keepdir   = 0
 
 " gitv {{{
 let g:Gitv_DoNotMapCtrlKey = 1
+"}}}
+
+" ag {{{
+  let g:ag_prg="ag --vimgrep --smart-case"
 "}}}
 
 "}}}
