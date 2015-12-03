@@ -115,6 +115,10 @@ endsnippet
 snippet anti_join "returns all rows from x NOT matching in y"
 anti_join( ${1:x}, ${2:x}, by=${3:NULL})
 endsnippet
+
+snippet filterin "filter in" 
+filter( ${1:col} %in% c(${2:"f1","f2","..."}) )
+endsnippet
 # }}}
 
 #
@@ -313,7 +317,28 @@ endsnippet
 
 #
 # RStan {{{
+snippet libstan "rstan dplyr libs" b
+# libs # {{{
+library(grid)
+library(gridExtra)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(rstan) 
+options(dplyr.print_min=45)
+options(max.print=450)
+rstan_options(auto_write=TRUE)
+# }}}
+
+
+endsnippet
+
+snippet dso "compile stan" b
+dso <- stan_model( stanc_ret=stanc(file="./${1}.stan"))
+endsnippet
+
 snippet sampling "sampling"
+# sampling {{{
 chains <- ${3:4}
 iter <- ${4:2e1}
 warmup <- ${5:1e1}
@@ -328,6 +353,16 @@ ${6:samples} <- sampling(${1:dso}
 print($6)
 
 traceplot($6)
+
+pairs($6, pars=c("lp__"))
+
+df.stats <- monitor($6,print=F) %>% as.data.frame() 
+df.stats$params <- row.names(df.stats)
+df.stats <- df.stats %>% separate( params, into=c("param", "ti")
+		, sep = "[\\\\[\\\\]]", remove=TRUE, convert=TRUE, extra="drop")
+df.stats %>% select( param, ti) %>% distinct(param)
+
+# }}}
 endsnippet
 
 snippet traceplot "traceplot" b
@@ -336,10 +371,11 @@ endsnippet
 
 snippet extract "rstan extract"
 $3 <- NULL
-${3:df} <- extract(${1:samples}${2:,c("lp__")}) %>% as.data.frame() %>% tbl_df() %>% 
+${3:df} <- as.data.frame(${1:samples},pars=c(${2:"lp__")})) %>% tbl_df() %>% 
 	mutate(sample=factor(1:(chains*iter))) %>% 
 	gather( param, value, -sample) %>% 
-	separate( param, into=c("param", "d", "ti"), convert=TRUE, extra="merge") %>% 
+	separate( param, into=c("param", "d", "ti")
+		, sep="[\\\\[\\\\]]", convert=TRUE, extra="drop") %>% 
 	print()
 endsnippet
 # }}}

@@ -1,5 +1,30 @@
 snippet target "make target" b
 ${1:target}: ${2:deps}
-	echo "First prequist: " $< 
-	echo "target: " $@
+	echo "First dependency: " $< 
+	echo "All dependencies" $^ 
+	echo "output target: " $@
+	echo "stem of pattern" $\*
+endsnippet
+
+snippet targetusual "some usual targets" b
+all:
+	echo "all"
+
+clean:
+	echo "clean"
+
+check:
+	echo "check"
+
+.PHONY: all clean check
+.SUFFIXES:
+.SECONDARY:
+endsnippet
+
+snippet targetdir "directory target" b
+%.o: %.cpp | .deps
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -MMD -MP -MF .deps/$*.d
+.deps:
+	mkdir .deps
+-include .deps/*.d
 endsnippet

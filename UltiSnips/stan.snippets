@@ -90,8 +90,8 @@ snippet segment "segment [i, i+n-1]"
 segment(${1:vec},${2:i},${3:n});
 endsnippet
 
-snippet ~ "normal sampling"
-~ normal( ${1:mu}, ${2:sigma} );
+snippet normal "normal sampling"
+normal( ${1:mu}, ${2:sigma} );
 endsnippet
 
 snippet ~ "multi normal chol"
@@ -110,26 +110,30 @@ snippet multi_normal_cholesky_rng
 multi_normal_cholesky_rng( ${1:mu}, ${2:L} );
 endsnippet
 
-snippet ~ "cauchy sampling"
-~ cauchy( ${1:mu}, ${2:sigma} );
+snippet cauchy "cauchy sampling"
+cauchy( ${1:mu}, ${2:sigma} );
 endsnippet
 
-snippet ~ "beta sampling"
-~ beta( ${1:alpha}, ${2:beta} );
+snippet beta "beta sampling"
+beta( ${1:alpha}, ${2:beta} );
 endsnippet
 
-snippet ~ "gamma sampling"
-~ gamma( ${1:alpha}, ${2:beta} );
+snippet gamma "gamma sampling"
+gamma( ${1:alpha}, ${2:beta} );
+endsnippet
+
+snippet inv_gamma "inverse gamma sampling"
+inv_gamma(${1:alpha},${2:beta});
 endsnippet
 
 snippet chol "cholesky decomposition"
 cholesky_decompose(${1:Sigma});
 endsnippet
 
-snippet rep "rep array" b
+snippet repa "rep array" b
 rep_array( ${1:0}, ${2:N});
 endsnippet
 
-snippet rep "rep vector" b
+snippet repv "rep vector" b
 rep_vector( ${1:0}, ${2:N});
 endsnippet
