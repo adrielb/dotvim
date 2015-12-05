@@ -23,6 +23,7 @@ Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
 Plug 'benekastah/neomake'
 Plug 'rking/ag.vim'
+Plug 'JuliaLang/julia-vim'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
