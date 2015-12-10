@@ -72,3 +72,11 @@ function! ResetSlimeMap()
   exec ":normal \<Plug>SlimeParagraphSend"
 endfunction
 
+function! MarkEvalMacro(marks)
+	" inserts 'm<space><CR> for each mark 'm'
+  let l:jumps=substitute(a:marks,"\\a","'\\0 ","g")
+  let @q="m`" . l:jumps . "``"
+  normal @q
+endfunction
+
+command! -nargs=1 MarkEvalMacro call MarkEvalMacro(<f-args>)
