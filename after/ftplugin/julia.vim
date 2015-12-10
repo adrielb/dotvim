@@ -15,10 +15,14 @@ nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
+nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
 nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
+nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
 xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
 xnoremap <buffer> ,p y:<C-U>SlimeSend1 print(<C-R>")<CR>
+xnoremap <buffer> ,s y:<C-U>SlimeSend1 typeof(<C-R>")<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
+xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
 
 
 " clear REPL, jump to mark, send paragraph to REPL
