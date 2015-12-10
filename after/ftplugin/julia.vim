@@ -9,7 +9,7 @@ setlocal expandtab
 nmap <buffer> <down> ]`zx
 nmap <buffer> <up> [`zx
 
-nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
+nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
