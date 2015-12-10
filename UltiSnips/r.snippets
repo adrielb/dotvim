@@ -135,6 +135,48 @@ endsnippet
 snippet spread "spread a key-value pair across multiple columns"
 spread( ${1:key}, ${2:value}, fill=NA, convert=FALSE, drop=TRUE)
 endsnippet
+
+
+snippet tidyr::complete
+tidyr::complete(${0})
+endsnippet
+snippet tidyr::expand
+tidyr::expand(${0})
+endsnippet
+snippet tidyr::extract
+tidyr::extract(${0})
+endsnippet
+snippet tidyr::extract_numeric
+tidyr::extract_numeric(${0})
+endsnippet
+snippet tidyr::fill
+tidyr::fill(${0})
+endsnippet
+snippet tidyr::gather
+tidyr::gather(${0})
+endsnippet
+snippet tidyr::nest
+tidyr::nest(${0})
+endsnippet
+snippet tidyr::replace_na
+tidyr::replace_na(${0})
+endsnippet
+snippet tidyr::separate
+tidyr::separate(${0})
+endsnippet
+snippet tidyr::seq_range
+tidyr::seq_range(${0})
+endsnippet
+snippet tidyr::spread
+tidyr::spread(${0})
+endsnippet
+snippet tidyr::unite
+tidyr::unite(${0})
+endsnippet
+snippet tidyr::unnest
+tidyr::unnest(${0})
+endsnippet
+
 # }}}
 
 #
@@ -302,7 +344,7 @@ stat_function(fun=function(x) ${1:x}, geom="line", color="blue" )
 endsnippet
 
 snippet qplotfunc "plot a function" b
-qplot(c(0, 1), stat = "function", fun=exp, geom = "line")
+qplot(c(0, 1), stat = "function", fun=${1:exp}, geom = "line", args=list())
 endsnippet
 
 snippet theme "no legend" b
@@ -334,7 +376,8 @@ rstan_options(auto_write=TRUE)
 endsnippet
 
 snippet dso "compile stan" b
-dso <- stan_model( stanc_ret=stanc(file="./${1}.stan"))
+dso.$1 <- NULL
+dso.$1 <- stan_model( stanc_ret=stanc(file="./${1}.stan"))
 endsnippet
 
 snippet sampling "sampling"
