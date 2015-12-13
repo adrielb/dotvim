@@ -159,7 +159,7 @@ nnoremap -          :Dirvish %<CR>
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsSnippetsDir=$HOME.'/projects/dotvim/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " https://github.com/SirVer/ultisnips/issues/376
 let g:ulti_expand_or_jump_res = 0
