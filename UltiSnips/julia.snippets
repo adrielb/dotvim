@@ -1,0 +1,55 @@
+snippet println "print new line" b
+println("${1:msg}")
+endsnippet
+
+snippet while "while loop" b
+while ${1:cond}
+	${0}
+end
+endsnippet
+
+snippet function "function declaration" b
+function ${1:f}(${2:x})
+	${0}
+end
+endsnippet
+
+snippet type "type declaration with constructor" b
+type ${1:typename}
+	${0}
+	function ${1}()
+		new()
+	end
+end
+
+
+endsnippet
+
+snippet immutable "immutable declaration" b
+immutable ${1:name}
+	${0}
+end
+
+
+endsnippet
+
+snippet linspace
+linspace(${1:start},${2:stop},${3:n})
+endsnippet
+
+snippet cvode "solve and plot ODE" b
+using Sundials
+using Vega
+
+function f(t, y, ydot)
+	ydot[1] = -0.04*y[1] + 1.0e4*y[2]*y[3]
+	ydot[3] = 3.0e7*y[2]*y[2]
+	ydot[2] = -ydot[1] - ydot[3]
+end
+
+t=collect(linspace(0, 10, 30))
+ic=[1.0,0.0,0.0]
+res = Sundials.cvode( f, ic, t)
+
+lineplot(x=t,y=res[:,1])
+endsnippet
