@@ -152,6 +152,7 @@ nnoremap <left>     :bprev<CR>
 nnoremap <right>    :bnext<CR>
     vmap <CR>       <Plug>(EasyAlign)
 nnoremap -          :Dirvish %<CR>
+tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
