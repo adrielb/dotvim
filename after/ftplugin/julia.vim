@@ -25,6 +25,7 @@ xnoremap <buffer> ,s y:<C-U>SlimeSend1 typeof(<C-R>")<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
 xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
 
+iabbrev <buffer> > <BAR>>
 
 " clear REPL, jump to mark, send paragraph to REPL
 nmap \a ,l'a<Space><CR>
