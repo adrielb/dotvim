@@ -213,11 +213,6 @@ augroup localvimrc
   autocmd BufWritePost local.vimrc nested :bufdo call functions#ReadLocalVimrc()
 augroup END
 
-augroup vimrcEx
-  au!
-  " Force markdown for *.md files instead of the default modula-2 file type
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-augroup END
 "}}}
 
 " netrw {{{
