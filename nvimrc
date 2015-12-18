@@ -129,7 +129,7 @@ xnoremap Q :norm @q<CR>
 nnoremap Y y$
 nnoremap ZZ :wqa<CR>
 inoremap <C-U> <C-G>u<C-U>
-nnoremap <C-Q> :wincmd c<CR>
+nnoremap <C-Q> :setlocal bufhidden=delete<BAR>bnext<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
