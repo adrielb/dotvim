@@ -4,6 +4,12 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal commentstring=#%s
+setlocal makeprg=tmux\ capture-pane\ -p
+
+let s:efm  = "ERROR: %m,"
+let s:efm .= "%m at %f:%l,"
+let s:efm .= "%-G%.%#,"
+let &l:efm = s:efm
 
 nmap <buffer> <down> ]`zx
 nmap <buffer> <up> [`zx
