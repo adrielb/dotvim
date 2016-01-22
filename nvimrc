@@ -156,6 +156,10 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+" sql {{{
+let g:sql_type_default = 'sqlanywhere'
+"}}}
+
 " UltiSnips"{{{
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsSnippetsDir=$HOME.'/projects/dotvim/UltiSnips'
