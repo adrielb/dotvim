@@ -119,8 +119,8 @@ nnoremap n nzxzz
 nnoremap N Nzxzz
 nnoremap g/ :Ag  ~/projects<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
     nmap ga <Plug>(EasyAlign)
-nnoremap go :vnew<bar>FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
-nnoremap gO :vnew<bar>FZF ~/projects/<CR>
+nnoremap go :FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
+nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :buffers<CR>:buffer <C-Z>
 nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
