@@ -1,11 +1,76 @@
-snippet ct "create table" b
+global !p
+import os
+from vimsnippets import complete
+OBJ_TYPES=[
+	  'table'
+	, 'view'
+	, 'trigger'
+	, 'index'
+]
+endglobal
+
+snippet init "no sync, WAL, fk" b
+PRAGMA synchronous=OFF;
+PRAGMA foreign_keys = ON;
+PRAGMA journal_mode=WAL;
+
+endsnippet
+
+snippet check "pragma checks" b
+PRAGMA integrity_check;
+PRAGMA foreign_key_check; 
+endsnippet
+
+snippet create "create table" b
 create table ${1:name} (
 	id integer primary key autoincrement,
 	${2}
 );
 endsnippet
 
+snippet create "create index" b
+create index ${1:name} on ${2:table} (${3:col});
+endsnippet
+
+snippet create "create view" b
+create view ${1:name} as 
+	select
+	from 
+	join
+endsnippet
+
+snippet create "create trigger" b
+create trigger ${1:name}
+begin;
+	${0}
+end;
+endsnippet
+
+snippet drop "drop table" b
+drop $1`!p snip.rv=complete(t[1],OBJ_TYPES)` ${2:table};
+endsnippet
+
 snippet insert "insert into" b
-insert into ${1:table} (${2:col}) values
-	(val);
+insert into ${1:table} (${2:col}) values (${3:val});
+endsnippet
+
+snippet explain "explain query plan" b
+explain query plan
+endsnippet
+
+snippet update "update" b
+update ${1:table} set ${2:col} = ${3:val} where ${4:condition};
+endsnippet
+
+snippet alter "alter table" b
+alter table ${1:table} add column ${2:col};
+endsnippet
+
+snippet select "select" b
+select
+	${1:col}
+from 
+	${2:table}
+where
+	${3:exp}
 endsnippet
