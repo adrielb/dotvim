@@ -13,7 +13,8 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'gregsexton/gitv'
 Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
@@ -119,9 +120,9 @@ nnoremap n nzxzz
 nnoremap N Nzxzz
 nnoremap g/ :Ag  ~/projects<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
     nmap ga <Plug>(EasyAlign)
-nnoremap go :FZF <C-R>=system("git rev-parse --show-toplevel")<CR><BS><CR>
+nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
-nnoremap gb :buffers<CR>:buffer <C-Z>
+nnoremap gb :Buffers<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
 nnoremap Q @q
