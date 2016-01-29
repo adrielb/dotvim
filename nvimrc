@@ -4,7 +4,8 @@ let mapleader = "\<Space>"
 call plug#begin('~/.vim/plugged')
 
 Plug 'nielsmadan/harlequin', { 'do' : 'git co matchparen' }
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
