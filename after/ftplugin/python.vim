@@ -22,3 +22,9 @@ nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 <C-R><C-W><CR>
 xnoremap <buffer> ,p y:<C-U>SlimeSend1 <C-R>"<CR>
+nnoremap <buffer> ,s :SlimeSend1 dir(<C-R><C-W>)<CR>
+xnoremap <buffer> ,s y:<C-U>SlimeSend1 dir(<C-R>")<CR>
+nnoremap <buffer> ,t :SlimeSend1 type(<C-R><C-W>)<CR>
+xnoremap <buffer> ,t y:<C-U>SlimeSend1 type(<C-R>")<CR>
+nnoremap <buffer> ,r :SlimeSend1 repr(<C-R><C-W>)<CR>
+xnoremap <buffer> ,r y:<C-U>SlimeSend1 repr(<C-R>")<CR>
