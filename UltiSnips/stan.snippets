@@ -94,8 +94,8 @@ snippet normal "normal sampling"
 normal( ${1:mu}, ${2:sigma} );
 endsnippet
 
-snippet ~ "multi normal chol"
-~ multi_normal_cholesky( ${1:mu}, ${2:L} );
+snippet multi_normal_cholesky "multi normal cholesky factorization"
+multi_normal_cholesky( ${1:mu}, ${2:L} );
 endsnippet
 
 snippet normal_rng
@@ -130,10 +130,14 @@ snippet chol "cholesky decomposition"
 cholesky_decompose(${1:Sigma});
 endsnippet
 
-snippet repa "rep array" b
+snippet repa "rep array"
 rep_array( ${1:0}, ${2:N});
 endsnippet
 
-snippet repv "rep vector" b
+snippet repv "rep vector"
 rep_vector( ${1:0}, ${2:N});
+endsnippet
+
+snippet increment_log_prob "increment lp" b
+increment_log_prob(${1:lp});
 endsnippet

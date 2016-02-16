@@ -16,3 +16,34 @@ if [ ! $( id -u ) -eq 0 ]; then
                # unless something goes wrong.
 fi
 endsnippet
+
+snippet installscript "template for installing from source" b
+#!/usr/bin/env bash
+. ./logger.sh
+
+APPDIR=${APPS}/$1
+if [ ! -d "$APPDIR" ]; then
+	git clone git://github.com/${2:user}/${1:prog}.git ${APPDIR}
+fi
+
+cd ${APPDIR}
+git fetch
+stopLog
+git new
+startLog
+git rebase
+
+git co ${3:tag}
+
+sh autogen.sh
+./configure --prefix=${APPS}/local
+make -j$NUM_PROCS
+make install
+
+endsnippet
+
+snippet iffileexists "if file exists" b
+if [ -f "${1:file}" ]; then
+	${0}
+fi
+endsnippet

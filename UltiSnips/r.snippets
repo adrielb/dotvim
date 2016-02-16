@@ -37,6 +37,10 @@ snippet install "install a R package"
 install.packages( "${1}" )
 endsnippet
 
+snippet rep "repeat element"
+rep( ${1:item}, ${2:times})
+endsnippet
+
 snippet matrix "matrix function"
 matrix(${1:data}, nrow = ${2:rows}, ncol = ${0:cols})
 endsnippet
@@ -79,6 +83,19 @@ endsnippet
 
 snippet rnorm "generate normal deviates"
 rnorm(${1:n}, mean=${2:0}, sd=${3:1})
+endsnippet
+
+snippet mvrnorm "multivariate normal samples"
+library(MASS)
+mvrnorm(${1:n}, ${2:mu}, ${3:Sigma})
+endsnippet
+
+snippet rbinom "generate binomial samples"
+rbinom(${1:nobs}, ${2:size}, ${3:prob})
+endsnippet
+
+snippet rbern "generate bernoulli samples"
+rbinom(${1:nobs}, 1, ${2:prob})
 endsnippet
 
 # deSolve ODE {{{
