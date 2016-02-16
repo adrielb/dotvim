@@ -30,11 +30,11 @@ Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
 " Haskell
-Plug 'raichoo/haskell-vim'
-Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
-Plug 'Twinside/vim-hoogle'
-Plug 'Shougo/vimproc', {'do' : 'make'}
+" Plug 'raichoo/haskell-vim'
+" Plug 'eagletmt/neco-ghc'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'Twinside/vim-hoogle'
+" Plug 'Shougo/vimproc', {'do' : 'make'}
 
 
 call plug#end()
