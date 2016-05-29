@@ -51,6 +51,18 @@ snippet linspace
 linspace(${1:start},${2:stop},${3:n})
 endsnippet
 
+snippet Array "an uninitialized dense array"
+Array(${1:type}, ${2:dim})
+endsnippet
+
+snippet zeros "array of zeros"
+zeros(${1:type}, ${2:dims})
+endsnippet
+
+snippet zerosA "array of zeros of same type and shape of A"
+zeros(${1:A})
+endsnippet
+ 
 snippet cvode "solve and plot ODE" b
 using Sundials
 using Vega
@@ -66,4 +78,8 @@ ic=[1.0,0.0,0.0]
 res = Sundials.cvode( f, ic, t)
 
 lineplot(x=t,y=res[:,1])
+endsnippet
+
+snippet stack "wide to long"
+stack(${1:df}, [:${2:measurement_vars}])
 endsnippet

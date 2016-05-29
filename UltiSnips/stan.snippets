@@ -90,6 +90,18 @@ snippet segment "segment [i, i+n-1]"
 segment(${1:vec},${2:i},${3:n});
 endsnippet
 
+snippet integrate_ode "solve differential equations"
+integrate_ode(${1:F},${2:x0},${3:t0},${4:ti},${5:theta},${6:x_real},${7:x_int});
+endsnippet
+
+snippet odefunc "ODE Function"
+real[] ${1:odefunc}( real t, real[] x, real[] theta, real[] x_real, int[] x_int) {
+	real F[2];
+	${0}
+	return F;
+}
+endsnippet
+
 snippet normal "normal sampling"
 normal( ${1:mu}, ${2:sigma} );
 endsnippet
