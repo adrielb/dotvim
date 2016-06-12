@@ -37,6 +37,10 @@ snippet install "install a R package"
 install.packages( "${1}" )
 endsnippet
 
+snippet length "length"
+length(${0})
+endsnippet
+
 snippet rep "repeat element"
 rep( ${1:item}, ${2:times})
 endsnippet
@@ -117,6 +121,14 @@ endsnippet
 
 #
 # dplyr {{{
+snippet as_data_frame "dplyr data frame"
+as_data_frame()
+endsnippet
+
+snippet filter "filter" b
+filter(${1})
+endsnippet
+
 snippet inner_join "returns all rows from x matching in y"
 inner_join( ${1:x}, ${2:y}, by=${3:NULL})
 endsnippet
@@ -211,6 +223,15 @@ ggplot( data=${1:df}, aes(x=${2:time}, y=${3:value})) +
 $0
 endsnippet
 
+snippet xlim "xlim" b
+xlim(${1:NA}, ${2:NA})
+endsnippet
+
+snippet ylim "ylim" b
+ylim(${1:NA}, ${2:NA})
+endsnippet
+
+
 # one variable plots
 snippet geom_density "geom_density" b
 geom_density()
@@ -222,6 +243,10 @@ endsnippet
 
 snippet geom_bar "geom_bar" b
 geom_bar()
+endsnippet
+
+snippet geom_ribbon "geom_ribbon" b
+geom_ribbon(aes(x=m, ymin=mu-se, ymax=mu+se), alpha=0.1, fill='red')
 endsnippet
 
 # graphical primitives
