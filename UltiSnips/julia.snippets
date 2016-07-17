@@ -62,6 +62,10 @@ endsnippet
 snippet zerosA "array of zeros of same type and shape of A"
 zeros(${1:A})
 endsnippet
+
+snippet fill "create array filled with a value"
+fill(${1:val}, ${2:dims})
+endsnippet
  
 snippet cvode "solve and plot ODE" b
 using Sundials
@@ -82,4 +86,12 @@ endsnippet
 
 snippet stack "wide to long"
 stack(${1:df}, [:${2:measurement_vars}])
+endsnippet
+
+snippet rand "pick a random element"
+rand(${1:dist}, ${2:dims})
+endsnippet
+
+snippet Normal "normal distribution type"
+Normal(${1:mean},${2:sigma})
 endsnippet
