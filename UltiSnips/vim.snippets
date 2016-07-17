@@ -16,3 +16,18 @@ if ${1:condition}
 else
 endif
 endsnippet
+
+snippet tmux "switch tmux window" b
+augroup switchtmux
+	au!
+	autocmd BufEnter *.R   silent !tmux select-window -t ${1:name}:R
+	autocmd BufEnter *.jl  silent !tmux select-window -t $1:julia
+	autocmd BufEnter *.py  silent !tmux select-window -t $1:ipython
+	autocmd BufEnter *.sql silent !tmux select-window -t $1:sqlite
+	autocmd BufEnter *.R   let b:slime_config = {"socket_name": "default", "target_pane": "$1:R"}
+	autocmd BufEnter *.jl  let b:slime_config = {"socket_name": "default", "target_pane": "$1:julia"}
+	autocmd BufEnter *.py  let b:slime_config = {"socket_name": "default", "target_pane": "$1:ipython"}
+	autocmd BufEnter *.sql let b:slime_config = {"socket_name": "default", "target_pane": "$1:sqlite"}
+augroup END
+
+endsnippet
