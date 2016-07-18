@@ -41,6 +41,22 @@ snippet length "length"
 length(${0})
 endsnippet
 
+snippet seq "sequence of numbers"
+seq(${1:from},${2:to},length.out=${3:len})
+endsnippet
+
+snippet seq.int "integer sequence of numbers"
+seq.int(${1:from},${2:to},${3:by})
+endsnippet
+
+snippet seq_along "integer sequence of length of arg"
+seq_along(${1:along.with})
+endsnippet
+
+snippet seq_len "integer sequence of length len"
+seq_len(${1:length.out})
+endsnippet
+
 snippet rep "repeat element"
 rep( ${1:item}, ${2:times})
 endsnippet
@@ -461,3 +477,7 @@ ${3:df} <- as.data.frame(${1:samples},pars=c(${2:"lp__")})) %>% tbl_df() %>%
 	print()
 endsnippet
 # }}}
+
+snippet j2rinclude "run julia script" b
+j2r('include("./${1:file}.jl")')
+endsnippet
