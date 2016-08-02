@@ -128,6 +128,7 @@ nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
 nnoremap Q @q
 xnoremap Q :norm @q<CR>
+xnoremap s :s/\%V
 nnoremap Y y$
 nnoremap ZZ :wqa<CR>
 inoremap <C-U> <C-G>u<C-U>
