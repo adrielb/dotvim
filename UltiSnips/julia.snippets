@@ -92,10 +92,6 @@ snippet rand "pick a random element"
 rand(${1:dist}, ${2:dims})
 endsnippet
 
-snippet Normal "normal distribution type"
-Normal(${1:mean},${2:sigma})
-endsnippet
-
 snippet take "take first n elements"
 take(${1:iter},${2:n})
 endsnippet
@@ -118,3 +114,21 @@ s = open("/tmp/prof.txt","w")
 Profile.print(s, format=:flat, sortedby=:count, cols=700)
 close(s)
 endsnippet
+
+# Distributions
+snippet Normal "normal distribution type"
+Normal(${1:mean},${2:sigma})
+endsnippet
+
+snippet Cauchy "Cauchy dist type"
+Cauchy(${1:location},${2:scale})
+endsnippet
+
+snippet logpdf "log(pdf(x))"
+logpdf(${1:dist},${2:rng})
+endsnippet
+
+snippet loglikelihood "logL wrt samples x"
+loglikelihood(${1:dist},${2:x})
+endsnippet
+
