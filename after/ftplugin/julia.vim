@@ -8,6 +8,9 @@ setlocal path+=~/apps/julia/base
 
 let s:efm = "%m at %f:%l,"
 
+" lint.jl
+let s:efm .= "%f:%l %t%m,"
+
 " reading /tmp/prof.txt
 " let s:efm = '%m %f%*\s%*\S%*\s%l'
 " using awk to rearrange columns
