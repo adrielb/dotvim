@@ -18,9 +18,9 @@ endif
 endsnippet
 
 snippet tmux "switch tmux window" b
-augroup switchtmux
+augroup switchtmux-${1:name}
 	au!
-	autocmd BufEnter *.R   silent !tmux select-window -t ${1:name}:R
+	autocmd BufEnter *.R   silent !tmux select-window -t $1:R
 	autocmd BufEnter *.jl  silent !tmux select-window -t $1:julia
 	autocmd BufEnter *.py  silent !tmux select-window -t $1:ipython
 	autocmd BufEnter *.sql silent !tmux select-window -t $1:sqlite

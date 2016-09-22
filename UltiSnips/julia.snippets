@@ -3,6 +3,10 @@ Pkg.update()
 Pkg.add("${1:package}")
 endsnippet
 
+snippet Array{Float64,1} "standard vector type"
+Array{Float64,1}
+endsnippet
+
 snippet println "print new line" b
 println("${1:msg}")
 endsnippet
@@ -11,6 +15,10 @@ snippet while "while loop" b
 while ${1:cond}
 	${0}
 end
+endsnippet
+
+snippet comprehension "list comprehension"
+Float64[ i+j for i=1:M, j=1:N]
 endsnippet
 
 snippet function "function declaration" b
@@ -23,7 +31,8 @@ snippet type "type declaration with constructor" b
 type ${1:typename}
 	${0}
 	function $1()
-		new()
+		temp = new()
+		return temp
 	end
 end # type $1
 
@@ -55,6 +64,10 @@ snippet Array "an uninitialized dense array"
 Array(${1:type}, ${2:dim})
 endsnippet
 
+snippet reshape "change dimensions of array"
+reshape(${1:A},${2:dims})
+endsnippet
+
 snippet zeros "array of zeros"
 zeros(${1:type}, ${2:dims})
 endsnippet
@@ -65,6 +78,14 @@ endsnippet
 
 snippet fill "create array filled with a value"
 fill(${1:val}, ${2:dims})
+endsnippet
+
+snippet fill! "fill! array A with value x"
+fill!(${1:A},${2:x})
+endsnippet
+
+snippet quadgk "numerical integration"
+(sol, err) = quadgk(${1:f},${2:a},${3:b})
 endsnippet
  
 snippet cvode "solve and plot ODE" b
@@ -120,8 +141,32 @@ snippet Normal "normal distribution type"
 Normal(${1:mean},${2:sigma})
 endsnippet
 
+snippet MvNormal "multivariate normal"
+MvNormal
+endsnippet
+
 snippet Cauchy "Cauchy dist type"
 Cauchy(${1:location},${2:scale})
+endsnippet
+
+snippet Gamma "Gamma dist type"
+Gamma(${1:shape},${2:scale})
+endsnippet
+
+snippet Categorical "Categorical dist with equal prob"
+Categorical(${1:K_int})
+endsnippet
+
+snippet Categorical "Categorical dist with prob vec"
+Categorical(${1:p_vec})
+endsnippet
+
+snippet Multinomial "Multinomial with prob vec"
+Multinomial(${1:n_trials},${2:p_vec})
+endsnippet
+
+snippet Multinomial "Multinomial with equal prob"
+Multinomial(${1:n_trials},${2:k_int})
 endsnippet
 
 snippet logpdf "log(pdf(x))"
@@ -130,5 +175,27 @@ endsnippet
 
 snippet loglikelihood "logL wrt samples x"
 loglikelihood(${1:dist},${2:x})
+endsnippet
+
+
+# Unit Testing
+snippet @test_approx_eq "test for equality given small tolerance"
+@test_approx_eq ${1:a} ${2:b}
+endsnippet
+
+snippet @test_approx_eq_eps "tests for equality given tolerance"
+@test_approx_eq_eps ${1:a} ${2:b} ${3:eps}
+endsnippet
+
+snippet @test_broken "test should pass but currently fails"
+@test_broken ${1:expression}
+endsnippet
+
+snippet @test_skip "don't run test, mark as broken"
+@test_skip ${1:expression}
+endsnippet
+
+snippet @inferred "checks for type stability"
+@inferred ${1:expression}
 endsnippet
 

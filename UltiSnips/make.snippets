@@ -28,3 +28,21 @@ snippet targetdir "directory target" b
 	mkdir .deps
 -include .deps/*.d
 endsnippet
+
+snippet targetjulia "some julia targets" b
+mem: prof-mem.jl
+	julia --track-allocation=user $<
+
+profile: /tmp/prof.txt
+	awk '{ print $$4" "$$2" "$$1" "$$3; }' /tmp/prof.txt
+	# cat /tmp/prof.txt
+
+test:
+	julia runtests.jl
+
+capture:
+	tmux capture-pane -p
+
+clean:
+	rm *.jl.mem
+endsnippet

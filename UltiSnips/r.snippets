@@ -57,6 +57,10 @@ snippet seq_len "integer sequence of length len"
 seq_len(${1:length.out})
 endsnippet
 
+snippet expand.grid "df from all combinations" 
+df = expand.grid(x=1:3, y=1:4)
+endsnippet
+
 snippet rep "repeat element"
 rep( ${1:item}, ${2:times})
 endsnippet
@@ -163,6 +167,10 @@ endsnippet
 
 snippet filterin "filter in" 
 filter( ${1:col} %in% c(${2:"f1","f2","..."}) )
+endsnippet
+
+snippet sample_n "sample rows from df"
+sample_n(${1:size})
 endsnippet
 # }}}
 
@@ -478,6 +486,24 @@ ${3:df} <- as.data.frame(${1:samples},pars=c(${2:"lp__")})) %>% tbl_df() %>%
 endsnippet
 # }}}
 
+# rjulia {{{
+snippet libjulia "import rjulia" b
+library(rjulia)
+julia_init()
+endsnippet
+
 snippet j2rinclude "run julia script" b
 j2r('include("./${1:file}.jl")')
 endsnippet
+
+snippet juliaProfilePlot "plot julia profile timings" b
+df.prof <- read.table('/tmp/prof.txt', header=TRUE) %>% tbl_df() %>% 
+  arrange(desc(Count)) %>% 
+  mutate(Line=factor(Line),
+         Function=factor(Function,Function),
+         Frac=Count/max(Count)) %>% 
+  filter(Frac>0.25)
+head(df.prof)
+qplot( x=Frac, y=Function, data=df.prof, color=Line, geom="point", size=10)
+endsnippet
+# }}}
