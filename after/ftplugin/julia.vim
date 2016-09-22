@@ -4,11 +4,24 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal commentstring=#%s
-setlocal makeprg=tmux\ capture-pane\ -p
+setlocal path+=~/apps/julia/base
 
-let s:efm  = "ERROR: %m,"
-let s:efm .= "%m at %f:%l,"
-let s:efm .= "%-G%.%#,"
+let s:efm = "%m at %f:%l,"
+
+" reading /tmp/prof.txt
+" let s:efm = '%m %f%*\s%*\S%*\s%l'
+" using awk to rearrange columns
+let s:efm .= '%l %f %m,'
+
+" multi-line test error msgs
+" let s:efm = '%EERROR: %m,'
+" let s:efm .= '%+C %.%#,'
+" let s:efm .= '%Zwhile loading %f\, in expression starting on line %l'
+" let &efm = s:efm
+
+" single line test error msg
+let s:efm .= 'ERROR: %m,'
+let s:efm .= 'while loading %f\, in expression starting on line %l,'
 let &l:efm = s:efm
 
 nmap <buffer> <down> ]`zx
