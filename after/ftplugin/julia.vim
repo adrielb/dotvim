@@ -50,35 +50,32 @@ xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
 iabbrev <buffer> > <BAR>>
 
 " clear REPL, jump to mark, send paragraph to REPL
-nmap \a ,l'a<Space><CR>
-nmap \b ,l'b<Space><CR>
-nmap \c ,l'c<Space><CR>
-nmap \d ,l'd<Space><CR>
-nmap \e ,l'e<Space><CR>
-nmap \f ,l'f<Space><CR>
-nmap \g ,l'g<Space><CR>
-nmap \h ,l'h<Space><CR>
-nmap \i ,l'i<Space><CR>
-nmap \j ,l'j<Space><CR>
-nmap \k ,l'k<Space><CR>
-nmap \l ,l'l<Space><CR>
-nmap \m ,l'm<Space><CR>
-nmap \n ,l'n<Space><CR>
-nmap \o ,l'o<Space><CR>
-nmap \p ,l'p<Space><CR>
-nmap \q ,l'q<Space><CR>
-nmap \r ,l'r<Space><CR>
-nmap \s ,l's<Space><CR>
-nmap \t ,l't<Space><CR>
-nmap \u ,l'u<Space><CR>
-nmap \v ,l'v<Space><CR>
-nmap \w ,l'w<Space><CR>
-nmap \x ,l'x<Space><CR>
-nmap \y ,l'y<Space><CR>
-nmap \z ,l'z<Space><CR>
-
-  
-
+nmap \a ,l'a<Plug>SlimeParagraphSend
+nmap \b ,l'b<Plug>SlimeParagraphSend
+nmap \c ,l'c<Plug>SlimeParagraphSend
+nmap \d ,l'd<Plug>SlimeParagraphSend
+nmap \e ,l'e<Plug>SlimeParagraphSend
+nmap \f ,l'f<Plug>SlimeParagraphSend
+nmap \g ,l'g<Plug>SlimeParagraphSend
+nmap \h ,l'h<Plug>SlimeParagraphSend
+nmap \i ,l'i<Plug>SlimeParagraphSend
+nmap \j ,l'j<Plug>SlimeParagraphSend
+nmap \k ,l'k<Plug>SlimeParagraphSend
+nmap \l ,l'l<Plug>SlimeParagraphSend
+nmap \m ,l'm<Plug>SlimeParagraphSend
+nmap \n ,l'n<Plug>SlimeParagraphSend
+nmap \o ,l'o<Plug>SlimeParagraphSend
+nmap \p ,l'p<Plug>SlimeParagraphSend
+nmap \q ,l'q<Plug>SlimeParagraphSend
+nmap \r ,l'r<Plug>SlimeParagraphSend
+nmap \s ,l's<Plug>SlimeParagraphSend
+nmap \t ,l't<Plug>SlimeParagraphSend
+nmap \u ,l'u<Plug>SlimeParagraphSend
+nmap \v ,l'v<Plug>SlimeParagraphSend
+nmap \w ,l'w<Plug>SlimeParagraphSend
+nmap \x ,l'x<Plug>SlimeParagraphSend
+nmap \y ,l'y<Plug>SlimeParagraphSend
+nmap \z ,l'z<Plug>SlimeParagraphSend
 
 
 function! MarkEvalMacro(marks)
