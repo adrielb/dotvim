@@ -19,7 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do' : './install.py' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
