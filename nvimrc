@@ -24,7 +24,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
 Plug 'benekastah/neomake'
-Plug 'rking/ag.vim'
 Plug 'JuliaLang/julia-vim'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
@@ -119,7 +118,7 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap g/ :Ag  ~/projects<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
+nnoremap g/ :Ag<Space>
     nmap ga <Plug>(EasyAlign)
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
@@ -232,10 +231,6 @@ let g:netrw_keepdir   = 0
 
 " gitv {{{
 let g:Gitv_DoNotMapCtrlKey = 1
-"}}}
-
-" ag {{{
-  let g:ag_prg="ag --vimgrep --smart-case"
 "}}}
 
 "}}}
