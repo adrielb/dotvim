@@ -143,7 +143,7 @@ nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
 nnoremap <leader>/  :Ggrep -i -- 
 xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
-nmap     <leader><CR>         <Plug>SlimeParagraphSend
+nmap     <leader><CR>         m.<Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
 nmap     <Leader><S-CR>       viw<leader><cr>
@@ -158,6 +158,18 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+" signature {{{
+let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
+"}}}
+
+" colorscheme{{{
+hi CursorLine cterm=NONE
+"}}}
+
+" julia {{{
+au BufRead *.jl.mem setl ft=julia
+"}}}
+
 " sql {{{
 let g:sql_type_default = 'sqlanywhere'
 "}}}
