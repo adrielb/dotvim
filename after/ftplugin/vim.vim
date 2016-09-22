@@ -1,3 +1,7 @@
+setlocal softtabstop=2
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal expandtab
 " use the :help command for 'K' in .vim files
 setlocal keywordprg=":help"
 nnoremap <buffer> K  :help <C-R><C-W><CR>
