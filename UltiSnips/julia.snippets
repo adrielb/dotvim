@@ -129,11 +129,29 @@ end
 endsnippet
 
 snippet profile "statistical timimg" b
+using ProfileView
+
 Profile.clear()
 @profile ${1:func}
 s = open("/tmp/prof.txt","w")
 Profile.print(s, format=:flat, sortedby=:count, cols=700)
 close(s)
+ProfileView.view()
+endsnippet
+
+snippet profile-mem "track-allocation" b
+function profile_${1:func}()
+	sol = $1()
+	Profile.clear_malloc_data()
+	sol = $1()
+	print(hash(sol))
+end
+endsnippet
+
+snippet lint "lint a file" b
+using Lint
+
+lintfile("./${1:file}.jl")
 endsnippet
 
 # Distributions
@@ -142,7 +160,11 @@ Normal(${1:mean},${2:sigma})
 endsnippet
 
 snippet MvNormal "multivariate normal"
-MvNormal
+MvNormal(${1:mean_vector},${2:Cov_matrix})
+endsnippet
+
+snippet InverseWishart "Inverse Wishart"
+InverseWishart(${1:dof},${2:PDmat})
 endsnippet
 
 snippet Cauchy "Cauchy dist type"
