@@ -23,7 +23,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do' : './install.py' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
@@ -162,6 +163,20 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+
+" deoplete {{{
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+"}}}
+
 " signature {{{
 let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 "}}}
