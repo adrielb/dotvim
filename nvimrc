@@ -4,6 +4,10 @@ let mapleader = "\<Space>"
 call plug#begin('~/.vim/plugged')
 
 Plug 'nielsmadan/harlequin', { 'do' : 'git co matchparen' }
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'mhartington/oceanic-next'
+Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -42,7 +46,7 @@ call plug#end()
 " Basic Vim settings {{{
 filetype plugin indent on
 syntax on
-colorscheme harlequin
+set termguicolors
 set history=10000
 set nowrap
 set wildmenu
@@ -163,7 +167,12 @@ let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 "}}}
 
 " colorscheme{{{
-hi CursorLine cterm=NONE
+" hi CursorLine cterm=NONE
+" colorscheme onedark
+let g:gruvbox_italic=1
+let g:neosolarized_contrast = "high"
+colorscheme NeoSolarized
+set background=dark
 "}}}
 
 " julia {{{
