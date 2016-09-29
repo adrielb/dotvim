@@ -6,7 +6,8 @@ setlocal expandtab
 setlocal commentstring=#%s
 setlocal path+=~/apps/julia/base
 
-let s:efm = "%m at %f:%l,"
+let s:efm  = "%m at %f:%l,"
+let s:efm .= "%m at %f:%l [inlined],"
 
 " lint.jl
 let s:efm .= "%f:%l %t%m,"
@@ -23,8 +24,8 @@ let s:efm .= '%l %f %m,'
 " let &efm = s:efm
 
 " single line test error msg
-let s:efm .= 'ERROR: %m,'
-let s:efm .= 'while loading %f\, in expression starting on line %l,'
+let s:efm .= '%tRROR: %m,'
+let s:efm .= 'while loading %f\, %m %l,'
 let &l:efm = s:efm
 
 nmap <buffer> <down> ]`zx
