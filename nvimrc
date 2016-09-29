@@ -3,11 +3,7 @@ let mapleader = "\<Space>"
 " Installed Plugins {{{
 call plug#begin('~/.vim/plugged')
 
-Plug 'nielsmadan/harlequin', { 'do' : 'git co matchparen' }
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
-Plug 'mhartington/oceanic-next'
-Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -182,11 +178,10 @@ let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 "}}}
 
 " colorscheme{{{
-" hi CursorLine cterm=NONE
-" colorscheme onedark
 let g:gruvbox_italic=1
-let g:neosolarized_contrast = "high"
-colorscheme NeoSolarized
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_improved_warnings=1
+colorscheme gruvbox
 set background=dark
 "}}}
 
