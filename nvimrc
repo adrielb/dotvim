@@ -119,7 +119,8 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap g/ :Ag<Space>
+nnoremap g/ :Ag<Space><C-R><C-W>
+xnoremap g/ y:<C-U>Ag <C-R>"<CR>
     nmap ga <Plug>(EasyAlign)
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
