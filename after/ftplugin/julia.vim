@@ -90,3 +90,16 @@ function! MarkEvalMacro(marks)
 endfunction
 
 command! -nargs=1 MarkEvalMacro call MarkEvalMacro(<f-args>)
+
+" vim-slime
+" wrap multiple lines in begin...end block
+function! _EscapeText_julia(text)
+  if len(split(a:text, "\n")) > 1
+    " multiple new lines will break block in REPL
+    let empty_lines_pat = '\(^\|\n\)\zs\(\s*\n\+\)\+'
+    let one_empty_line = substitute(a:text, empty_lines_pat, "\n", "g")
+    return ["begin\n", one_empty_line."end\n"]
+  endif
+" pass single lines unaffected
+  return a:text
+endfunction
