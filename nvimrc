@@ -61,7 +61,8 @@ set incsearch
 set hlsearch
 set title
 set number
-set relativenumber
+set norelativenumber
+set cursorline
 set colorcolumn=+1
 set showmatch
 set scrolloff=3
