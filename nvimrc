@@ -76,7 +76,7 @@ set undofile
 set foldmethod=marker
 set spelllang=en_us
 set spellfile=~/projects/dotvim/en.utf-8.add
-set thesaurus+=~/.vim/bundle/dotvim/mthes10/mthesaur.txt
+set thesaurus+=~/projects/dotvim/mthes10/mthesaur.txt
 set dictionary+=/usr/share/dict/words
 set wildignore+=.git
 set wildignore+=*.hi,*.x
