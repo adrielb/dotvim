@@ -28,8 +28,6 @@ let s:efm .= '%tRROR: %m,'
 let s:efm .= 'while loading %f\, %m %l,'
 let &l:efm = s:efm
 
-nmap <buffer> <down> ]`zx
-nmap <buffer> <up> [`zx
 
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p<CR>
