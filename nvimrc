@@ -185,6 +185,7 @@ let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 set background=dark
+highlight Normal ctermbg=16 guibg=#000000
 "}}}
 
 " julia {{{
