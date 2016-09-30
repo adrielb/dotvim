@@ -5,6 +5,8 @@ setlocal shiftwidth=2
 setlocal expandtab
 setlocal commentstring=#%s
 setlocal path+=~/apps/julia/base
+setlocal tags+=~/apps/julia/tags
+setlocal tags+=~/.julia/tags
 
 let s:efm  = "%m at %f:%l,"
 let s:efm .= "%m at %f:%l [inlined],"
