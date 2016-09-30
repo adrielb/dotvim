@@ -51,7 +51,7 @@ clean:
 	rm *.jl.mem
 
 tags:
-	ctags *
+	ctags-exuberant -R --totals=yes --languages=julia
 
 .PHONY: mem profile test capture clean tags
 endsnippet
