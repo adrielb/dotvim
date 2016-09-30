@@ -41,8 +41,17 @@ test:
 	julia runtests.jl
 
 capture:
-	tmux capture-pane -p
+	@tmux capture-pane -p -S -20 -J | \
+	awk -v RS='julia> ' '\
+		BEGIN { ORS=RS } \
+			{b=a; a=\$\$0} \
+		END { print b } '
 
 clean:
 	rm *.jl.mem
+
+tags:
+	ctags *
+
+.PHONY: mem profile test capture clean tags
 endsnippet
