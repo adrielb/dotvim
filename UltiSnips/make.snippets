@@ -41,7 +41,7 @@ test:
 	julia runtests.jl
 
 capture:
-	@tmux capture-pane -p -S -20 -J | \
+	@tmux capture-pane -p -S -20 -J -t 0 | \
 	awk -v RS='julia> ' '\
 		BEGIN { ORS=RS } \
 			{b=a; a=\$\$0} \
