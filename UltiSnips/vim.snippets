@@ -31,3 +31,14 @@ augroup switchtmux-${1:name}
 augroup END
 
 endsnippet
+
+snippet augroup "autocmd group" b
+augroup ${1:name}
+	au!
+	${0}
+augroup END
+endsnippet
+
+snippet autocmd "auto-command" b
+autocmd ${1:event} ${2:pat} ${3:cmd}
+endsnippet
