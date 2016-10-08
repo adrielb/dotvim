@@ -30,7 +30,9 @@ snippet targetdir "directory target" b
 endsnippet
 
 snippet targetjulia "some julia targets" b
-mem: prof-mem.jl
+all: capture
+
+mem: memory-profile.jl
 	julia --track-allocation=user \$<
 
 profile: /tmp/timing-profile.txt
@@ -48,10 +50,14 @@ capture:
 		END { print b } '
 
 clean:
-	rm *.jl.mem
+	rm -v *.jl.mem
+
+lint:
+
+	julia -E 'using Lint; lintfile("$<")'
 
 tags:
 	ctags-exuberant -R --totals=yes --languages=julia
 
-.PHONY: mem profile test capture clean tags
+.PHONY: mem profile test capture clean lint tags
 endsnippet
