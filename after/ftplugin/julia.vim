@@ -12,6 +12,7 @@ let s:efm  = "%+G %.%# at ./client.jl:%l,"
 let s:efm .= "%+G %.%# at ./loading.jl:%l,"
 let s:efm .= "%m at %f:%l,"
 let s:efm .= "%m at %f:%l [inlined],"
+let s:efm .= "%m at %f:%l.,"
 
 " lint.jl
 let s:efm .= "%f:%l %t%m,"
