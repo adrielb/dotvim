@@ -60,7 +60,7 @@ else
 		send-keys 'R -q' C-m \; \
 		rename-window 'R' \; \
 		new-window -n 'julia' \; \
-		send-keys 'julia' C-m \; \
+		send-keys 'while true;do julia;sleep 1;done' C-m \; \
 		new-window -n 'ipython' \; \
 		send-keys 'ipython --no-banner' C-m \; \
 		select-window -t 2
