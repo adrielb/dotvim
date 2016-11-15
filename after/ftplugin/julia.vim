@@ -12,7 +12,7 @@ let s:efm  = "%+G %.%# at ./client.jl:%l,"
 let s:efm .= "%+G %.%# at ./loading.jl:%l,"
 let s:efm .= "%m at %f:%l,"
 let s:efm .= "%m at %f:%l [inlined],"
-let s:efm .= "%m at %f:%l.,"
+let s:efm .= "%t%m at %f:%l.,"
 
 " lint.jl
 let s:efm .= "%f:%l %t%m,"
@@ -35,7 +35,7 @@ let &l:efm = s:efm
 
 
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
-nnoremap <buffer> ,a :read !tmux capture-pane -p<CR>
+nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
 nnoremap <buffer> ,f :SlimeSend1 fieldnames(<C-R><C-W>)<CR>
@@ -46,6 +46,8 @@ nnoremap <buffer> ,r :SlimeSend1 include("<C-R>%")<CR>
 nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
 nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
 nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
+nmap     <buffer> ,w yil:SlimeSend1 @which <C-R>"<CR>
+xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
 xnoremap <buffer> ,f y:<C-U>SlimeSend1 fieldnames(<C-R>")<CR>
 xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
 xnoremap <buffer> ,m y:<C-U>SlimeSend1 methods(<C-R>")<CR>
@@ -53,6 +55,7 @@ xnoremap <buffer> ,p y:<C-U>SlimeSend1 print(<C-R>")<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 typeof(<C-R>")<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
 xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
+xnoremap <buffer> ,w y:<C-U>SlimeSend1 @which <C-R>"<CR>
 
 iabbrev <buffer> > <BAR>>
 
