@@ -21,11 +21,14 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
 " Plug 'Valloric/YouCompleteMe', { 'do' : './install.py' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'wellle/tmux-complete.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'kshenoy/vim-signature'
 Plug 'benekastah/neomake'
 Plug 'JuliaLang/julia-vim'
+" Plug 'JuliaEditorSupport/deoplete-julia'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
@@ -164,6 +167,7 @@ tnoremap <Esc>      <C-\><C-n>
 
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
+" let g:tmuxcomplete#capture_args="-s lines"
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
 \ Check_back_space() ? "\<TAB>" :
@@ -172,7 +176,6 @@ function! Check_back_space() abort "{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
-
 "}}}
 
 " signature {{{
@@ -190,6 +193,7 @@ highlight Normal ctermbg=0 guibg=#000000
 
 " julia {{{
 au BufRead *.jl.mem setl ft=julia
+let g:latex_to_unicode_auto = 1
 "}}}
 
 " sql {{{
