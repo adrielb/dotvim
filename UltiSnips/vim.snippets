@@ -25,11 +25,15 @@ augroup switchtmux-${1:name}
 	exe b:auBufEnter . '/*.jl  silent !tmux select-window -t $1:julia'
 	exe b:auBufEnter . '/*.py  silent !tmux select-window -t $1:ipython'
 	exe b:auBufEnter . '/*.sql silent !tmux select-window -t $1:sqlite'
+	exe b:auBufEnter . '/*.sh  silent !tmux select-window -t $1:bash'
 	exe b:auBufEnter . '/*.R   let b:slime_config = {"socket_name": "default", "target_pane": "$1:R"}'
 	exe b:auBufEnter . '/*.jl  let b:slime_config = {"socket_name": "default", "target_pane": "$1:julia"}'
 	exe b:auBufEnter . '/*.py  let b:slime_config = {"socket_name": "default", "target_pane": "$1:ipython"}'
 	exe b:auBufEnter . '/*.sql let b:slime_config = {"socket_name": "default", "target_pane": "$1:sqlite"}'
+	exe b:auBufEnter . '/*.sh  let b:slime_config = {"socket_name": "default", "target_pane": "$1:bash"}'
 augroup END
+
+let g:slime_python_ipython = 1
 endsnippet
 
 snippet augroup "autocmd group" b

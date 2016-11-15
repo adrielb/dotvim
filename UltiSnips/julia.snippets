@@ -231,3 +231,9 @@ snippet @inferred "checks for type stability"
 @inferred ${1:expression}
 endsnippet
 
+snippet @code "warn/llvm/native/time"
+@code_warntype ${1:expression}
+@code_llvm $1
+@code_native $1
+@time $1
+endsnippet
