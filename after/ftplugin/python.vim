@@ -1,3 +1,5 @@
+setlocal path+=~/.local/lib/python3.5/site-packages/
+
 " Neocomplete jedi omni completion
 " setlocal omnifunc=jedi#completions
 " let g:jedi#completions_enabled = 0
