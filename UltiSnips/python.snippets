@@ -2,3 +2,19 @@ snippet scrapyshell "invoke shell to inspect responses" b
 from scrapy.shell import inspect_response
 inspect_response(response, self)
 endsnippet
+
+snippet plot "plot figure" b
+plt.tight_layout()
+fig = plt.figure(1)
+fig.clear()
+ax = fig.gca()
+ax.set_title("")
+ax.set_xlabel("")
+ax.set_ylabel("")
+ax.set_xlim(auto=True)
+ax.set_ylim(auto=True)
+ax.plot( ${1}, ${2}, label=''  , color='red' )
+ax.legend(loc='upper left')
+fig.canvas.draw()
+fig.show()
+endsnippet
