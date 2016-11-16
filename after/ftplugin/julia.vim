@@ -4,6 +4,8 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal commentstring=#%s
+setlocal include=^\\s*\\(using\\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
 setlocal path+=~/apps/julia/base/**
 setlocal tags+=~/apps/julia/tags
 setlocal tags+=~/.julia/tags
