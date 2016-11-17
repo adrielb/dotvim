@@ -29,6 +29,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'benekastah/neomake'
 Plug 'JuliaLang/julia-vim'
 " Plug 'JuliaEditorSupport/deoplete-julia'
+Plug 'jaxbot/semantic-highlight.vim'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
@@ -189,6 +190,7 @@ let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
+let g:semanticEnableFileTypes = { 'julia': 'jl', 'python': 'py' }
 "}}}
 
 " julia {{{
