@@ -29,3 +29,11 @@ ax.legend(loc='upper left')
 fig.canvas.draw()
 fig.show()
 endsnippet
+
+snippet timeit "performance timing" b
+import timeit
+start = timeit.default_timer()
+${1}
+end = timeit.default_timer()
+print( (end - start) , "sec" )
+endsnippet
