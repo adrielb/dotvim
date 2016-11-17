@@ -1,3 +1,14 @@
+snippet imp "common imports" b
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+plt.ion()
+
+import edward as ed
+import tensorflow as tf
+endsnippet
+
 snippet scrapyshell "invoke shell to inspect responses" b
 from scrapy.shell import inspect_response
 inspect_response(response, self)
