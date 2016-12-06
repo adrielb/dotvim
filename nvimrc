@@ -109,6 +109,7 @@ set foldtext=functions#NeatFoldText()
 set sessionoptions-=options
 set sessionoptions-=help
 set wildcharm=<C-z>
+set inccommand=split
 " }}}
 
 " Mappings {{{
