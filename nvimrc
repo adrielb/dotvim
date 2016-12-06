@@ -169,6 +169,7 @@ tnoremap <Esc>      <C-\><C-n>
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
 " let g:tmuxcomplete#capture_args="-s lines"
+let g:tmuxcomplete#mode='WORD'
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
 \ Check_back_space() ? "\<TAB>" :
