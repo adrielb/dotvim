@@ -30,6 +30,7 @@ Plug 'benekastah/neomake'
 Plug 'JuliaLang/julia-vim'
 " Plug 'JuliaEditorSupport/deoplete-julia'
 Plug 'jaxbot/semantic-highlight.vim'
+Plug 'machakann/vim-highlightedyank'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 
