@@ -1,4 +1,5 @@
 setlocal path+=~/.local/lib/python3.5/site-packages/
+let b:tmux_window="ipython"
 
 " Neocomplete jedi omni completion
 " setlocal omnifunc=jedi#completions
@@ -22,7 +23,7 @@ let &efm .= ',' . s:efm
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
-nnoremap <buffer> ,p :SlimeSend1 <C-R><C-W><CR>
+nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
 xnoremap <buffer> ,p y:<C-U>SlimeSend1 <C-R>"<CR>
 nnoremap <buffer> ,s :SlimeSend1 dir(<C-R><C-W>)<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 dir(<C-R>")<CR>

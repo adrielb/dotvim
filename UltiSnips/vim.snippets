@@ -21,16 +21,8 @@ snippet tmux "switch tmux window" b
 let b:auBufEnter='autocmd BufEnter ' . expand('<sfile>:p:h')
 augroup switchtmux-${1:name}
 	au!
-	exe b:auBufEnter . '/*.R   silent !tmux select-window -t $1:R'
-	exe b:auBufEnter . '/*.jl  silent !tmux select-window -t $1:julia'
-	exe b:auBufEnter . '/*.py  silent !tmux select-window -t $1:ipython'
-	exe b:auBufEnter . '/*.sql silent !tmux select-window -t $1:sqlite'
-	exe b:auBufEnter . '/*.sh  silent !tmux select-window -t $1:bash'
-	exe b:auBufEnter . '/*.R   let b:slime_config = {"socket_name": "default", "target_pane": "$1:R"}'
-	exe b:auBufEnter . '/*.jl  let b:slime_config = {"socket_name": "default", "target_pane": "$1:julia"}'
-	exe b:auBufEnter . '/*.py  let b:slime_config = {"socket_name": "default", "target_pane": "$1:ipython"}'
-	exe b:auBufEnter . '/*.sql let b:slime_config = {"socket_name": "default", "target_pane": "$1:sqlite"}'
-	exe b:auBufEnter . '/*.sh  let b:slime_config = {"socket_name": "default", "target_pane": "$1:bash"}'
+" exe b:auBufEnter . '/app.py let b:tmux_window="web"'
+	exe b:auBufEnter . '/* call functions#SwitchTmux("$1")'
 augroup END
 
 let g:slime_python_ipython = 1

@@ -131,3 +131,14 @@ function! functions#SwitchSourceHeader()
   endif
 endfunction
 
+function! functions#SwitchTmux(tmux_client)
+  if !exists( 'b:tmux_window' )
+    return
+  endif
+  let l:win = a:tmux_client . ':' . b:tmux_window
+  call system('tmux switch-client -t ' . a:tmux_client)
+  call system('tmux select-window -t ' . l:win )
+  let b:slime_config = {"socket_name": "default"
+                     \ ,"target_pane": l:win }
+endfunction
+

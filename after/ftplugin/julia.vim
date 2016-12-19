@@ -10,6 +10,7 @@ setlocal path+=~/apps/julia/base/**
 setlocal path+=~/.julia/v0.5
 setlocal tags+=~/apps/julia/tags
 setlocal tags+=~/.julia/tags
+let b:tmux_window="julia"
 
 let s:efm  = "%+G %.%# at ./client.jl:%l,"
 let s:efm .= "%+G %.%# at ./loading.jl:%l,"
