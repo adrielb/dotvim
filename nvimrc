@@ -13,7 +13,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'gregsexton/gitv'
-Plug 'jpalardy/vim-slime', { 'do' : 'git co myfork' }
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
