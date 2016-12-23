@@ -7,7 +7,26 @@ OBJ_TYPES=[
 	, 'trigger'
 	, 'index'
 ]
+MODE_TYPES=[
+	'ascii'
+	, 'csv'
+	, 'column'
+	, 'html'
+	, 'insert'
+	, 'line'
+	, 'list'
+	, 'tabs'
+	, 'tcl'
+]
 endglobal
+
+snippet .mode "Output mode" b
+.mode $1`!p snip.rv=complete(t[1],MODE_TYPES)` 
+endsnippet
+
+snippet .once "Output next cmd to file" b
+.once ${1:filename}
+endsnippet
 
 snippet init "no sync, WAL, fk" b
 PRAGMA synchronous=OFF;
