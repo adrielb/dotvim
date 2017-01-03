@@ -134,6 +134,7 @@ xnoremap g/ y:<C-U>Ag <C-R>"<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :Buffers<CR>
+nnoremap gB :Files<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gV `[v`]
 nnoremap Q @q
