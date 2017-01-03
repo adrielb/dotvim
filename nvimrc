@@ -33,6 +33,8 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'cespare/vim-toml'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
