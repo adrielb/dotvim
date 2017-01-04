@@ -35,6 +35,7 @@ Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'cespare/vim-toml'
+Plug 'szw/vim-g'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
@@ -148,6 +149,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <leader>g  :Googlef <C-R><C-W><CR>
+xnoremap <leader>g  :Googlef<CR>
 nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
@@ -170,6 +173,10 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+
+" vim-g {{{
+let g:vim_g_open_command = "firefox"
+"}}}
 
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
