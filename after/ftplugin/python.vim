@@ -33,6 +33,8 @@ nnoremap <buffer> ,r :SlimeSend1 repr(<C-R><C-W>)<CR>
 xnoremap <buffer> ,r y:<C-U>SlimeSend1 repr(<C-R>")<CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
+nnoremap <buffer> <leader>k  :SlimeSend1 ??<C-R><C-W><CR>
+xnoremap <buffer> <leader>k  y:<C-U>SlimeSend1 ??<C-R>"<CR>
 
 
 " jump to mark, send paragraph to REPL
