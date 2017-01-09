@@ -1,4 +1,6 @@
-setlocal path+=~/.local/lib/python3.5/site-packages/
+setlocal textwidth=79
+setlocal colorcolumn=-6,+1
+setlocal path+=~/.local/lib/python3.6/site-packages/
 let b:tmux_window="ipython"
 
 " Neocomplete jedi omni completion
