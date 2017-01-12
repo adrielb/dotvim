@@ -37,3 +37,19 @@ ${1}
 end = timeit.default_timer()
 print( (end - start) , "sec" )
 endsnippet
+
+snippet tfscope "tf named scope" b
+with tf.name_scope("${1:name}"):
+	${0}
+endsnippet
+
+snippet tfmodel "new tensorflow model" b
+tf.reset_default_graph()
+${0}
+
+model = tf.global_variables_initializer()
+with tf.Session() as sess:
+	writer = tf.summary.FileWriter("tf_logs/3", sess.graph)
+	sess.run(model)
+	writer.close()
+endsnippet
