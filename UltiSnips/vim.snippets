@@ -38,3 +38,11 @@ endsnippet
 snippet autocmd "auto-command" b
 autocmd ${1:event} ${2:pat} ${3:cmd}
 endsnippet
+
+snippet lint "lint on change" b
+augroup lint-on-change
+	au!
+	" autocmd BufWrite * Neomake
+	autocmd InsertLeave,TextChanged * update|Neomake
+augroup END
+endsnippet
