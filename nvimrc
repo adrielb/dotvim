@@ -153,6 +153,7 @@ nnoremap <leader>g  :Googlef <C-R><C-W><CR>
 xnoremap <leader>g  :Googlef<CR>
 nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
+nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
