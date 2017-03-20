@@ -149,6 +149,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <leader>a  :call functions#CaptureTmux()<CR>
 nnoremap <leader>g  :Googlef <C-R><C-W><CR>
 xnoremap <leader>g  :Googlef<CR>
 nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>

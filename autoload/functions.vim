@@ -142,3 +142,8 @@ function! functions#SwitchTmux(tmux_client)
                      \ ,"target_pane": l:win }
 endfunction
 
+function! functions#CaptureTmux()
+  silent !tmux capture-pane -p -S -20 -J -t 0 > /dev/shm/tmux_capture
+  cfile /dev/shm/tmux_capture
+  copen
+endfunction
