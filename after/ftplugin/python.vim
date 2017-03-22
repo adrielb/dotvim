@@ -10,15 +10,25 @@ let b:tmux_window="ipython"
 " let g:neocomplete#force_omni_input_patterns.python =
 " \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
+" from ipython repl
+let s:efm  = '%G<ipython-%.%#,'
+let s:efm .= '%E%f in %.%#(%.%#),'
+let s:efm .= '%C--> %l %.%#,'
+let s:efm .= '%C---> %l %.%#,'
+let s:efm .= '%C    %.%#,'
+let s:efm .= '%C     %.%#,'
+let s:efm .= '%C,'
+let s:efm .= '%Z%m,'
+
 " from pymode
-let s:efm  = '%+GTraceback%.%#,'
+let s:efm .= '%+GTraceback%.%#,'
 let s:efm .= '%E  File "%f"\, line %l\,%m%\C,'
 let s:efm .= '%E  File "%f"\, line %l%\C,'
 let s:efm .= '%C%p^,'
 let s:efm .= '%+C    %.%#,'
 let s:efm .= '%+C  %.%#,'
 let s:efm .= '%Z%\S%\&%m,'
-let s:efm .= '%+G%.%#'
+let s:efm .= '%+G%.%#,'
 
 let &efm .= ',' . s:efm
 
