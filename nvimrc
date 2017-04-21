@@ -12,7 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
-Plug 'gregsexton/gitv'
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -181,6 +181,7 @@ let g:vim_g_open_command = "firefox"
 "}}}
 
 " deoplete {{{
+let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#python_path = "/usr/local/bin/python3"
 let g:deoplete#enable_at_startup = 1
 " let g:tmuxcomplete#capture_args="-s lines"
