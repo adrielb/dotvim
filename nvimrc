@@ -102,7 +102,6 @@ set guioptions-=r " no right scrollbar
 set shortmess+=I  " no intro msg
 set clipboard+=unnamedplus
 set report=0
-set noesckeys
 set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«,nbsp:¬
 set fillchars=vert:│,fold:\_,diff:⣿
 set completeopt-=preview
