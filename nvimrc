@@ -181,6 +181,7 @@ let g:vim_g_open_command = "firefox"
 
 " deoplete {{{
 let g:deoplete#sources#jedi#show_docstring=1
+let g:deoplete#sources#jedi#server_timeout=30
 let g:deoplete#sources#jedi#python_path = "/usr/local/bin/python3"
 let g:deoplete#enable_at_startup = 1
 " let g:tmuxcomplete#capture_args="-s lines"
