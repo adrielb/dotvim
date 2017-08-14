@@ -36,6 +36,7 @@ Plug '~/projects/stan.vim'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'cespare/vim-toml'
 Plug 'szw/vim-g'
+" Plug 'lervag/vimtex'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
@@ -174,6 +175,10 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+
+" LaTeX {{{
+let g:tex_flavor='latex'
+"}}}
 
 " vim-g {{{
 let g:vim_g_open_command = "firefox"
