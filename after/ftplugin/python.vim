@@ -5,20 +5,19 @@ setlocal tags+=~/.local/lib/python3.6/site-packages/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window="ipython"
 
-" Neocomplete jedi omni completion
-" setlocal omnifunc=jedi#completions
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:neocomplete#force_omni_input_patterns.python =
-" \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
 " from ipython repl
-let s:efm  = '%G<ipython-%.%#,'
-let s:efm .= '%E%f in %.%#(%.%#),'
-let s:efm .= '%C--> %l %.%#,'
+" First pattern ignores space, I and < because: 
+"    for i in range(3):
+" In [
+" <ipython-%.%#
+" :help \@=
+let s:efm  = '%E%[%^\ I<]%\\@=%f in %.%#,'
+let s:efm .= '%C----> %l %.%#,'
 let s:efm .= '%C---> %l %.%#,'
-let s:efm .= '%C    %.%#,'
+let s:efm .= '%C--> %l %.%#,'
+let s:efm .= '%C      %.%#,'
 let s:efm .= '%C     %.%#,'
+let s:efm .= '%C    %.%#,'
 let s:efm .= '%C,'
 let s:efm .= '%Z%m,'
 
@@ -30,13 +29,16 @@ let s:efm .= '%C%p^,'
 let s:efm .= '%+C    %.%#,'
 let s:efm .= '%+C  %.%#,'
 let s:efm .= '%Z%\S%\&%m,'
-let s:efm .= '%+G%.%#,'
+" let s:efm .= '%+G%.%#,'
 
-let &efm .= ',' . s:efm
+" let &efm .= ',' . s:efm
+let &l:efm = s:efm
 
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
+nnoremap <buffer> ,d :SlimeSend1 %pdb<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+xnoremap <buffer> ,l :<C-U>call system( "tmux send-keys C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
 xnoremap <buffer> ,p y:<C-U>SlimeSend1 <C-R>"<CR>
 nnoremap <buffer> ,s :SlimeSend1 dir(<C-R><C-W>)<CR>
@@ -45,8 +47,9 @@ nnoremap <buffer> ,t :SlimeSend1 type(<C-R><C-W>)<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 type(<C-R>")<CR>
 nnoremap <buffer> ,r :SlimeSend1 repr(<C-R><C-W>)<CR>
 xnoremap <buffer> ,r y:<C-U>SlimeSend1 repr(<C-R>")<CR>
-nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
-xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
+nnoremap <buffer> ,q :SlimeSend1 q<CR>
+nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
+    xmap <buffer> K  y,l:<C-U>SlimeSend1 ?<C-R>"<CR>:call RemapSlimeMap()<CR>
 nnoremap <buffer> <leader>k  :SlimeSend1 ??<C-R><C-W><CR>
 xnoremap <buffer> <leader>k  y:<C-U>SlimeSend1 ??<C-R>"<CR>
 
@@ -78,3 +81,18 @@ nmap \w 'w<Plug>SlimeParagraphSend
 nmap \x 'x<Plug>SlimeParagraphSend
 nmap \y 'y<Plug>SlimeParagraphSend
 nmap \z 'z<Plug>SlimeParagraphSend
+
+function! RemapSlimeMap()
+  nmap <leader><CR> :call ResetSlimeMap()<CR>
+endfunction
+
+function! ResetSlimeMap()
+  " quit the man page in the console
+  SlimeSend1 q
+
+  " remap back to original state (sync with vimrc)
+  nmap <leader><CR> <Plug>SlimeParagraphSend
+
+  " execute  the original mapping
+  exec ":normal \<Plug>SlimeParagraphSend"
+edfunction
