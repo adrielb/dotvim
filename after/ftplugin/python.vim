@@ -5,6 +5,12 @@ setlocal tags+=~/.local/lib/python3.6/site-packages/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window="ipython"
 
+augroup lint-on-change
+  au!
+  " autocmd BufWrite * Neomake
+  autocmd InsertLeave,TextChanged *.py update|Neomake
+augroup END
+
 " from ipython repl
 " First pattern ignores space, I and < because: 
 "    for i in range(3):
