@@ -5,8 +5,23 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 plt.ion()
 
-import edward as ed
-import tensorflow as tf
+%load_ext autoreload
+%autoreload 2
+%pdb on
+endsnippet
+
+snippet bp "breakpoint" b
+%debug --breakpoint ${1:FILE}:${2:LINE} ${3:statement}
+endsnippet
+
+snippet forenum "enumerate loop" b
+for idx, value in enumerate(${1:list}):
+	print(idx, value)
+endsnippet
+
+snippet defi "def __init__("
+def __init__(self${1:, param}):
+	${0}
 endsnippet
 
 snippet scrapyshell "invoke shell to inspect responses" b
@@ -30,6 +45,10 @@ fig.canvas.draw()
 fig.show()
 endsnippet
 
+snippet add_subplot "" w
+add_subplot(${1:nrows}, ${2:ncols}, ${3:plot_number})
+endsnippet
+
 snippet timeit "performance timing" b
 import timeit
 start = timeit.default_timer()
@@ -38,8 +57,8 @@ end = timeit.default_timer()
 print( (end - start) , "sec" )
 endsnippet
 
-snippet tfscope "tf named scope" b
-with tf.name_scope("${1:name}"):
+snippet tfscope "tf variable scope" b
+with tf.variable_scope("${1:name}"):
 	${0}
 endsnippet
 
@@ -52,4 +71,50 @@ with tf.Session() as sess:
 	writer = tf.summary.FileWriter("tf_logs/3", sess.graph)
 	sess.run(model)
 	writer.close()
+endsnippet
+
+snippet modelpytorch "new pytorch model" b
+import torch
+import torch.nn.functional as F
+from torch.autograd import Variable
+from torch.nn import Parameter
+
+
+class Model(torch.nn.Module):
+	def __init__(self):
+		super().__init__()
+
+	def forward(self, x):
+		return x
+
+
+hist = []
+model = Model()
+optimizer = torch.optim.Adam(model.parameters()
+	, lr=0.01
+	, weight_decay=0.001)
+loss_fn = torch.nn.MSELoss()
+
+for epoch in range(2):
+	for input, labels in training_data:
+		model.train(True)
+		optimizer.zero_grad()
+		output = model(input)
+		loss = loss_fn(output, labels)
+		loss.backward()
+		optimizer.step()
+		model.train(False)
+		hist.append(loss.data[0])
+		print(epoch, loss.data[0,0])
+
+plt.clf()
+plt.plot(hist[:])
+endsnippet
+
+snippet pivot "pandas pivot" i
+pivot(index='${1:index}', columns='${2:columns}'${3:, values='${4:values}'})
+endsnippet
+
+snippet create "create table if not exists" b
+create table if not exists ${1:table_name} as
 endsnippet

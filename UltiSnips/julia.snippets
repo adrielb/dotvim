@@ -33,13 +33,17 @@ function ${1:f}(${2:x})
 end
 endsnippet
 
+snippet abstract "abstract type"
+abstract type ${1:name}${2: <: ${3:supertype}} end
+endsnippet
+
 snippet type "type declaration with constructor" b
 type ${1:typename}
 	${0}
-	function $1()
+	${2:function $1()
 		temp = new()
 		return temp
-	end
+	end}
 end
 
 

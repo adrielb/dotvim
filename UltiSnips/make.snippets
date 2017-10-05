@@ -61,3 +61,12 @@ tags:
 
 .PHONY: mem profile test capture clean lint tags
 endsnippet
+
+snippet capturepy "capture error msg in repl"
+capture:
+	@tmux capture-pane -p -S -20 -J -t 0 | \
+	awk -v RS='In[' '\
+		BEGIN { ORS=RS } \
+			{b=a; a=\$\$0} \
+		END { print b } '
+endsnippet
