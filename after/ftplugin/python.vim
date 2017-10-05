@@ -101,4 +101,4 @@ function! ResetSlimeMap()
 
   " execute  the original mapping
   exec ":normal \<Plug>SlimeParagraphSend"
-edfunction
+endfunction
