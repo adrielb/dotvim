@@ -104,7 +104,6 @@ set clipboard+=unnamedplus
 set report=0
 set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«,nbsp:¬
 set fillchars=vert:│,fold:\_,diff:⣿
-set completeopt-=preview
 set lazyredraw
 set conceallevel=2
 set concealcursor=i
