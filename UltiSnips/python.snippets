@@ -4,10 +4,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 plt.ion()
+plt.style.use('seaborn-poster')
 
 %load_ext autoreload
 %autoreload 2
-%pdb on
 endsnippet
 
 snippet bp "breakpoint" b
@@ -27,6 +27,13 @@ endsnippet
 snippet scrapyshell "invoke shell to inspect responses" b
 from scrapy.shell import inspect_response
 inspect_response(response, self)
+endsnippet
+
+snippet subplots "" b
+fig, axs = plt.subplots(${1:rows}, ${2:cols}, sharex=True, num=1)
+for idx, (ax, lbl) in enumerate(zip(axs, lbls)):
+	ax.set_ylabel(lbl)
+	ax.scatter()
 endsnippet
 
 snippet plot "plot figure" b
