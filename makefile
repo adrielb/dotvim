@@ -15,3 +15,7 @@ thesaurus:
 vim-plug:
 	curl -fLo ${XDG_NVIM}/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+profile:
+	nvim --startuptime /tmp/vim.log +qall
+	nvim /tmp/vim.log
