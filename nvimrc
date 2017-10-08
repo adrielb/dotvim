@@ -1,4 +1,5 @@
-let mapleader = "\<Space>"
+scriptencoding utf-8
+let g:mapleader = "\<Space>"
 
 " Installed Plugins {{{
 call plug#begin('~/.vim/plugged')
@@ -179,13 +180,13 @@ let g:tex_flavor='latex'
 "}}}
 
 " vim-g {{{
-let g:vim_g_open_command = "firefox"
+let g:vim_g_open_command = 'firefox'
 "}}}
 
 " deoplete {{{
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
-let g:deoplete#sources#jedi#python_path = "/usr/local/bin/python3"
+let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 " let g:tmuxcomplete#capture_args="-s lines"
 let g:tmuxcomplete#mode='WORD'
@@ -194,8 +195,8 @@ inoremap <silent><expr> <TAB>
 \ Check_back_space() ? "\<TAB>" :
 \ deoplete#mappings#manual_complete()
 function! Check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction"}}}
 "}}}
 
@@ -205,7 +206,7 @@ let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 
 " colorscheme{{{
 let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 set background=dark
@@ -214,7 +215,10 @@ let g:semanticEnableFileTypes = { 'julia': 'jl', 'python': 'py' }
 "}}}
 
 " julia {{{
-au BufRead *.jl.mem setl ft=julia
+augroup julia-mem-profile-ft
+  au!
+  autocmd BufRead *.jl.mem setl ft=julia
+augroup END
 let g:latex_to_unicode_auto = 1
 "}}}
 
@@ -225,15 +229,15 @@ let g:sql_type_default = 'sqlanywhere'
 " UltiSnips"{{{
 " let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsSnippetsDir=$HOME.'/projects/dotvim/UltiSnips'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " https://github.com/SirVer/ultisnips/issues/376
 let g:ulti_expand_or_jump_res = 0
 function! <SID>ExpandSnippetOrReturn()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
+  let l:snippet = UltiSnips#ExpandSnippetOrJump()
   if g:ulti_expand_or_jump_res > 0
-    return snippet
+    return l:snippet
   else
     return "\<CR>"
   endif
@@ -243,9 +247,9 @@ inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "
 
 " vim-slime {{{
 let g:slime_no_mappings = 1
-let g:slime_target="tmux"
-let g:slime_paste_file="/dev/shm/slime-paste"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "1.0"}
+let g:slime_target='tmux'
+let g:slime_paste_file='/dev/shm/slime-paste'
+let g:slime_default_config = {'socket_name': 'default', 'target_pane': '1.0'}
 au BufRead,BufNewFile,BufNew *.hss setl ft=haskell.script
 "}}}
 
@@ -257,8 +261,8 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_detect_crypt=0
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
-  for colors in values(a:palette.inactive)
-    let colors[2] = 245
+  for l:colors in values(a:palette.inactive)
+    let l:colors[2] = 245
   endfor
 endfunction
 "}}}
