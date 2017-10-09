@@ -37,7 +37,7 @@ Plug '~/projects/stan.vim'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'cespare/vim-toml'
 Plug 'szw/vim-g'
-" Plug 'lervag/vimtex'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
