@@ -22,6 +22,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 Plug 'wellle/tmux-complete.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -183,7 +184,10 @@ let g:tex_flavor='latex'
 let g:vim_g_open_command = 'firefox'
 "}}}
 
-" deoplete {{{
+" deoplete/jedi {{{
+let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+let g:jedi#force_py_version = 3
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
