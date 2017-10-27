@@ -1,15 +1,22 @@
 snippet imp "common imports" b
+# imports {{{
+%matplotlib notebook
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 plt.ion()
 plt.style.use('seaborn-poster')
-
+plt.rcParams['figure.figsize'] = (10.0, 10.0)
 %load_ext autoreload
 %autoreload 2
+# }}}
 endsnippet
 
+snippet jpdb "jupyter-console breakpoint"
+__import__('IPython.core.debugger').core.debugger.set_trace()
+endsnippet
+	
 snippet bp "breakpoint" b
 %debug --breakpoint ${1:FILE}:${2:LINE} ${3:statement}
 endsnippet
@@ -19,8 +26,9 @@ for idx, value in enumerate(${1:list}):
 	print(idx, value)
 endsnippet
 
-snippet defi "def __init__("
-def __init__(self${1:, param}):
+snippet defi "def __init__()"
+def __init__(self):
+	super().__init__()
 	${0}
 endsnippet
 
