@@ -50,8 +50,8 @@ xnoremap <buffer> ,t y:<C-U>SlimeSend1 type(<C-R>")<CR>
 nnoremap <buffer> ,r :SlimeSend1 repr(<C-R><C-W>)<CR>
 xnoremap <buffer> ,r y:<C-U>SlimeSend1 repr(<C-R>")<CR>
 nnoremap <buffer> ,q :SlimeSend1 q<CR>
-nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
-    xmap <buffer> K  y,l:<C-U>SlimeSend1 ?<C-R>"<CR>:call RemapSlimeMap()<CR>
+" nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>:call RemapSlimeMap()<CR>
+    " xmap <buffer> K  y,l:<C-U>SlimeSend1 ?<C-R>"<CR>:call RemapSlimeMap()<CR>
 nnoremap <buffer> <leader>k  :SlimeSend1 ??<C-R><C-W><CR>
 xnoremap <buffer> <leader>k  y:<C-U>SlimeSend1 ??<C-R>"<CR>
 
