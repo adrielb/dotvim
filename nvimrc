@@ -188,6 +188,7 @@ let g:vim_g_open_command = 'firefox'
 let g:jedi#completions_enabled = 0
 " let g:jedi#auto_vim_configuration = 0
 let g:jedi#force_py_version = 3
+" let g:deoplete#sources#jedi#debug_server='/tmp/jedi.log'
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
