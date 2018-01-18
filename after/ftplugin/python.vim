@@ -13,17 +13,20 @@ call neomake#configure#automake('nw')
 " In [
 " <ipython-%.%#
 " :help \@=
-let s:efm  = '%E%[%^\ I<]%\\@=%f in %.%#,'
-let s:efm .= '%C----> %l %.%#,'
-let s:efm .= '%C---> %l %.%#,'
-let s:efm .= '%C--> %l %.%#,'
-let s:efm .= '%C-> %l %.%#,'
-let s:efm .= '%C      %.%#,'
-let s:efm .= '%C     %.%#,'
-let s:efm .= '%C    %.%#,'
-let s:efm .= '%C   %.%#,'
-let s:efm .= '%C,'
-let s:efm .= '%Z%m,'
+let s:ipython_efm  = '%E%[%^\ I<]%\\@=%f in %.%#,'
+let s:ipython_efm .= '%C----> %l %.%#,'
+let s:ipython_efm .= '%C---> %l %.%#,'
+let s:ipython_efm .= '%C--> %l %.%#,'
+let s:ipython_efm .= '%C-> %l %.%#,'
+let s:ipython_efm .= '%C      %.%#,'
+let s:ipython_efm .= '%C     %.%#,'
+let s:ipython_efm .= '%C    %.%#,'
+let s:ipython_efm .= '%C   %.%#,'
+let s:ipython_efm .= '%C,'
+let s:ipython_efm .= '%Z%m,'
+
+" from pytest
+let s:efm  = '%f:%l:%m,'
 
 " from pymode
 let s:efm .= '%+GTraceback%.%#,'
@@ -35,9 +38,11 @@ let s:efm .= '%+C  %.%#,'
 let s:efm .= '%Z%\S%\&%m,'
 " let s:efm .= '%+G%.%#,'
 
+
 " let &efm .= ',' . s:efm
 let &l:efm = s:efm
 
+nnoremap <leader>a  :call CaptureTmux()<CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,d :SlimeSend1 %pdb<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
@@ -99,4 +104,11 @@ function! ResetSlimeMap()
 
   " execute  the original mapping
   exec ":normal \<Plug>SlimeParagraphSend"
+endfunction
+
+function! CaptureTmux()
+  let s:efm = &l:efm
+  let &l:efm = s:ipython_efm
+  call functions#CaptureTmux()
+  let &l:efm = s:efm
 endfunction
