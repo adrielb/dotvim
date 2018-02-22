@@ -297,6 +297,11 @@ augroup CursorLine
     au WinLeave * setlocal nocursorline
 augroup END
 
+augroup switch_tmux
+  autocmd!
+  autocmd BufEnter,WinEnter * call functions#SwitchTmux()
+augroup END
+
 "}}}
 
 " netrw {{{
