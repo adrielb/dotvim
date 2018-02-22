@@ -58,17 +58,17 @@ if tmux has-session -t $NAME; then
 else
 	tmux new-session -A -s $NAME \; \
 		send-keys 'R -q' C-m \; \
-		rename-window 'R' \; \
+			rename-window 'R' \; \
 		new-window -n 'julia' \; \
-		send-keys 'while true;do julia;sleep 1;done' C-m \; \
+			send-keys 'while true;do julia;sleep 1;done' C-m \; \
 		new-window -n 'ipython' \; \
-		# send-keys 'ipython3 --no-banner -i init_repl.py' C-m \; \
-		send-keys 'jupyter-console --existing' \; \
+			# send-keys 'ipython3 --no-banner -i init_repl.py' C-m \; \
+			send-keys 'jupyter-console --existing' \; \
 		new-window -n 'sqlite' \; \
-		send-keys 'sqlite3 data.db' \; \
+			send-keys 'sqlite3 data.db' \; \
 		new-window -n 'bash' \; \
-		send-keys 'jupyter-notebook' C-m \; \
-		split-window -v -p80 \; \
+			send-keys 'jupyter-notebook' C-m \; \
+			split-window -v -p80 \; \
 		select-window -t ipython
 fi
 
