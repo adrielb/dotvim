@@ -39,10 +39,11 @@ inspect_response(response, self)
 endsnippet
 
 snippet subplots "" b
-fig, axs = plt.subplots(${1:rows}, ${2:cols}, sharex=True, num=1)
-for idx, (ax, lbl) in enumerate(zip(axs, lbls)):
-	ax.set_ylabel(lbl)
-	ax.scatter()
+fig, axs = plt.subplots(${1:rows}, ${2:cols}, sharex=True, num='${3:plot_name}', clear=True)
+for ax in axs:
+	ax.clear()
+axs[0].set_ylabel('${0}')
+axs[0].scatter()
 endsnippet
 
 snippet plot "plot figure" b
