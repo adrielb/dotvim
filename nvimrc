@@ -187,7 +187,10 @@ let g:tex_flavor='latex'
 let g:vim_g_open_command = 'firefox'
 "}}}
 
-" deoplete/jedi {{{
+" deoplete/jedi/LanguageClient {{{
+let g:LanguageClient_serverCommands = {
+\    'python': ['pyls', '-v'],
+\}
 let g:jedi#completions_enabled = 0
 " let g:jedi#auto_vim_configuration = 0
 let g:jedi#force_py_version = 3
