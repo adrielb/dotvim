@@ -163,7 +163,7 @@ nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
 nnoremap <leader>/  :Ggrep -i -- 
 xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
-nmap     <leader><CR>         m-m.<Plug>SlimeParagraphSend
+nmap     <leader><CR>         <Plug>SlimeParagraphSend
 nmap     <leader><leader><CR> <Plug>SlimeLineSend
 xmap     <leader><CR>         <Plug>SlimeRegionSend
 nmap     <Leader><S-CR>       viw<leader><cr>
