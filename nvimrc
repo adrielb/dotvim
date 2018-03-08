@@ -34,12 +34,9 @@ Plug '~/projects/stan.vim'
 Plug 'cespare/vim-toml'
 Plug 'szw/vim-g'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'roxma/nvim-completion-manager'
-Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
-" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi'
-" Plug 'JuliaEditorSupport/deoplete-julia'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
 
 " Haskell
