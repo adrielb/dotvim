@@ -193,6 +193,8 @@ let g:LanguageClient_serverCommands = {
 \}
 let g:jedi#completions_enabled = 0
 " let g:jedi#auto_vim_configuration = 0
+let g:jedi#rename_command = ''
+" let g:neomake_logfile = '/tmp/neomake.log'
 let g:jedi#force_py_version = 3
 " let g:deoplete#sources#jedi#debug_server='/tmp/jedi.log'
 let g:deoplete#sources#jedi#show_docstring=1
