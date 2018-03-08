@@ -5,7 +5,7 @@ setlocal tags+=~/.local/lib/python3.6/site-packages/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window='ipython'
 
-call neomake#configure#automake('nw')
+" call neomake#configure#automake('nw')
 
 " from ipython repl
 " First pattern ignores space, I and < because: 
