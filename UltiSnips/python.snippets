@@ -1,3 +1,8 @@
+snippet shebang "python3 executable" b
+#!/usr/bin/env python3
+${0}
+endsnippet
+	
 snippet imp "common imports" b
 # imports {{{
 %matplotlib notebook
@@ -6,6 +11,7 @@ import pandas as pd
 pd.set_option('display.width', 125)
 import seaborn as sns
 import matplotlib.pyplot as plt
+sns.set()
 plt.ion()
 plt.style.use('seaborn-poster')
 plt.rcParams['figure.figsize'] = (10.0, 10.0)
