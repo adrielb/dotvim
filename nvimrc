@@ -13,6 +13,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-markdown'
+Plug 'plasticboy/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -176,8 +181,9 @@ tnoremap <Esc>      <C-\><C-n>
 
 " Plugin Options {{{
 
-" LaTeX {{{
+" Prose {{{
 let g:tex_flavor='latex'
+let g:markdown_folding=1
 "}}}
 
 " vim-g {{{
