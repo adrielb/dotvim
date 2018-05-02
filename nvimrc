@@ -34,8 +34,8 @@ Plug '~/projects/stan.vim'
 Plug 'cespare/vim-toml'
 Plug 'szw/vim-g'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
 
@@ -185,19 +185,23 @@ let g:vim_g_open_command = 'firefox'
 "}}}
 
 " deoplete/jedi/LanguageClient {{{
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
 \    'python': ['pyls', '-v'],
 \}
-let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 let g:jedi#rename_command = ''
-" let g:neomake_logfile = '/tmp/neomake.log'
 let g:jedi#force_py_version = 3
-" let g:deoplete#sources#jedi#debug_server='/tmp/jedi.log'
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
+" Enable jedi source debug messages
+" let g:neomake_logfile = '/tmp/neomake.log'
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:deoplete#sources#jedi#debug_server='/tmp/jedi.log'
+" call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 " let g:tmuxcomplete#capture_args="-s lines"
 let g:tmuxcomplete#mode='WORD'
 inoremap <silent><expr> <TAB>
