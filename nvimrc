@@ -43,6 +43,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
+Plug 'mileszs/ack.vim'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
@@ -134,7 +135,7 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap g/ :Ag<Space><C-R><C-W>
+nnoremap g/ :Ack<Space><C-R><C-W><Space>%:p:h<left><left><left><left><left><left>
 xnoremap g/ y:<C-U>Ag <C-R>"<CR>
     nmap ga <Plug>(EasyAlign)
 nnoremap go :GitFiles<CR>
