@@ -141,3 +141,15 @@ endsnippet
 snippet create "create table if not exists" b
 create table if not exists ${1:table_name} as
 endsnippet
+
+snippet transaction "try transaction" b
+try:
+	cursor.execute('begin')
+	${0}
+except:
+	cursor.execute('rollback')
+	raise 
+else:
+	cursor.execute('commit')
+endsnippet
+
