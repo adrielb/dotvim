@@ -13,34 +13,58 @@ let b:tmux_window='ipython'
 " In [
 " <ipython-%.%#
 " :help \@=
-let s:ipython_efm  = '%E%[%^\ I<]%\\@=%f in %.%#,'
+let s:ipython_efm  = ''
+let s:ipython_efm .= '%-GException in%.%#,'
 let s:ipython_efm .= '%C----> %l %.%#,'
 let s:ipython_efm .= '%C---> %l %.%#,'
 let s:ipython_efm .= '%C--> %l %.%#,'
 let s:ipython_efm .= '%C-> %l %.%#,'
+let s:ipython_efm .= '%E%[%^\ I<]%\\@=%f in %.%#,'
 let s:ipython_efm .= '%C      %.%#,'
 let s:ipython_efm .= '%C     %.%#,'
 let s:ipython_efm .= '%C    %.%#,'
 let s:ipython_efm .= '%C   %.%#,'
 let s:ipython_efm .= '%C,'
 let s:ipython_efm .= '%Z%m,'
+let s:ipython_efm .= '%-G%.%#,'
+let g:neomake_ipython_maker = {
+      \ 'exe': 'tmux',
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'append_file': 0,
+      \ 'errorformat': s:ipython_efm
+      \ }
 
-" from pytest
-let s:efm  = '%f:%l:%m,'
+" from logging format
+let g:neomake_pylogging_maker = {
+      \ 'exe': 'tmux',
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'append_file': 0,
+      \ 'errorformat': '%E%f:%l:ERROR %m,%-G%.%#'
+      \ }
 
 " from pymode
-let s:efm .= '%+GTraceback%.%#,'
-let s:efm .= '%E  File "%f"\, line %l\,%m%\C,'
-let s:efm .= '%E  File "%f"\, line %l%\C,'
-let s:efm .= '%C%p^,'
-let s:efm .= '%+C    %.%#,'
-let s:efm .= '%+C  %.%#,'
-let s:efm .= '%Z%\S%\&%m,'
-" let s:efm .= '%+G%.%#,'
+let s:pymode_efm = ''
+let s:pymode_efm .= '%-G  File "<%.%#,'
+let s:pymode_efm .= '%-G  File "/usr%.%#,'
+let s:pymode_efm .= '%-G  File "%.%#site-packages/IPython%.%#,'
+let s:pymode_efm .= '%E  File "%f"\, line %l\,%m%\C,'
+let s:pymode_efm .= '%E  File "%f"\, line %l%m,'
+let s:pymode_efm .= '%C%p^,'
+let s:pymode_efm .= '%+C    %.%#,'
+let s:pymode_efm .= '%+C  %.%#,'
+let s:pymode_efm .= '%Z%\S%\&%m,'
+let s:pymode_efm .= '%-G%.%#,'
+let g:neomake_pymode_maker = {
+      \ 'exe': 'tmux',
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'append_file': 0,
+      \ 'errorformat': s:pymode_efm
+      \ }
 
-
-" let &efm .= ',' . s:efm
-let &l:efm = s:efm
+augroup NeomakePyRepl
+  au!
+  autocmd FocusGained * Neomake! ipython pymode pylogging
+augroup END
 
 nnoremap <leader>a  :call CaptureTmux()<CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
@@ -108,7 +132,7 @@ endfunction
 
 function! CaptureTmux()
   let s:efm = &l:efm
-  let &l:efm = s:ipython_efm
+  let &l:efm = b:capture_efm 
   call functions#CaptureTmux()
   let &l:efm = s:efm
 endfunction
