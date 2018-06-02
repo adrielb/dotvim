@@ -200,6 +200,7 @@ let g:LanguageClient_serverCommands = {
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#rename_command = ''
 let g:jedi#force_py_version = 3
+let g:jedi#use_tag_stack = 0
 let g:deoplete#ignore_sources = {'python': ['tag']}
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
