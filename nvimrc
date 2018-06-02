@@ -138,6 +138,7 @@ nnoremap N Nzxzz
 nnoremap g/ :Ack<Space><C-R><C-W><Space>%:p:h<left><left><left><left><left><left>
 xnoremap g/ y:<C-U>Ag <C-R>"<CR>
     nmap ga <Plug>(EasyAlign)
+nnoremap gl :Lines<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :Buffers<CR>
