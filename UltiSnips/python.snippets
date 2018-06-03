@@ -153,3 +153,9 @@ else:
 	cursor.execute('commit')
 endsnippet
 
+snippet singleton "Borg Singleton design pattern"
+class Borg:
+	__singleton = {}
+	def __init__(self):
+		self.__dict__ = self.__singleton
+endsnippet
