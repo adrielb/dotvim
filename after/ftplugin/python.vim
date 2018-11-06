@@ -82,6 +82,8 @@ nnoremap <buffer> ,s :SlimeSend1 dir(<C-R><C-W>)<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 dir(<C-R>")<CR>
 nnoremap <buffer> ,t :SlimeSend1 type(<C-R><C-W>)<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 type(<C-R>")<CR>
+nnoremap <buffer> ,v :SlimeSend1 vars(<C-R><C-W>)<CR>
+xnoremap <buffer> ,v y:<C-U>SlimeSend1 vars(<C-R>")<CR>
 nnoremap <buffer> ,r :SlimeSend1 repr(<C-R><C-W>)<CR>
 xnoremap <buffer> ,r y:<C-U>SlimeSend1 repr(<C-R>")<CR>
 nnoremap <buffer> ,q :SlimeSend1 q<CR>
