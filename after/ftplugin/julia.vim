@@ -155,3 +155,13 @@ function! _EscapeText_julia(text)
 " pass single lines unaffected
   return a:text
 endfunction
+
+" jupyter_file:  /path/code.jl  --> /path/code.ipynb
+let s:jupyter_file = expand('%:r') . '.ipynb'
+if filereadable(s:jupyter_file)
+  " file_root:  /path/code.jl  --> code
+  let file_root = expand('%:t:r')
+  let cmd = "xdotool search --name '" . file_root . " - Mozilla Firefox' windowfocus --sync key Control_L+r"
+  execute "autocmd FocusLost <buffer> silent ! " . cmd
+  execute "autocmd FocusGained <buffer> checktime " . expand('%')
+endif
