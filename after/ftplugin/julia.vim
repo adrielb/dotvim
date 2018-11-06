@@ -38,6 +38,7 @@ let s:efm .= 'while loading %f\, %m %l,'
 let &l:efm = s:efm
 
 
+nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
