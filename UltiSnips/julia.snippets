@@ -27,8 +27,26 @@ map(${1:rng}) do ${2:var}
 end
 endsnippet
 
-snippet function "function declaration" b
-function ${1:f}(${2:x})
+snippet func "function declaration" Ab
+function ${1:f}(${2})
+	${0}
+end
+endsnippet
+
+snippet struct "immutable struct" Ab
+struct ${1}
+	${0}
+end
+endsnippet
+
+snippet if "if condition" Ab
+if ${1}
+	${0}
+end
+endsnippet
+
+snippet for "for loop" Ab
+for ${1} in ${2}
 	${0}
 end
 endsnippet
