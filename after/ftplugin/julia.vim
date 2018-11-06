@@ -12,6 +12,40 @@ setlocal tags+=~/apps/julia/tags
 setlocal tags+=~/.julia/tags
 let b:tmux_window="julia"
 
+let s:help_efm = ''
+let s:help_efm .= '  [%m at %f:%l%.%#,'
+let s:help_efm .= '%-G%.%#,'
+let g:neomake_help_maker = {
+      \ 'exe': 'tmux',
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'append_file': 0,
+      \ 'errorformat': s:help_efm
+      \ }
+
+let s:repl_efm = ''
+let s:repl_efm .= '%EERROR: %m,'
+let s:repl_efm .= '%CClosest candidates are:%.%#,'
+let s:repl_efm .= '%C  %.%# at %.%#,'
+let s:repl_efm .= '%C  ...%.%#,'
+let s:repl_efm .= '%CStacktrace:%.%#,'
+let s:repl_efm .= '%C [%.%# at ./%.%#:%.%#,'
+let s:repl_efm .= '%C [%.%# at none:%.%#,'
+let s:repl_efm .= '%C [%.%# at %f:%l%.%#,'
+let s:repl_efm .= '%Cin expression starting at %f:%l%.%#,'
+let s:repl_efm .= '%Z,'
+let s:repl_efm .= '%-G%.%#,'
+let g:neomake_repl_maker = {
+      \ 'exe': 'tmux',
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'append_file': 0,
+      \ 'errorformat': s:repl_efm
+      \ }
+
+augroup NeomakeJuliaRepl
+  au!
+  autocmd FocusGained * Neomake! repl help
+augroup END
+
 let s:efm  = "%+G %.%# at ./client.jl:%l,"
 let s:efm .= "%+G %.%# at ./loading.jl:%l,"
 let s:efm .= "%m at %f:%l,"
@@ -35,7 +69,7 @@ let s:efm .= '%l %f %m,'
 " single line test error msg
 let s:efm .= '%tRROR: %m,'
 let s:efm .= 'while loading %f\, %m %l,'
-let &l:efm = s:efm
+" let &l:efm = s:efm
 
 
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
