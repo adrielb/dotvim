@@ -101,6 +101,13 @@ endfunction
 
 command! -nargs=1 MarkEvalMacro call MarkEvalMacro(<f-args>)
 
+command! JuliaCTagsRefresh ! ctags-exuberant 
+  \ --recurse
+  \ --languages=julia
+  \ --totals=yes
+  \ -f ~/.julia/tags
+  \ ~/.julia/packages
+
 " vim-slime
 " wrap multiple lines in begin...end block
 function! _EscapeText_julia(text)
