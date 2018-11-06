@@ -6,8 +6,8 @@ setlocal expandtab
 setlocal commentstring=#%s
 setlocal include=^\\s*\\(using\\\|import\\)
 setlocal includeexpr=substitute(v:fname,'\\.','/','g')
-setlocal path+=~/apps/julia/base/**
-setlocal path+=~/.julia/v0.5
+setlocal path+=~/apps/julia-bin/julia-1.0.1/share/julia/base/**
+setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia/tags
 setlocal tags+=~/.julia/tags
 let b:tmux_window="julia"
