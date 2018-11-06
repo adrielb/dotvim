@@ -15,6 +15,7 @@ let b:tmux_window='ipython'
 " :help \@=
 let s:ipython_efm  = ''
 let s:ipython_efm .= '%-GException in%.%#,'
+" let s:ipython_efm .= '%-G%.%#for%.%#in%.%#,'
 let s:ipython_efm .= '%C----> %l %.%#,'
 let s:ipython_efm .= '%C---> %l %.%#,'
 let s:ipython_efm .= '%C--> %l %.%#,'
@@ -47,6 +48,8 @@ let s:pymode_efm = ''
 let s:pymode_efm .= '%-G  File "<%.%#,'
 let s:pymode_efm .= '%-G  File "/usr%.%#,'
 let s:pymode_efm .= '%-G  File "%.%#site-packages/IPython%.%#,'
+let s:pymode_efm .= '%-G  File "src/cursor.c"%.%#,'
+let s:pymode_efm .= '%-G  File "src/statementcache.c"%.%#,'
 let s:pymode_efm .= '%E  File "%f"\, line %l\,%m%\C,'
 let s:pymode_efm .= '%E  File "%f"\, line %l%m,'
 let s:pymode_efm .= '%C%p^,'
@@ -58,7 +61,8 @@ let g:neomake_pymode_maker = {
       \ 'exe': 'tmux',
       \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
       \ 'append_file': 0,
-      \ 'errorformat': s:pymode_efm
+      \ 'errorformat': s:pymode_efm,
+      \ 'postprocess': function('neomake#postprocess#compress_whitespace')
       \ }
 
 augroup NeomakePyRepl
