@@ -7,8 +7,13 @@ snippet imp "common imports" b
 # imports {{{
 %matplotlib notebook
 import numpy as np
+np.set_printoptions(suppress=True, linewidth=125)
 import pandas as pd
 pd.set_option('display.width', 125)
+pd.options.display.max_rows = 20
+pd.options.display.max_colwidth = 125
+pd.options.display.max_columns = 20
+pd.options.display.width = 125
 import seaborn as sns
 import matplotlib.pyplot as plt
 sns.set()
