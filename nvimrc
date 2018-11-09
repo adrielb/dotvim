@@ -202,11 +202,17 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#rename_command = ''
 let g:jedi#force_py_version = 3
 let g:jedi#use_tag_stack = 0
-let g:deoplete#ignore_sources = {'python': ['tag']}
+" if !exists('g:deoplete#sources')
+"     let g:deoplete#sources = {}
+" endif
+" let g:deoplete#sources.sql = ['buffer']
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
+let g:deoplete#ignore_sources = {'python': ['tag'],
+      \ 'julia': ['dictionary']}
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
-let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 " Enable jedi source debug messages
 " let g:neomake_logfile = '/tmp/neomake.log'
