@@ -159,7 +159,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>a  :call functions#CaptureTmux()<CR>
 nnoremap <leader>g  :Googlef <C-R><C-W><CR>
 xnoremap <leader>g  :Googlef<CR>
-nnoremap <leader>l  :nohlsearch<CR><C-L>:checktime<CR>
+nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-L>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
 nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
