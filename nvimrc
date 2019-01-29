@@ -159,7 +159,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>a  :call functions#CaptureTmux()<CR>
 nnoremap <leader>g  :Googlef <C-R><C-W><CR>
 xnoremap <leader>g  :Googlef<CR>
-nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-L>
+nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR><C-L>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
 nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
@@ -182,6 +182,10 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+
+" neomake {{{
+let g:neomake_enabled_makers=1
+"}}}
 
 " Prose {{{
 let g:tex_flavor='latex'
@@ -242,7 +246,8 @@ let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
-let g:semanticEnableFileTypes = { 'julia': 'jl', 'python': 'py' }
+" let g:semanticEnableFileTypes = { 'julia': 'jl', 'python': 'py' }
+let g:semanticEnableFileTypes = ['julia', 'python', 'picat']
 "}}}
 
 " julia {{{
