@@ -1,3 +1,6 @@
+setlocal wrap
+setlocal linebreak
+setlocal showbreak
 setlocal textwidth=80
 setlocal softtabstop=2
 setlocal tabstop=2
@@ -7,9 +10,9 @@ setlocal iskeyword+=!
 setlocal commentstring=#%s
 setlocal include=^\\s*\\(using\\\|import\\)
 setlocal includeexpr=substitute(v:fname,'\\.','/','g')
-setlocal path+=~/apps/julia-bin/julia-1.0.1/share/julia/base/**
+setlocal path+=~/apps/julia-bin/julia/share/julia/base/**
 setlocal path+=~/.julia/packages/**
-setlocal tags+=~/apps/julia/tags
+setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
 let b:tmux_window="julia"
 
@@ -42,9 +45,24 @@ let g:neomake_repl_maker = {
       \ 'errorformat': s:repl_efm
       \ }
 
+let s:all_efm = ''
+let s:all_efm .= '%DBASE: %f,'
+let s:all_efm .= '%-G%.%# at none:%.%#,'
+let s:all_efm .= '%-G%.%# at REPL[%.%#]:%.%#,'
+let s:all_efm .= '%-G%.%# at /buildworker/%.%#,'
+let s:all_efm .= '%-G%.%# at %.%#/Revise/%.%#,'
+" let s:all_efm .= '%-G%.%# at ./%.%#:%.%#,'
+let s:all_efm .= '%m at %f:%l%.%#,'
+let g:neomake_all_maker = {
+      \ 'exe': 'parse_julia_repl.sh',
+      \ 'append_file': 0,
+      \ 'errorformat': s:all_efm
+      \ }
+
 augroup NeomakeJuliaRepl
   au!
-  autocmd FocusGained * Neomake! repl help
+  autocmd FocusGained * Neomake! all
+  " autocmd FocusGained * Neomake! repl help all
 augroup END
 
 let s:efm  = "%+G %.%# at ./client.jl:%l,"
@@ -77,11 +95,12 @@ nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
+nnoremap <buffer> ,d :call system( "tmux send-keys C-d" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
 nnoremap <buffer> ,f :SlimeSend1 fieldnames(<C-R><C-W>)<CR>
 nnoremap <buffer> ,m :SlimeSend1 methods(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
-nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
+nnoremap <buffer> ,p :SlimeSend1 display(<C-R><C-W>)<CR>
 nnoremap <buffer> ,r :SlimeSend1 include("<C-R>%")<CR>
 nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
 nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
@@ -91,13 +110,13 @@ xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
 xnoremap <buffer> ,f y:<C-U>SlimeSend1 fieldnames(<C-R>")<CR>
 xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
 xnoremap <buffer> ,m y:<C-U>SlimeSend1 methods(<C-R>")<CR>
-xnoremap <buffer> ,p y:<C-U>SlimeSend1 print(<C-R>")<CR>
+xnoremap <buffer> ,p y:<C-U>SlimeSend1 display(<C-R>")<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 typeof(<C-R>")<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
 xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
 xnoremap <buffer> ,w y:<C-U>SlimeSend1 @which <C-R>"<CR>
 
-iabbrev <buffer> > <BAR>>
+" iabbrev <buffer> > <BAR>>
 
 " clear REPL, jump to mark, send paragraph to REPL
 nmap \a ,l'a<Plug>SlimeParagraphSend
@@ -166,3 +185,20 @@ if filereadable(s:jupyter_file)
   execute "autocmd FocusLost <buffer> silent ! " . cmd
   execute "autocmd FocusGained <buffer> checktime " . expand('%')
 endif
+
+function! Send_test()
+  let current_file = expand('%:t:r')
+  let cmd = 'include("' . current_file . '.jl"); ' . current_file . '.tests()'
+  execute 'SlimeSend1 ' . cmd
+  sleep 1
+endfunction
+
+function! Parse_REPL()
+  Neomake! all
+  copen
+  sleep 100m
+  cnext
+endfunction
+
+command! JuliaSendTest call Send_test()
+command! JuliaParseREPL call Parse_REPL()
