@@ -1,7 +1,7 @@
 setlocal textwidth=79
 setlocal colorcolumn=+1
-setlocal path+=~/.local/lib/python3.6/site-packages/
-setlocal tags+=~/.local/lib/python3.6/site-packages/tags
+setlocal path+=~/.local/lib/python3.7/site-packages/
+setlocal tags+=~/.local/lib/python3.7/site-packages/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window='ipython'
 
@@ -138,7 +138,7 @@ endfunction
 
 function! CaptureTmux()
   let s:efm = &l:efm
-  let &l:efm = b:capture_efm 
+  let &l:efm = ""
   call functions#CaptureTmux()
   let &l:efm = s:efm
 endfunction
