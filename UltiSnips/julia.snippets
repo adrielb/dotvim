@@ -1,6 +1,5 @@
-snippet Pkg.add "Install new package" b
-Pkg.update()
-Pkg.add("${1:package}")
+snippet Base.show "show type" b
+Base.show(io::IO, ${2}::${1}) = print(io, ${0})
 endsnippet
 
 snippet Array{Float64,1} "standard vector type"
@@ -27,6 +26,12 @@ map(${1:rng}) do ${2:var}
 end
 endsnippet
 
+snippet let "let block" Ab
+let
+	${0}
+end
+endsnippet
+
 snippet func "function declaration" Ab
 function ${1:f}(${2})
 	${0}
@@ -34,13 +39,13 @@ end
 endsnippet
 
 snippet struct "immutable struct" Ab
-struct ${1}
+struct ${1:name}${2: <: ${3:supertype}} end
 	${0}
 end
 endsnippet
 
 snippet if "if condition" Ab
-if ${1}
+if${1}
 	${0}
 end
 endsnippet
@@ -51,12 +56,27 @@ for ${1} in ${2}
 end
 endsnippet
 
-snippet abstract "abstract type"
+snippet @testset "test set" Ab
+@testset "${1:description}" begin
+	${0}
+end
+endsnippet
+
+snippet "^tests" "module tests" rbA
+using Test
+function tests()
+	@testset "${1}" begin
+		${0}
+	end
+end
+endsnippet
+
+snippet abstract "abstract type" Ab
 abstract type ${1:name}${2: <: ${3:supertype}} end
 endsnippet
 
-snippet type "type declaration with constructor" b
-type ${1:typename}
+snippet mutable "mutable type with constructor" Ab
+mutable struct ${1:typename}
 	${0}
 	${2:function $1()
 		temp = new()
@@ -67,20 +87,12 @@ end
 
 endsnippet
 
-snippet immutable "immutable declaration" b
-immutable ${1:name}
-	${0}
-end
-
-
-endsnippet
-
-snippet module "module" b
-module ${1:name} #{{{
+snippet module "module" Ab
+module ${1:name}
 
 ${0}
 
-end # module $1 }}}
+end # module $1
 
 endsnippet
 
@@ -258,4 +270,92 @@ snippet @code "warn/llvm/native/time"
 @code_llvm $1
 @code_native $1
 @time $1
+endsnippet
+
+snippet MDP "MDP interface" b
+module ${1:`!p snip.rv = snip.basename`}
+using Dates
+using Parameters
+using Random
+using POMDPs
+using POMDPPolicies
+using POMDPSimulators
+
+const Action = Bool
+
+struct State
+	ti::Int
+end
+
+@with_kw struct MyMDP <: MDP{State, Action}
+	dummy = 1
+end
+
+function POMDPs.initialstate(mdp::MyMDP, rng::AbstractRNG)
+	s0 = State(0)
+	return s0
+end
+
+function POMDPs.generate_s(mdp::MyMDP, s0::State, a::Action, rng::AbstractRNG)
+	s1 = State(s0.ti+1)
+	return s1
+end
+
+POMDPs.isterminal(mdp::MyMDP, s::State) = s.ti == 10
+
+POMDPs.reward(mdp::MyMDP, ::State, ::Action, ::State) = 0.0
+
+POMDPs.discount(mdp::MyMDP) = 1.0
+
+struct MyPolicy <: Policy
+end
+
+function POMDPs.action(policy::MyPolicy, ::State)
+	return true
+end
+
+function print_sim()
+	mdp = MyMDP()
+	policy = MyPolicy()
+	for (s, a, r) in stepthrough(mdp, policy, "s,a,r", max_steps=3)
+		@show s
+		@show a
+		@show r
+		println()
+	end
+end
+
+function history_sim()
+	mdp = MyMDP()
+	policy = MyPolicy()
+	sim = HistoryRecorder()
+	N = 10
+	p = scatter(N)
+	for i in 1:N
+		history = simulate(sim, mdp, policy)
+		for s in state_hist(history)
+			push!(p, i, (s.ti, s.p))
+		end
+	end
+	p
+end
+
+function policy_evaluation()
+	mdp = MyMDP()
+	policy = MyPolicy()
+	sim = RolloutSimulator()
+	o = Series(Mean(), Variance(), P2Quantile(), Extrema())
+	for i in 1:1000
+		reward = simulate(sim, mdp, policy)
+		fit!(o, reward)
+	end
+	return o
+end
+
+function tests()
+	print_sim()
+end
+
+end  # module $1
+
 endsnippet
