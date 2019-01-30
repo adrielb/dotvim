@@ -246,8 +246,56 @@ let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
-" let g:semanticEnableFileTypes = { 'julia': 'jl', 'python': 'py' }
-let g:semanticEnableFileTypes = ['julia', 'python', 'picat']
+let g:semanticEnableFileTypes = { 
+      \ 'julia': 'jl',
+      \ 'python': 'py', 
+      \ 'picat' : 'pi'
+      \}
+let g:semanticBlacklistOverride = { 'picat': [
+      \ 'abs',
+      \ 'all_different',
+      \ 'cl',
+      \ 'cp',
+      \ 'debug',
+      \ 'else',
+      \ 'elseif',
+      \ 'end',
+      \ 'fail',
+      \ 'false',
+      \ 'foreach',
+      \ 'get_attr',
+      \ 'if',
+      \ 'import',
+      \ 'in',
+      \ 'integer',
+      \ 'length',
+      \ 'max',
+      \ 'min',
+      \ 'mip',
+      \ 'mod',
+      \ 'name',
+      \ 'new_array',
+      \ 'new_map',
+      \ 'new_struct',
+      \ 'not',
+      \ 'once',
+      \ 'planner',
+      \ 'print',
+      \ 'printf',
+      \ 'println',
+      \ 'put_attr',
+      \ 'report',
+      \ 'sat',
+      \ 'solve',
+      \ 'spy',
+      \ 'sum',
+      \ 'then',
+      \ 'time2',
+      \ 'true',
+      \ 'var',
+      \ 'writeln'
+      \ ]
+      \ }
 "}}}
 
 " julia {{{
