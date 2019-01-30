@@ -60,7 +60,7 @@ else
 		send-keys 'R -q' C-m \; \
 			rename-window 'R' \; \
 		new-window -n 'julia' \; \
-			send-keys 'while true;do julia;sleep 1;done' C-m \; \
+			send-keys 'while true;do julia;echo "sleeping";sleep 1;done' C-m \; \
 		new-window -n 'ipython' \; \
 			# send-keys 'ipython3 --no-banner -i init_repl.py' C-m \; \
 			send-keys 'jupyter-console --existing' \; \
@@ -74,6 +74,6 @@ fi
 
 endsnippet
 
-snippet pip "pip install" b
+snippet pip "pip install" Ab
 pip3 install --user --upgrade ${1:package}
 endsnippet
