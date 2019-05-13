@@ -70,3 +70,11 @@ capture:
 			{b=a; a=\$\$0} \
 		END { print b } '
 endsnippet
+
+snippet minizinc
+export LD_LIBRARY_PATH=${HOME}/apps/minizinc/current/lib
+export PATH=${HOME}/apps/minizinc/current/bin
+
+%.mzn:
+	minizinc $@
+endsnippet

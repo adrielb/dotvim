@@ -314,20 +314,19 @@ function POMDPs.action(policy::MyPolicy, ::State)
 	return true
 end
 
-function print_sim()
-	mdp = MyMDP()
-	policy = MyPolicy()
-	for (s, a, r) in stepthrough(mdp, policy, "s,a,r", max_steps=3)
+function print_sim(mdp = MyMDP(), policy = MyPolicy())
+	s1 = nothing
+	for (s, a, sp, r) in stepthrough(mdp, policy, "s,a,sp,r", max_steps=3)
 		@show s
 		@show a
 		@show r
 		println()
+		s1 = sp
 	end
+	@show s1
 end
 
-function history_sim()
-	mdp = MyMDP()
-	policy = MyPolicy()
+function history_sim(mdp = MyMDP(), policy = MyPolicy())
 	sim = HistoryRecorder()
 	N = 10
 	p = scatter(N)
@@ -340,11 +339,9 @@ function history_sim()
 	p
 end
 
-function policy_evaluation()
-	mdp = MyMDP()
-	policy = MyPolicy()
+function policy_evaluation(mdp = MyMDP(), policy = MyPolicy())
 	sim = RolloutSimulator()
-	o = Series(Mean(), Variance(), P2Quantile(), Extrema())
+	o = Series(Mean(), Variance(), P2Quantile(0.25), P2Quantile(), P2Quantile(0.75), Extrema())
 	for i in 1:1000
 		reward = simulate(sim, mdp, policy)
 		fit!(o, reward)
@@ -353,7 +350,15 @@ function policy_evaluation()
 end
 
 function tests()
-	print_sim()
+	mdp = MyMDP()
+	policy = MyPolicy()
+	sims(mdp, policy)
+end
+
+function sims(mdp = MyMDP(), policy = MyPolicy())
+	print_sim(mdp, policy)
+	@show policy_evaluation(mdp, policy)
+	history_sim(mdp, policy)
 end
 
 end  # module $1
