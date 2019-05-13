@@ -48,10 +48,14 @@ let g:neomake_repl_maker = {
 let s:all_efm = ''
 let s:all_efm .= '%DBASE: %f,'
 let s:all_efm .= '%-G%.%# at none:%.%#,'
+let s:all_efm .= '%-G%.%# at ./none:%.%#,'
 let s:all_efm .= '%-G%.%# at REPL[%.%#]:%.%#,'
 let s:all_efm .= '%-G%.%# at /buildworker/%.%#,'
 let s:all_efm .= '%-G%.%# at %.%#/Revise/%.%#,'
-" let s:all_efm .= '%-G%.%# at ./%.%#:%.%#,'
+let s:all_efm .= '%+G%.%# at ./boot.jl%.%#,'
+let s:all_efm .= '%+G%.%# at ./loading.jl%.%#,'
+let s:all_efm .= '%+G%.%# at ./sysimg.jl%.%#,'
+let s:all_efm .= '%+G%.%# at ./client.jl%.%#,'
 let s:all_efm .= '%m at %f:%l%.%#,'
 let g:neomake_all_maker = {
       \ 'exe': 'parse_julia_repl.sh',
@@ -91,6 +95,7 @@ let s:efm .= 'while loading %f\, %m %l,'
 " let &l:efm = s:efm
 
 
+nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! all<CR>:sleep 100m<CR>:copen<CR>:cnext<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>

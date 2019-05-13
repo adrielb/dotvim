@@ -174,8 +174,8 @@ nmap     <Leader><S-CR>       viw<leader><cr>
 imap   <esc><space>
 nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
 nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
-nnoremap <left>     :bprev<CR>
-nnoremap <right>    :bnext<CR>
+nnoremap <left>     :prev<CR>
+nnoremap <right>    :next<CR>
     vmap <CR>       <Plug>(EasyAlign)
 nnoremap -          :Dirvish %<CR>
 tnoremap <Esc>      <C-\><C-n>
@@ -210,8 +210,16 @@ let g:jedi#use_tag_stack = 0
 "     let g:deoplete#sources = {}
 " endif
 " let g:deoplete#sources.sql = ['buffer']
-call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
-let g:deoplete#ignore_sources = {'python': ['tag'],
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+call deoplete#custom#option({
+      \ 'camel_case': v:true
+      \})
+call deoplete#custom#source('ultisnips', 'rank', 1000)
+call deoplete#custom#source('buffer', 'rank', 200)
+call deoplete#custom#source('dictionary', 'rank', 1)
+let g:deoplete#ignore_sources = {
+      \ 'python': ['tag'],
+      \ 'vim': ['dictionary'],
       \ 'julia': ['dictionary']}
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
@@ -249,9 +257,48 @@ highlight Normal ctermbg=0 guibg=#000000
 let g:semanticEnableFileTypes = { 
       \ 'julia': 'jl',
       \ 'python': 'py', 
-      \ 'picat' : 'pi'
+      \ 'picat' : 'pi',
+      \ 'minizinc' : 'mzn'
       \}
-let g:semanticBlacklistOverride = { 'picat': [
+let g:semanticBlacklistOverride = {'minizinc': [
+      \ 'array',
+      \ 'assert',
+      \ 'bool',
+      \ 'ceil',
+      \ 'constraint',
+      \ 'div',
+      \ 'else',
+      \ 'elseif',
+      \ 'endif',
+      \ 'enum',
+      \ 'false',
+      \ 'float',
+      \ 'forall',
+      \ 'if',
+      \ 'in',
+      \ 'include',
+      \ 'int',
+      \ 'max',
+      \ 'maximize',
+      \ 'min',
+      \ 'minimize',
+      \ 'of',
+      \ 'output',
+      \ 'predicate',
+      \ 'satisfy',
+      \ 'set',
+      \ 'show',
+      \ 'show_float',
+      \ 'show_int',
+      \ 'solve',
+      \ 'string',
+      \ 'sum',
+      \ 'then',
+      \ 'true',
+      \ 'var',
+      \ 'where'
+      \],
+      \'picat': [
       \ 'abs',
       \ 'all_different',
       \ 'cl',
