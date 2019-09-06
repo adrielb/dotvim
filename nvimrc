@@ -168,6 +168,7 @@ nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
+nnoremap <leader>w  :.w !bash
 nnoremap <leader>/  :Ggrep -i -- 
 xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
 nmap     <leader><CR>         <Plug>SlimeParagraphSend
