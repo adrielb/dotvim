@@ -159,3 +159,27 @@ function! functions#CaptureTmux()
   cfile /dev/shm/tmux_capture
   copen
 endfunction
+
+
+command! -nargs=1 Google call functions#Google(0, <f-args>)
+command! -nargs=1 GoogleL call functions#Google(1, <f-args>)
+
+function! functions#Google(lucky, query)
+  python3 << EOF
+import vim
+import urllib.parse
+import subprocess
+
+lucky = int(vim.eval('a:lucky'))
+query = vim.eval('a:query')
+
+params = {'q': query}
+if lucky:
+    params['btnI'] = ''
+params = urllib.parse.urlencode(params)
+
+url = 'http://www.google.com/search?' + params
+
+subprocess.run(["firefox", "--private-window", url])
+EOF
+endfunction

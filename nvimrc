@@ -37,7 +37,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug '~/projects/dotvim'
 Plug '~/projects/stan.vim'
 Plug 'cespare/vim-toml'
-Plug 'szw/vim-g'
+" Plug 'szw/vim-g'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
@@ -158,8 +158,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>a  :call functions#CaptureTmux()<CR>
-nnoremap <leader>g  :Googlef <C-R><C-W><CR>
-xnoremap <leader>g  :Googlef<CR>
+nnoremap <leader>g  :Google<space>
+nnoremap <leader>G  :Google <C-R><C-W><CR>
+xnoremap <leader>g  y:<C-U>Google<space><C-R>"
 nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR><C-L>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
 nnoremap <leader>p  :psearch <C-R>=expand("<cword>")<CR><CR>
