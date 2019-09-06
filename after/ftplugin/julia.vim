@@ -34,13 +34,13 @@ let s:repl_efm .= '%C  ...%.%#,'
 let s:repl_efm .= '%CStacktrace:%.%#,'
 let s:repl_efm .= '%C [%.%# at ./%.%#:%.%#,'
 let s:repl_efm .= '%C [%.%# at none:%.%#,'
+let s:repl_efm .= '%C %.%# at REPL[%.%#]:%.%#,'
 let s:repl_efm .= '%C [%.%# at %f:%l%.%#,'
 let s:repl_efm .= '%Cin expression starting at %f:%l%.%#,'
 let s:repl_efm .= '%Z,'
 let s:repl_efm .= '%-G%.%#,'
 let g:neomake_repl_maker = {
-      \ 'exe': 'tmux',
-      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'exe': 'parse_julia_repl.sh',
       \ 'append_file': 0,
       \ 'errorformat': s:repl_efm
       \ }
@@ -65,7 +65,7 @@ let g:neomake_all_maker = {
 
 augroup NeomakeJuliaRepl
   au!
-  autocmd FocusGained * Neomake! all
+  autocmd FocusGained * Neomake! repl all
   " autocmd FocusGained * Neomake! repl help all
 augroup END
 
@@ -95,7 +95,7 @@ let s:efm .= 'while loading %f\, %m %l,'
 " let &l:efm = s:efm
 
 
-nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! all<CR>:sleep 100m<CR>:copen<CR>:cnext<CR>
+nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>:sleep 100m<CR>:copen<CR>:cnext<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
