@@ -32,7 +32,7 @@ let
 end
 endsnippet
 
-snippet func "function declaration" Ab
+snippet "^func" "function declaration" rbA
 function ${1:f}(${2})
 	${0}
 end
@@ -92,7 +92,7 @@ module ${1:name}
 
 ${0}
 
-end # module $1
+end  # module
 
 endsnippet
 
@@ -273,14 +273,16 @@ snippet @code "warn/llvm/native/time"
 endsnippet
 
 snippet MDP "MDP interface" b
-module ${1:`!p snip.rv = snip.basename`}
+module `!p snip.rv = snip.basename`
 using Dates
 using Parameters
 using Random
 using POMDPs
 using POMDPPolicies
 using POMDPSimulators
-
+using OnlineStats
+using Plots
+$0
 const Action = Bool
 
 struct State
@@ -333,7 +335,7 @@ function history_sim(mdp = MyMDP(), policy = MyPolicy())
 	for i in 1:N
 		history = simulate(sim, mdp, policy)
 		for s in state_hist(history)
-			push!(p, i, (s.ti, s.p))
+			push!(p, i, (s.ti, s.ti))
 		end
 	end
 	p
@@ -361,6 +363,6 @@ function sims(mdp = MyMDP(), policy = MyPolicy())
 	history_sim(mdp, policy)
 end
 
-end  # module $1
+end  # module
 
 endsnippet
