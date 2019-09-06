@@ -162,6 +162,7 @@ nnoremap <leader>g  :Googlef <C-R><C-W><CR>
 xnoremap <leader>g  :Googlef<CR>
 nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR><C-L>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
+nnoremap <leader>p  :psearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
