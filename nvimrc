@@ -44,6 +44,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
 Plug 'mileszs/ack.vim'
+Plug 'chrisbra/csv.vim'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
