@@ -1,3 +1,7 @@
+snippet savefig
+savefig(p, "imgs/`!p snip.rv = snip.basename`_${1:name}.png")
+endsnippet
+
 snippet Base.show "show type" b
 Base.show(io::IO, ${2}::${1}) = print(io, ${0})
 endsnippet
@@ -32,7 +36,7 @@ let
 end
 endsnippet
 
-snippet "^func" "function declaration" rbA
+snippet func "function declaration" bA
 function ${1:f}(${2})
 	${0}
 end
@@ -62,7 +66,7 @@ snippet @testset "test set" Ab
 end
 endsnippet
 
-snippet "^tests" "module tests" rbA
+snippet tests "module tests" bA
 using Test
 function tests()
 	@testset "${1}" begin
@@ -88,7 +92,7 @@ end
 endsnippet
 
 snippet module "module" Ab
-module ${1:name}
+module ${1:`!p snip.rv = snip.basename`}
 
 ${0}
 
@@ -286,7 +290,7 @@ $0
 const Action = Bool
 
 struct State
-	ti::Int
+	ti::Int64
 end
 
 @with_kw struct MyMDP <: MDP{State, Action}
@@ -305,7 +309,7 @@ end
 
 POMDPs.isterminal(mdp::MyMDP, s::State) = s.ti == 10
 
-POMDPs.reward(mdp::MyMDP, ::State, ::Action, ::State) = 0.0
+POMDPs.reward(mdp::MyMDP, ::State, ::Action, s1::State) = ifelse(isterminal(mdp, s1), 1.0, 0.0)
 
 POMDPs.discount(mdp::MyMDP) = 1.0
 
@@ -313,7 +317,7 @@ struct MyPolicy <: Policy
 end
 
 function POMDPs.action(policy::MyPolicy, ::State)
-	return true
+	return Action(1)
 end
 
 function print_sim(mdp = MyMDP(), policy = MyPolicy())
