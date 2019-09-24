@@ -139,6 +139,7 @@ nnoremap N Nzxzz
 nnoremap g/ :Ack<Space><C-R><C-W><Space>%:p:h<left><left><left><left><left><left>
 xnoremap g/ y:<C-U>Ag <C-R>"<CR>
     nmap ga <Plug>(EasyAlign)
+nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
 nnoremap gl :Lines<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
@@ -194,6 +195,11 @@ let g:neomake_enabled_makers=1
 " Prose {{{
 let g:tex_flavor='latex'
 let g:markdown_folding=1
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_edit_url_in = 'vsplit'
+let g:vim_markdown_folding_disabled = 1
 "}}}
 
 " vim-g {{{
@@ -240,7 +246,7 @@ let g:tmuxcomplete#mode='WORD'
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
 \ Check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
+\ deoplete#manual_complete()
 function! Check_back_space() abort "{{{
   let l:col = col('.') - 1
   return !l:col || getline('.')[l:col - 1]  =~? '\s'
@@ -390,17 +396,17 @@ au BufRead,BufNewFile,BufNew *.hss setl ft=haskell.script
 "}}}
 
 " Airline {{{
-let g:airline_theme='dark'
+let g:airline_theme='base16_pop'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_detect_crypt=0
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-function! AirlineThemePatch(palette)
-  for l:colors in values(a:palette.inactive)
-    let l:colors[2] = 245
-  endfor
-endfunction
+" let g:airline_theme_patch_func = 'AirlineThemePatch'
+" function! AirlineThemePatch(palette)
+"   for l:colors in values(a:palette.inactive)
+"     let l:colors[2] = 0
+"   endfor
+" endfunction
 "}}}
 
 " vim {{{
