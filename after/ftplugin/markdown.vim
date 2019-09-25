@@ -6,21 +6,35 @@ setlocal shiftwidth=2
 setlocal expandtab
 setlocal complete+=k,s
 setlocal commentstring=*\ %s
+setlocal nofoldenable
 
 let s:moz_history_sh = expand('<sfile>:p:h') . '/moz_history.sh'
 
-command! MozHist call fzf#run({
+nnoremap <leader>m  :MozHist yaml<CR>
+nnoremap <leader>i  :MozHist image<CR>
+nnoremap <leader>l  :MozHist link<CR>
+
+command! -nargs=1 MozHist call fzf#run({
         \ 'source': s:moz_history_sh,
-        \ 'sink': function('s:inject_mozhist')
+        \ 'sink': function('s:inject_mozhist_' . <q-args>)
         \ })
 
-function! s:inject_mozhist(line)
-  let l:line = "---\rdate: " . a:line . "\r---\r"
+function! s:inject_mozhist_yaml(line)
+  let l:line = "---\rvisitdate: " . a:line . "\r---\r"
   let l:line = substitute(l:line, "\t", "\rtitle: ", "")
   let l:line = substitute(l:line, "\t", "\rurl: ", "")
-  let l:line = split(l:line, "\r")
-  call append(line('.'), l:line)
+  let l:lines = split(l:line, "\r")
+  call append(line('.'), l:lines)
 endfunction
 
+function! s:inject_mozhist_image(line)
+  let l:lines = split(a:line, "\t")
+  let l:img = "![FIG: ](" . l:lines[2] . ")"
+  call append(line('.'), l:img)
+endfunction
 
-
+function! s:inject_mozhist_link(line)
+  let l:lines = split(a:line, "\t")
+  let l:img = "[" . l:lines[1] . "](" . l:lines[2] . ")"
+  call append(line('.'), l:img)
+endfunction
