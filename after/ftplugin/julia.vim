@@ -95,7 +95,8 @@ let s:efm .= 'while loading %f\, %m %l,'
 " let &l:efm = s:efm
 
 
-nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>:sleep 100m<CR>:copen<CR>:cnext<CR>
+nnoremap <buffer> <leader>f :g/savefig/normal f"gx<CR>
+nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>:sleep 1<CR>:copen<CR>:cnext<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
