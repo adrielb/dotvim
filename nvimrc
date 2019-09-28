@@ -18,7 +18,6 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -447,10 +446,6 @@ let g:netrw_list_hide = netrw_gitignore#Hide() . '^\.git/$'
 let g:netrw_banner    = 0
 let g:netrw_keepdir   = 0
 " }}}
-
-" gitv {{{
-let g:Gitv_DoNotMapCtrlKey = 1
-"}}}
 
 "}}}
 
