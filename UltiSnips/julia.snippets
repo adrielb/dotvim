@@ -1,3 +1,11 @@
+snippet REPL "REPL comment" Ab
+""" REPL {{{
+
+${0}
+
+}}} """
+endsnippet
+
 snippet savefig
 savefig(p, "imgs/`!p snip.rv = snip.basename`_${1:name}.png")
 endsnippet
@@ -177,14 +185,20 @@ end
 endsnippet
 
 snippet profile "statistical timimg" b
+using Profile
 using ProfileView
-
-Profile.clear()
-@profile ${1:func}
-s = open("/tmp/prof.txt","w")
-Profile.print(s, format=:flat, sortedby=:count, cols=700)
-close(s)
-ProfileView.view()
+function profile_$1
+	$1
+	Profile.clear()
+	@profile ${1:func}
+	open("/tmp/profile_flat.txt","w") do s
+		Profile.print(IOContext(s, :displaysize=>(24, 700)), format=:flat, sortedby=:count)
+	end
+	open("/tmp/profile_tree.txt","w") do s
+		Profile.print(IOContext(s, :displaysize=>(24, 700)))
+	end
+	ProfileView.view()
+end
 endsnippet
 
 snippet profile-mem "track-allocation" b
@@ -302,7 +316,7 @@ function POMDPs.initialstate(mdp::MyMDP, rng::AbstractRNG)
 	return s0
 end
 
-function POMDPs.generate_s(mdp::MyMDP, s0::State, a::Action, rng::AbstractRNG)
+function POMDPs.gen(::DDNNode{:sp}, mdp::MyMDP, s0::State, a::Action, rng::AbstractRNG)
 	s1 = State(s0.ti+1)
 	return s1
 end
