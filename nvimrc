@@ -120,6 +120,7 @@ set sessionoptions-=options
 set sessionoptions-=help
 set wildcharm=<C-z>
 set inccommand=split
+set diffopt+=algorithm:histogram,indent-heuristic
 " }}}
 
 " Mappings {{{
@@ -138,7 +139,9 @@ nnoremap N Nzxzz
 nnoremap g/ :Ack<Space><C-R><C-W><Space>%:p:h<left><left><left><left><left><left>
 xnoremap g/ y:<C-U>Ag <C-R>"<CR>
     nmap ga <Plug>(EasyAlign)
+nnoremap gaa :argadd %<Bar>next<CR>
 nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
+nnoremap gad :<C-R>=argidx()+1<CR>argdelete<BAR>first<CR>
 nnoremap gl :Lines<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
