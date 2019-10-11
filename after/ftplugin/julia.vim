@@ -56,11 +56,33 @@ let s:all_efm .= '%+G%.%# at ./boot.jl%.%#,'
 let s:all_efm .= '%+G%.%# at ./loading.jl%.%#,'
 let s:all_efm .= '%+G%.%# at ./sysimg.jl%.%#,'
 let s:all_efm .= '%+G%.%# at ./client.jl%.%#,'
+let s:all_efm .= '%\s%#%f\,%m: line %l%.%#,'
 let s:all_efm .= '%m at %f:%l%.%#,'
+let s:all_efm .= '%W%.%#Warning: %m,'
+let s:all_efm .= '%Z%.%#@%.%# %f:%l%.%#,'
 let g:neomake_all_maker = {
       \ 'exe': 'parse_julia_repl.sh',
       \ 'append_file': 0,
       \ 'errorformat': s:all_efm
+      \ }
+
+let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
+let s:profile_efm  = ''
+let s:profile_efm .= '%m at %f:%l'
+let g:neomake_profile_maker = {
+      \ 'exe': s:julia_profile_sh,
+      \ 'append_file': 0,
+      \ 'errorformat': s:profile_efm
+      \ }
+
+" \ 'errorformat': '%f.%\\d%\\+.mem:%l:%m'
+let s:julia_mem_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_mem_profile.sh'
+let g:neomake_julia_mem_profile_maker = {
+      \ 'exe': s:julia_mem_profile_sh,
+      \ 'args': ['%t'],
+      \ 'append_file': 0,
+      \ 'buffer_output': 0,
+      \ 'errorformat': '%f.%n.mem:%l:%m'
       \ }
 
 augroup NeomakeJuliaRepl
@@ -104,6 +126,7 @@ nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
 nnoremap <buffer> ,d :call system( "tmux send-keys C-d" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
 nnoremap <buffer> ,f :SlimeSend1 fieldnames(<C-R><C-W>)<CR>
+nnoremap <buffer> ,j :call julia#toggle_function_blockassign()<CR>
 nnoremap <buffer> ,m :SlimeSend1 methods(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 display(<C-R><C-W>)<CR>
@@ -194,7 +217,7 @@ endif
 
 function! Send_test()
   let current_file = expand('%:t:r')
-  let cmd = 'include("' . current_file . '.jl"); ' . current_file . '.tests()'
+  let cmd = 'include("' . current_file . '.jl"); a = ' . current_file . '.tests()'
   execute 'SlimeSend1 ' . cmd
   sleep 1
 endfunction
