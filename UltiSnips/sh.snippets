@@ -51,7 +51,7 @@ endsnippet
 snippet tmux "tmux session" b
 #!/usr/bin/env bash
 
-NAME=${1:name}
+NAME=`!v expand("%:p:h:t")`
 
 if tmux has-session -t $NAME; then
 	tmux kill-session -t $NAME
