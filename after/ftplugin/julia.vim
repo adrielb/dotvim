@@ -217,7 +217,7 @@ endif
 
 function! Send_test()
   let current_file = expand('%:t:r')
-  let cmd = 'include("' . current_file . '.jl"); a = ' . current_file . '.tests()'
+  let cmd = 'include("' . current_file . '.jl"); ret = ' . current_file . '.main()'
   execute 'SlimeSend1 ' . cmd
   sleep 1
 endfunction
