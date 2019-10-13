@@ -15,6 +15,8 @@ setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
 let b:tmux_window="julia"
+let b:tmux_func="main"
+let b:neomake_open_list=2
 
 let s:help_efm = ''
 let s:help_efm .= '  [%m at %f:%l%.%#,'
@@ -47,6 +49,7 @@ let g:neomake_repl_maker = {
 
 let s:all_efm = ''
 let s:all_efm .= '%DBASE: %f,'
+let s:all_efm .= '%-GWarning: replacing %.%#,'
 let s:all_efm .= '%-G%.%# at none:%.%#,'
 let s:all_efm .= '%-G%.%# at ./none:%.%#,'
 let s:all_efm .= '%-G%.%# at REPL[%.%#]:%.%#,'
@@ -117,8 +120,11 @@ let s:efm .= 'while loading %f\, %m %l,'
 " let &l:efm = s:efm
 
 
+nnoremap <buffer> ]m /^\<function\><CR>
+nnoremap <buffer> [m ?^\<function\><CR>
 nnoremap <buffer> <leader>f :g/savefig/normal f"gx<CR>
-nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>:sleep 1<CR>:copen<CR>:cnext<CR>
+nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>
+nnoremap <buffer> <leader>M :JuliaSetFunc<CR>:JuliaSendTest<CR>:Neomake! repl all<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
@@ -217,7 +223,7 @@ endif
 
 function! Send_test()
   let current_file = expand('%:t:r')
-  let cmd = 'include("' . current_file . '.jl"); ret = ' . current_file . '.main()'
+  let cmd = 'include("' . current_file . '.jl"); ret = ' . current_file . '.' . b:tmux_func . '()'
   execute 'SlimeSend1 ' . cmd
   sleep 1
 endfunction
@@ -229,5 +235,13 @@ function! Parse_REPL()
   cnext
 endfunction
 
+function! Set_Julia_Func()
+  call search('^\<function\>','b')
+  normal w
+  let b:tmux_func=expand('<cword>')
+  echo b:tmux_func
+endfunction
+
 command! JuliaSendTest call Send_test()
 command! JuliaParseREPL call Parse_REPL()
+command! JuliaSetFunc call Set_Julia_Func()
