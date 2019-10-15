@@ -120,7 +120,7 @@ set sessionoptions-=options
 set sessionoptions-=help
 set wildcharm=<C-z>
 set inccommand=split
-set diffopt+=algorithm:histogram,indent-heuristic
+set diffopt+=algorithm:histogram,indent-heuristic,vertical
 " }}}
 
 " Mappings {{{
@@ -209,9 +209,13 @@ let g:vim_g_open_command = 'firefox'
 "}}}
 
 " deoplete/jedi/LanguageClient {{{
+" let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+let g:LanguageClient_autoStart = 1
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
-\    'python': ['pyls', '-v'],
+\   'python': ['pyls', '-v'],
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', expand('<sfile>:p:h').'/languageserver.jl']
 \}
 " let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
@@ -240,7 +244,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
 " Enable jedi source debug messages
 " let g:neomake_logfile = '/tmp/neomake.log'
-let g:LanguageClient_loggingLevel = 'DEBUG'
 let g:deoplete#sources#jedi#debug_server='/tmp/jedi.log'
 " call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 " let g:tmuxcomplete#capture_args="-s lines"
