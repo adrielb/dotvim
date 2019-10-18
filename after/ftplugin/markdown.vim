@@ -8,11 +8,11 @@ setlocal complete+=k,s
 setlocal commentstring=*\ %s
 setlocal nofoldenable
 
-let s:moz_history_sh = expand('<sfile>:p:h') . '/moz_history.sh'
+let s:moz_history_sh = expand('<sfile>:p:h') . '/' . 'moz_history.sh'
 
-nnoremap <leader>m  :MozHist yaml<CR>
-nnoremap <leader>i  :MozHist image<CR>
-nnoremap <leader>l  :MozHist link<CR>
+nnoremap <buffer> <leader>m  :MozHist yaml<CR>
+nnoremap <buffer> <leader>i  :MozHist image<CR>
+nnoremap <buffer> <leader>l  :MozHist link<CR>
 
 command! -nargs=1 MozHist call fzf#run({
         \ 'source': s:moz_history_sh,
