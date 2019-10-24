@@ -233,6 +233,7 @@ endif
 function! Send_test()
   let current_file = expand('%:t:r')
   let cmd = 'include("' . current_file . '.jl"); ret = ' . current_file . '.' . b:tmux_func . '()'
+  " let cmd = 'ret = ' . current_file . '.' . b:tmux_func . '()'
   execute 'SlimeSend1 ' . cmd
   sleep 1
 endfunction
@@ -246,7 +247,7 @@ endfunction
 
 function! Set_Julia_Func()
   call search('^\<function\>','b')
-  normal w
+  normal wmm
   let b:tmux_func=expand('<cword>')
   echo b:tmux_func
 endfunction
