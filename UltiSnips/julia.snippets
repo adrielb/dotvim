@@ -292,6 +292,7 @@ endsnippet
 
 snippet MDP "MDP interface" b
 module `!p snip.rv = snip.basename`
+using BaseModel
 using Dates
 using Parameters
 using Random
@@ -334,18 +335,6 @@ function POMDPs.action(policy::MyPolicy, ::State)
 	return Action(1)
 end
 
-function print_sim(mdp = MyMDP(), policy = MyPolicy())
-	s1 = nothing
-	for (s, a, sp, r) in stepthrough(mdp, policy, "s,a,sp,r", max_steps=3)
-		@show s
-		@show a
-		@show r
-		println()
-		s1 = sp
-	end
-	@show s1
-end
-
 function history_sim(mdp = MyMDP(), policy = MyPolicy())
 	sim = HistoryRecorder()
 	N = 10
@@ -359,17 +348,7 @@ function history_sim(mdp = MyMDP(), policy = MyPolicy())
 	p
 end
 
-function policy_evaluation(mdp = MyMDP(), policy = MyPolicy())
-	sim = RolloutSimulator()
-	o = Series(Mean(), Variance(), P2Quantile(0.25), P2Quantile(), P2Quantile(0.75), Extrema())
-	for i in 1:1000
-		reward = simulate(sim, mdp, policy)
-		fit!(o, reward)
-	end
-	return o
-end
-
-function tests()
+function main()
 	mdp = MyMDP()
 	policy = MyPolicy()
 	sims(mdp, policy)
