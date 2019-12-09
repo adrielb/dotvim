@@ -131,25 +131,28 @@ function! functions#SwitchSourceHeader()
   endif
 endfunction
 
+function! functions#BTmuxSession()
+  let file = expand('%:p')
+  let pat = '\v/home/abergman/projects/([^/]*)/.*'
+  let project = substitute(file, pat, '\1', '')
+  if project == file
+    return
+  endif
+  return project
+endfunction
+
 function! functions#SwitchTmux(...)
+  if !exists( 'b:tmux_client' )
+    let b:tmux_client = functions#BTmuxSession()
+  endif
   if exists('a:1')
     let b:tmux_client = a:1
-  endif
-  if !exists( 'b:tmux_client' )
-    let file = expand('%:p')
-    let pat = '\v/home/abergman/projects/([^/]*)/.*'
-    let project = substitute(file, pat, '\1', '')
-    if project == file
-      return
-    endif
-    let b:tmux_client = project
   endif
   if !exists( 'b:tmux_window' )
     return
   endif
   let l:win = b:tmux_client . ':' . b:tmux_window
-  call system('tmux switch-client -t ' . b:tmux_client)
-  call system('tmux select-window -t ' . l:win )
+  call system('tmux switch-client -t ' . l:win . ' -c /dev/pts/0')
   let b:slime_config = {"socket_name": "default"
                      \ ,"target_pane": l:win }
 endfunction
