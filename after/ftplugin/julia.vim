@@ -14,6 +14,7 @@ setlocal path+=~/apps/julia-bin/julia/share/julia/base/**
 setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
+let b:tmux_client = functions#BTmuxSession()
 let b:tmux_window="julia"
 let b:tmux_func="main"
 let b:neomake_open_list=2
@@ -23,7 +24,7 @@ let s:help_efm .= '  [%m at %f:%l%.%#,'
 let s:help_efm .= '%-G%.%#,'
 let g:neomake_help_maker = {
       \ 'exe': 'tmux',
-      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J'],
+      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J', '-t', b:tmux_client . ':' . b:tmux_window],
       \ 'append_file': 0,
       \ 'errorformat': s:help_efm
       \ }
@@ -43,6 +44,7 @@ let s:repl_efm .= '%Z,'
 let s:repl_efm .= '%-G%.%#,'
 let g:neomake_repl_maker = {
       \ 'exe': 'parse_julia_repl.sh',
+      \ 'args': [b:tmux_client, b:tmux_window],
       \ 'append_file': 0,
       \ 'errorformat': s:repl_efm
       \ }
@@ -65,9 +67,16 @@ let s:all_efm .= '%W%.%#Warning: %m,'
 let s:all_efm .= '%Z%.%#@%.%# %f:%l%.%#,'
 let g:neomake_all_maker = {
       \ 'exe': 'parse_julia_repl.sh',
+      \ 'args': [b:tmux_client, b:tmux_window],
       \ 'append_file': 0,
       \ 'errorformat': s:all_efm
       \ }
+
+augroup neomake_update
+  au!
+  autocmd BufEnter <buffer> let g:neomake_repl_maker['args'] = [b:tmux_client, b:tmux_window]
+  autocmd BufEnter <buffer> let g:neomake_all_maker['args'] = [b:tmux_client, b:tmux_window]
+augroup END
 
 let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
 let s:profile_efm  = ''
@@ -128,13 +137,13 @@ nnoremap <buffer> <leader>M :JuliaSetFunc<CR>:JuliaSendTest<CR>:Neomake! repl al
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
-nnoremap <buffer> ,c :call system( "tmux send-keys C-c" )<CR>
-nnoremap <buffer> ,d :call system( "tmux send-keys C-d" )<CR>
+nnoremap <buffer> ,c :call system( "tmux send-keys -t " . b:tmux_client . ":" . b:tmux_window . " C-c" )<CR>
+nnoremap <buffer> ,d :call system( "tmux send-keys -t " . b:tmux_client . ":" . b:tmux_window . " C-d" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
 nnoremap <buffer> ,f :SlimeSend1 fieldnames(<C-R><C-W>)<CR>
 nnoremap <buffer> ,j :call julia#toggle_function_blockassign()<CR>
 nnoremap <buffer> ,m :SlimeSend1 methods(<C-R><C-W>)<CR>
-nnoremap <buffer> ,l :call system( "tmux send-keys C-l" )<CR>
+nnoremap <buffer> ,l :call system( "tmux send-keys -t " . b:tmux_client . ":" . b:tmux_window . " C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 display(<C-R><C-W>)<CR>
 nnoremap <buffer> ,r :SlimeSend1 include("<C-R>%")<CR>
 nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
