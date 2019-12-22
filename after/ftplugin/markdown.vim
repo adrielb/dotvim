@@ -38,3 +38,9 @@ function! s:inject_mozhist_link(line)
   let l:img = "[" . l:lines[1] . "](" . l:lines[2] . ")"
   call append(line('.'), l:img)
 endfunction
+
+
+augroup auto-save-markdown
+  au!
+  autocmd InsertLeave,TextChanged <buffer> update
+augroup END
