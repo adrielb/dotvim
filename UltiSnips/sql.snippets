@@ -69,6 +69,10 @@ snippet drop "drop table" b
 drop $1`!p snip.rv=complete(t[1],OBJ_TYPES)` ${2:table};
 endsnippet
 
+snippet delete "delete statement" b
+delete from ${1:table} where ${2:condition};
+endsnippet
+
 snippet insert "insert into" b
 insert into ${1:table} (${2:col}) values (${3:val});
 endsnippet
