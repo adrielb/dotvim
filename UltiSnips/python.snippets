@@ -164,3 +164,8 @@ class Borg:
 	def __init__(self):
 		self.__dict__ = self.__singleton
 endsnippet
+
+snippet readfile
+with open("${1:filename}") as fp:
+	data = fp.read()
+endsnippet
