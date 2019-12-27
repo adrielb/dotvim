@@ -142,7 +142,7 @@ xnoremap g/ y:<C-U>Ag <C-R>"<CR>
 nnoremap gaa :argadd %<Bar>next<CR>
 nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
 nnoremap gad :<C-R>=argidx()+1<CR>argdelete<BAR>first<CR>
-nnoremap gl :Lines<CR>
+nnoremap gl :BLines<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :Buffers<CR>
