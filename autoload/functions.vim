@@ -141,18 +141,25 @@ function! functions#BTmuxSession()
   return project
 endfunction
 
+function! functions#TmuxClient() abort
+  return system('tmux list-clients -F "#{client_tty}" | head -n 1')
+endfunction
+
 function! functions#SwitchTmux(...)
-  if !exists( 'b:tmux_client' )
-    let b:tmux_client = functions#BTmuxSession()
+  if !exists( 'b:tmux_session' )
+    let b:tmux_session = functions#BTmuxSession()
   endif
   if exists('a:1')
-    let b:tmux_client = a:1
+    let b:tmux_session = a:1
   endif
   if !exists( 'b:tmux_window' )
     return
   endif
-  let l:win = b:tmux_client . ':' . b:tmux_window
-  call system('tmux switch-client -t ' . l:win . ' -c /dev/pts/0')
+  let l:win = b:tmux_session . ':' . b:tmux_window
+  if ! exists( 'g:tmux_client' )
+    let g:tmux_client = functions#TmuxClient()
+  endif
+  call system('tmux switch-client -t ' . l:win . ' -c ' . g:tmux_client)
   let b:slime_config = {"socket_name": "default"
                      \ ,"target_pane": l:win }
 endfunction

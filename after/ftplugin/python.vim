@@ -73,8 +73,8 @@ augroup END
 nnoremap <leader>a  :call CaptureTmux()<CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
 nnoremap <buffer> ,d :SlimeSend1 %pdb<CR>
-nnoremap <buffer> ,c :call system( "tmux send-keys -t " . b:tmux_client . ":" . b:tmux_window . " C-c" )<CR>
-nnoremap <buffer> ,l :call system( "tmux send-keys -t " . b:tmux_client . ":" . b:tmux_window . " C-l" )<CR>
+nnoremap <buffer> ,c :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-c" )<CR>
+nnoremap <buffer> ,l :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-l" )<CR>
 nnoremap <buffer> ,p :SlimeSend1 print(<C-R><C-W>)<CR>
 xnoremap <buffer> ,p y:<C-U>SlimeSend1 <C-R>"<CR>
 nnoremap <buffer> ,s :SlimeSend1 dir(<C-R><C-W>)<CR>
