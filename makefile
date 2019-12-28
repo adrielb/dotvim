@@ -5,7 +5,8 @@ all:
 link:
 	ln -sf ${PWD}/vimrc ~/.vimrc
 	ln -sf ${PWD}/nvimrc ${XDG_NVIM}/init.vim
-	ln -sf ${PWD} ~/.vim/bundle/dotvim
+	ln -sf ${PWD} ~/.vim/bundle/
+	ln -sf ${PWD}/UltiSnips-mangle ${XDG_NVIM}/UltiSnips
 
 thesaurus:
 	wget http://www.gutenberg.org/dirs/etext02/mthes10.zip
