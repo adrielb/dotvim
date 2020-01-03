@@ -169,3 +169,8 @@ snippet readfile
 with open("${1:filename}") as fp:
 	data = fp.read()
 endsnippet
+
+snippet writefile
+with open("${1:filename}",'x') as fp:
+	fp.write(${2:data})
+endsnippet
