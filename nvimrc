@@ -39,6 +39,7 @@ Plug 'cespare/vim-toml'
 " Plug 'szw/vim-g'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-dictionary'
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
