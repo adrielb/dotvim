@@ -156,7 +156,7 @@ function! functions#SwitchTmux(...)
     return
   endif
   let l:win = b:tmux_session . ':' . b:tmux_window
-  if ! exists( 'g:tmux_client' )
+  if !exists( 'g:tmux_client' )
     let g:tmux_client = functions#TmuxClient()
   endif
   call system('tmux switch-client -t ' . l:win . ' -c ' . g:tmux_client)
