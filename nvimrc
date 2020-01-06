@@ -125,6 +125,10 @@ set diffopt+=algorithm:histogram,indent-heuristic,vertical
 " }}}
 
 " Mappings {{{
+nnoremap { k{<Space>0
+vnoremap { k{<Space>0
+nnoremap } j}<BS>0
+vnoremap } j}<BS>0
 " line text object
 vnoremap al :<C-U>normal! 0v$h<CR>
 vnoremap il :<C-U>normal! ^vg_<CR>
