@@ -174,3 +174,8 @@ snippet writefile
 with open("${1:filename}",'x') as fp:
 	fp.write(${2:data})
 endsnippet
+
+snippet reordercolumns
+cols = [$0]
+df = df[cols + list(set(df.columns) - set(cols))]
+endsnippet
