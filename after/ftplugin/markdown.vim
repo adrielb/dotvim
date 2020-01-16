@@ -38,7 +38,7 @@ command! -nargs=1 MozBookmark call fzf#run({
 function! s:inject_mozhist_yaml(line)
   let l:line = "---\rvisitdate: " . a:line . "\r---\r"
   let l:line = substitute(l:line, "\t", "\rtitle: ", "")
-  let l:line = substitute(l:line, "\t", "\rurl: ", "")
+  let l:line = substitute(l:line, "\t", "\rrefurl: ", "")
   let l:lines = split(l:line, "\r")
   call append(line('.'), l:lines)
 endfunction
