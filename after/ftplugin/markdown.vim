@@ -15,6 +15,12 @@ nnoremap <buffer> <leader>i  :MozHist image<CR>
 nnoremap <buffer> <leader>l  :MozHist link<CR>
 nnoremap <buffer> <leader>b  :MozBookmark link<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
+nnoremap <buffer> <leader>n  :NewNoteFromBookmark<CR>
+
+command! NewNoteFromBookmark call fzf#run({
+        \ 'source': s:moz_history_sh . ' bookmarks',
+        \ 'sink': function('s:new_note'),
+        \ })
 
 command! MarkdownFiles call fzf#run({
         \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%f\t%P\n'",
@@ -35,8 +41,26 @@ command! -nargs=1 MozBookmark call fzf#run({
 
 " fzf line format: 'date\ttitle\turl'
 
+function! s:new_note(line)
+  let l:lines = split(a:line, "\t")
+  let l:date = l:lines[0]
+  let l:title = l:lines[1]
+  let l:url = l:lines[2]
+  let l:header = "---\ndate: " . l:date . 
+        \ "\ntitle: " . l:title . 
+        \ "\nrefurl: " . l:url .
+        \ "\n---\n" . l:url . "\n\n"
+  let l:fname = substitute(l:title, "[^[:alnum:]]", "-", "g")
+  let l:fname = substitute(l:fname, " ", "_", "g")
+  exec "e bookmarks/" . l:fname . ".md"
+  put =l:header
+  " 'put' creates an empty top line, delete that then move cursor to bottom
+  normal ggddG
+  write
+endfunction
+
 function! s:inject_mozhist_yaml(line)
-  let l:line = "---\rvisitdate: " . a:line . "\r---\r"
+  let l:line = "---\rdate: " . a:line . "\r---\r"
   let l:line = substitute(l:line, "\t", "\rtitle: ", "")
   let l:line = substitute(l:line, "\t", "\rrefurl: ", "")
   let l:lines = split(l:line, "\r")
