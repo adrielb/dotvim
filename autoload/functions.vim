@@ -193,3 +193,59 @@ url = 'http://www.google.com/search?' + params
 subprocess.run(["firefox", "--private-window", url])
 EOF
 endfunction
+
+
+function! functions#webify_filename(title)
+  " convert spaces to underscore
+  " convert symbols to dash
+  let l:fname = substitute(a:title, "[^[:alnum:][:space:]/]", "-", "g")
+  let l:fname = substitute(l:fname, "[[:space:]]", "_", "g")
+  return l:fname
+endfunction
+
+
+command! Note call fzf#run({
+        \ 'source': "find /home/abergman/projects/wiki/ \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%P\n'",
+        \ 'sink': function('functions#NewNote'),
+        \ 'options': '--ansi ' .
+                   \ '--delimiter=\t ' .
+                   \ '--nth=2 ' .
+                   \ '--bind=ctrl-j:print-query ' .
+                   \ '--preview="cat {-1}" ' .
+                   \ '--preview-window=85'
+        \ })
+
+" 1. fzf returns nothing                --> create datetime.md
+" 2. fzf returns 'date\tan_existing.md' --> just open it
+" 3. fzf returns 'a new title'          --> create a_new_title.md
+function! functions#NewNote(line)
+  let l:wiki_location = "~/projects/wiki/"
+  let l:wiki_location = expand(l:wiki_location)
+  if len(a:line) == 0
+    " if no name given, use datetime YYYY-MM-DD-HHMM.md
+    let l:fname = strftime("%F-%H%M") . ".md"
+    let l:title = l:fname
+  else
+    let l:lines = split(a:line, "\t")
+    if len(l:lines) == 2
+      " file exists, just open it
+      let l:fname = l:lines[1]
+      exec "edit " . l:wiki_location . l:fname
+      return
+    else
+      " create new note
+      let l:title = a:line
+      let l:fname = functions#webify_filename(l:title) . ".md"
+    endif
+  endif
+  exec "edit " . l:wiki_location . l:fname
+  let l:header = 
+        \ "---\n" .
+        \ "date: " . strftime("%F") . "\n" .
+        \ "title: " . l:title .  "\n" .
+        \ "---\n\n"
+  put =l:header
+  " 'put' creates an empty top line, delete that then move cursor to bottom
+  normal ggddG
+  write
+endfunction

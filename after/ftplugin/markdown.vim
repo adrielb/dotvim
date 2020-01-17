@@ -41,6 +41,7 @@ command! -nargs=1 MozBookmark call fzf#run({
 
 " fzf line format: 'date\ttitle\turl'
 
+
 function! s:new_note(line)
   let l:lines = split(a:line, "\t")
   let l:date = l:lines[0]
@@ -50,8 +51,7 @@ function! s:new_note(line)
         \ "\ntitle: " . l:title . 
         \ "\nrefurl: " . l:url .
         \ "\n---\n" . l:url . "\n\n"
-  let l:fname = substitute(l:title, "[^[:alnum:]]", "-", "g")
-  let l:fname = substitute(l:fname, " ", "_", "g")
+  let l:fname = functions#webify_filename(l:title)
   exec "e bookmarks/" . l:fname . ".md"
   put =l:header
   " 'put' creates an empty top line, delete that then move cursor to bottom
