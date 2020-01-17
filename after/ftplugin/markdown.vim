@@ -10,6 +10,8 @@ setlocal nofoldenable
 
 let s:moz_history_sh = expand('<sfile>:p:h') . '/' . 'moz_history.sh'
 
+iabbrev <buffer> > `>`
+iabbrev <buffer> < `<`
 nnoremap <buffer> <leader>m  :MozHist yaml<CR>
 nnoremap <buffer> <leader>i  :MozHist image<CR>
 nnoremap <buffer> <leader>l  :MozHist link<CR>
@@ -40,7 +42,6 @@ command! -nargs=1 MozBookmark call fzf#run({
 
 
 " fzf line format: 'date\ttitle\turl'
-
 
 function! s:new_note(line)
   let l:lines = split(a:line, "\t")
