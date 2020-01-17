@@ -208,10 +208,10 @@ command! Note call fzf#run({
         \ 'source': "find /home/abergman/projects/wiki/ \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%P\n'",
         \ 'sink': function('functions#NewNote'),
         \ 'options': '--ansi ' .
-                   \ '--delimiter=\t ' .
+                   \ '--delimiter="\t" ' .
                    \ '--nth=2 ' .
                    \ '--bind=ctrl-j:print-query ' .
-                   \ '--preview="cat {-1}" ' .
+                   \ '--preview="head --lines=120 /home/abergman/projects/wiki/{-1}" ' .
                    \ '--preview-window=85'
         \ })
 
