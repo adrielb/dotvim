@@ -25,7 +25,7 @@ command! NewNoteFromBookmark call fzf#run({
         \ })
 
 command! MarkdownFiles call fzf#run({
-        \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%f\t%P\n'",
+        \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%P\t%P\n'",
         \ 'sink': function('s:inject_mozhist_link'),
         \ 'options': '--ansi'
         \ })
@@ -44,16 +44,18 @@ command! -nargs=1 MozBookmark call fzf#run({
 " fzf line format: 'date\ttitle\turl'
 
 function! s:new_note(line)
+  let l:wiki_location = "~/projects/wiki/"
+  let l:wiki_location = expand(l:wiki_location)
   let l:lines = split(a:line, "\t")
   let l:date = l:lines[0]
   let l:title = l:lines[1]
   let l:url = l:lines[2]
   let l:header = "---\ndate: " . l:date . 
-        \ "\ntitle: " . l:title . 
+        \ "\ntitle: \"" . l:title . "\"" .
         \ "\nrefurl: " . l:url .
         \ "\n---\n" . l:url . "\n\n"
-  let l:fname = functions#webify_filename(l:title)
-  exec "e bookmarks/" . l:fname . ".md"
+  let l:fname = functions#webify_filename(l:title) . ".md"
+  exec "edit " . l:wiki_location . "/bookmarks/" . l:fname
   put =l:header
   " 'put' creates an empty top line, delete that then move cursor to bottom
   normal ggddG
