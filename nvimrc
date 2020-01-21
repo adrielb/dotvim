@@ -4,6 +4,7 @@ let g:mapleader = "\<Space>"
 " Installed Plugins {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -276,9 +277,10 @@ let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_improved_warnings=1
-colorscheme gruvbox
+colorscheme PaperColor
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
+" highlight htmlLink guifg=#129793 gui=underline
 let g:semanticEnableFileTypes = { 
       \ 'julia': 'jl',
       \ 'python': 'py', 
