@@ -1,0 +1,8 @@
+snippet exclude "ignore everything except for..."
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# Whitelist some files and folders
+!.gitignore
+!${1:whitelist_dir}/
+endsnippet
