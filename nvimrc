@@ -143,8 +143,8 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap g/ :Ack<Space><C-R><C-W><Space>%:p:h<left><left><left><left><left><left>
-xnoremap g/ y:<C-U>Ag <C-R>"<CR>
+nnoremap g/ :Ag<CR>
+xnoremap g/ y:<C-U>Ack<Space><C-R>"<Space>%:p:h<left><left><left><left><left><left>
     nmap ga <Plug>(EasyAlign)
 nnoremap gaa :argadd %<Bar>next<CR>
 nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
