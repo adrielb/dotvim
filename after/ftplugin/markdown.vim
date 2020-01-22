@@ -52,9 +52,9 @@ function! s:new_note(line)
   let l:title = l:lines[1]
   let l:url = l:lines[2]
   let l:header = "---\ndate: " . l:date . 
-        \ "\ntitle: \"" . l:title . "\"" .
+        \ "\ntitle: >\n    " . l:title .
         \ "\nrefurl: " . l:url .
-        \ "\n---\n" . l:url . "\n\n"
+        \ "\n---\n\n\n"
   let l:fname = functions#webify_filename(l:title) . ".md"
   exec "edit " . l:wiki_location . "/bookmarks/" . l:fname
   put =l:header
