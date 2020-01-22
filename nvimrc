@@ -113,7 +113,7 @@ set guioptions-=r " no right scrollbar
 set shortmess+=I  " no intro msg
 set clipboard+=unnamedplus
 set report=0
-set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«,nbsp:¬
+set listchars=trail:█,tab:>~,eol:¶,extends:»,precedes:«,nbsp:¬,conceal:·
 set fillchars=vert:│,fold:\_,diff:⣿
 set lazyredraw
 set conceallevel=2

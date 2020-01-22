@@ -7,6 +7,7 @@ setlocal expandtab
 setlocal complete+=k,s
 setlocal commentstring=*\ %s
 setlocal nofoldenable
+setlocal conceallevel=1
 
 let s:moz_history_sh = expand('<sfile>:p:h') . '/' . 'moz_history.sh'
 
