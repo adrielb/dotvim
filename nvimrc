@@ -453,7 +453,7 @@ augroup END
 augroup switch_tmux
   autocmd!
   autocmd BufEnter,WinEnter * call functions#SwitchTmux()
-  autocmd BufEnter * silent! Glcd
+  autocmd BufEnter * call functions#SetBufferPWD()
 augroup END
 
 "}}}

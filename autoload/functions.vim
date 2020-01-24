@@ -249,3 +249,10 @@ function! functions#NewNote(line)
   normal ggddG
   write
 endfunction
+
+function! functions#SetBufferPWD()
+  if !exists("b:setbufferpwd")
+    silent! Glcd
+    let b:setbufferpwd = 1
+  endif
+endfunction
