@@ -194,6 +194,7 @@ subprocess.run(["firefox", "--private-window", url])
 EOF
 endfunction
 
+let g:wiki_location = "~/projects/wiki/"
 
 function! functions#webify_filename(title)
   " convert spaces to underscore
@@ -203,51 +204,50 @@ function! functions#webify_filename(title)
   return l:fname
 endfunction
 
-
-command! Note call fzf#run({
-        \ 'source': "find /home/abergman/projects/wiki/ \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%P\n'",
-        \ 'sink': function('functions#NewNote'),
-        \ 'options': '--ansi ' .
-                   \ '--delimiter="\t" ' .
-                   \ '--nth=2 ' .
-                   \ '--bind=ctrl-j:print-query ' .
-                   \ '--preview="head --lines=120 /home/abergman/projects/wiki/{-1}" ' .
-                   \ '--preview-window=85'
-        \ })
-
-" 1. fzf returns nothing                --> create datetime.md
-" 2. fzf returns 'date\tan_existing.md' --> just open it
-" 3. fzf returns 'a new title'          --> create a_new_title.md
-function! functions#NewNote(line)
-  let l:wiki_location = "~/projects/wiki/"
-  let l:wiki_location = expand(l:wiki_location)
-  if len(a:line) == 0
-    " if no name given, use datetime YYYY-MM-DD-HHMM.md
-    let l:fname = strftime("%F-%H%M") . ".md"
-    let l:title = l:fname
+function! functions#new_note(...) abort
+  let l:fname = expand(g:wiki_location) . strftime("%F-%H%M")
+  if len(a:000) == 0
+    let l:title = ""
+    let l:fname = l:fname . ".md"
   else
-    let l:lines = split(a:line, "\t")
-    if len(l:lines) == 2
-      " file exists, just open it
-      let l:fname = l:lines[1]
-      exec "edit " . l:wiki_location . l:fname
-      return
-    else
-      " create new note
-      let l:title = a:line
-      let l:fname = functions#webify_filename(l:title) . ".md"
-    endif
+    let l:title = join(a:000)
+    let l:fname = l:fname . "-" . functions#webify_filename(l:title) . ".md"
   endif
-  exec "edit " . l:wiki_location . l:fname
   let l:header = 
         \ "---\n" .
-        \ "date: " . strftime("%F") . "\n" .
-        \ "title: " . l:title .  "\n" .
+        \ "date: " . strftime("%FT%T%z") . "\n" .
+        \ "title: " . l:title . "\n" .
         \ "---\n\n"
-  put =l:header
+  call functions#write_note(fname, header)
+endfunction
+
+function! functions#new_note_bookmark(line)
+  let l:lines = split(a:line, "\t")
+  let l:date = l:lines[0]
+  let l:title = l:lines[1]
+  let l:url = l:lines[2]
+  let l:header = 
+        \ "---\n" .
+        \ "date: " . l:date . "\n" .
+        \ "title: >\n    " . l:title . "\n" .
+        \ "refurl: " . l:url . "\n" .
+        \ "---\n\n"
+  let l:fname = expand(g:wiki_location) . "/bookmarks/" . 
+        \ functions#webify_filename(l:title) . ".md"
+  call functions#write_note(fname, header)
+endfunction
+
+function! functions#write_note(fname, header)
+  if filereadable(a:fname)
+    exec "edit" a:fname
+    return
+  endif
+  enew
+  put =a:header
   " 'put' creates an empty top line, delete that then move cursor to bottom
   normal ggddG
-  write
+  " call append(line('.'), l:header)
+  execute "write" a:fname
 endfunction
 
 function! functions#SetBufferPWD()

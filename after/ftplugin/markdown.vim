@@ -13,20 +13,27 @@ let s:moz_history_sh = expand('<sfile>:p:h') . '/' . 'moz_history.sh'
 
 iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`
+
+inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
 nnoremap <buffer> <leader>m  :MozHist yaml<CR>
 nnoremap <buffer> <leader>i  :MozHist image<CR>
 nnoremap <buffer> <leader>l  :MozHist link<CR>
 nnoremap <buffer> <leader>b  :MozBookmark link<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
-nnoremap <buffer> <leader>n  :NewNoteFromBookmark<CR>
+nnoremap <buffer> ,b :NewNoteFromBookmark<CR>
+nnoremap <buffer> ,n :NewNote<space>
+nnoremap <buffer> ,l :WikiLink<CR>
+
+
+command! -nargs=* NewNote call functions#new_note(<f-args>)
 
 command! NewNoteFromBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',
-        \ 'sink': function('s:new_note'),
+        \ 'sink': function('functions#new_note_bookmark'),
         \ })
 
 command! MarkdownFiles call fzf#run({
-        \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' \\) -printf '\033[32m%Tc\033[0m\t%P\t%P\n'",
+        \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' -or -iname '*.png'\\) -printf '\033[32m%Tc\033[0m\t%P\t%P\n'",
         \ 'sink': function('s:inject_mozhist_link'),
         \ 'options': '--ansi'
         \ })
@@ -41,27 +48,23 @@ command! -nargs=1 MozBookmark call fzf#run({
         \ 'sink': function('s:inject_mozhist_' . <q-args>)
         \ })
 
+function! s:make_link(line)
+  let l:has_column = 1
+  let parts = split(a:line, '[^:]\zs:\ze[^:]')
+  let filename = parts[0]
+  let lnum = parts[1]
+  let text = join(parts[(l:has_column ? 3 : 2):], ':')
+  let link = "[" . text . "](" . filename . ")"
+  put =link
+endfunction
+
+
+command! -bang -nargs=* WikiLink call fzf#vim#ag(<q-args>,
+      \ fzf#vim#with_preview({'sink': function('s:make_link')}))
+
+
 
 " fzf line format: 'date\ttitle\turl'
-
-function! s:new_note(line)
-  let l:wiki_location = "~/projects/wiki/"
-  let l:wiki_location = expand(l:wiki_location)
-  let l:lines = split(a:line, "\t")
-  let l:date = l:lines[0]
-  let l:title = l:lines[1]
-  let l:url = l:lines[2]
-  let l:header = "---\ndate: " . l:date . 
-        \ "\ntitle: >\n    " . l:title .
-        \ "\nrefurl: " . l:url .
-        \ "\n---\n\n\n"
-  let l:fname = functions#webify_filename(l:title) . ".md"
-  exec "edit " . l:wiki_location . "/bookmarks/" . l:fname
-  put =l:header
-  " 'put' creates an empty top line, delete that then move cursor to bottom
-  normal ggddG
-  write
-endfunction
 
 function! s:inject_mozhist_yaml(line)
   let l:line = "---\rdate: " . a:line . "\r---\r"
