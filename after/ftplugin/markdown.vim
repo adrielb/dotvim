@@ -16,7 +16,7 @@ iabbrev <buffer> < `<`
 
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
 nnoremap <buffer> <leader>m  :MozHist yaml<CR>
-nnoremap <buffer> <leader>i  :MozHist image<CR>
+nnoremap <buffer> ,i :MozHist image<CR>
 nnoremap <buffer> <leader>l  :MozHist link<CR>
 nnoremap <buffer> <leader>b  :MozBookmark link<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
@@ -76,8 +76,12 @@ endfunction
 
 function! s:inject_mozhist_image(line)
   let l:lines = split(a:line, "\t")
-  let l:img = "![FIG: ](" . l:lines[2] . ")"
-  call append(line('.'), l:img)
+  let l:url = l:lines[2]
+  let l:img_dir = "img/"
+  exec "silent !wget --directory-prefix=" . l:img_dir . " " . l:url
+  let l:localimg = fnamemodify(l:url,':t')
+  let l:md_img = "![FIG: ](/" . l:img_dir . l:localimg . ")"
+  call append(line('.'), l:md_img)
 endfunction
 
 function! s:inject_mozhist_link(line)
