@@ -60,7 +60,7 @@ endfunction
 
 
 command! -bang -nargs=* WikiLink call fzf#vim#ag(<q-args>,
-      \ fzf#vim#with_preview({'sink': function('s:make_link')}))
+      \ fzf#vim#with_preview('left:88', {'sink': function('s:make_link')}))
 
 
 
