@@ -143,7 +143,7 @@ omap     af :normal Vaf<CR>
 omap     if :normal Vif<CR>
 nnoremap n nzxzz
 nnoremap N Nzxzz
-nnoremap g/ :Ag<CR>
+nnoremap g/ :AgPreview<CR>
 xnoremap g/ y:<C-U>Ack<Space><C-R>"<Space>%:p:h<left><left><left><left><left><left>
     nmap ga <Plug>(EasyAlign)
 nnoremap gaa :argadd %<Bar>next<CR>
@@ -428,6 +428,8 @@ let g:airline_detect_crypt=0
 
 " vim {{{
 command! CD cd %:p:h
+command! -bang -nargs=* AgPreview call fzf#vim#ag(<q-args>,
+      \ fzf#vim#with_preview('left:85'))
 
 " Auto-Reload vimrc
 " http://www.bestofvim.com/tip/auto-reload-your-vimrc/
