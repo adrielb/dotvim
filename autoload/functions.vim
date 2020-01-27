@@ -199,8 +199,9 @@ let g:wiki_location = "~/projects/wiki/"
 function! functions#webify_filename(title)
   " convert spaces to underscore
   " convert symbols to dash
-  let l:fname = substitute(a:title, "[^[:alnum:][:space:]/]", "-", "g")
+  let l:fname = substitute(a:title, "[^[:alnum:][:space:]]", "-", "g")
   let l:fname = substitute(l:fname, "[[:space:]]", "_", "g")
+  let l:fname = l:fname[:127]
   return l:fname
 endfunction
 
