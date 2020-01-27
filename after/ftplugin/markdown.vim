@@ -15,11 +15,11 @@ iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`
 
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
-nnoremap <buffer> <leader>m  :MozHist yaml<CR>
 nnoremap <buffer> ,i :MozHist image<CR>
-nnoremap <buffer> <leader>l  :MozHist link<CR>
+" nnoremap <buffer> ,h :MozHist link<CR>
 nnoremap <buffer> <leader>b  :MozBookmark link<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
+nnoremap <buffer> ,h :NewNoteFromHistory<CR>
 nnoremap <buffer> ,b :NewNoteFromBookmark<CR>
 nnoremap <buffer> ,n :NewNote<space>
 nnoremap <buffer> ,l :WikiLink<CR>
@@ -29,6 +29,11 @@ command! -nargs=* NewNote call functions#new_note(<f-args>)
 
 command! NewNoteFromBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',
+        \ 'sink': function('functions#new_note_bookmark'),
+        \ })
+
+command! NewNoteFromHistory call fzf#run({
+        \ 'source': s:moz_history_sh,
         \ 'sink': function('functions#new_note_bookmark'),
         \ })
 
