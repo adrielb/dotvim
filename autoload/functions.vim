@@ -244,10 +244,7 @@ function! functions#write_note(fname, header)
     return
   endif
   enew
-  put =a:header
-  " 'put' creates an empty top line, delete that then move cursor to bottom
-  normal ggddG
-  " call append(line('.'), l:header)
+  call append(0, split(a:header,"\n"))
   execute "write" a:fname
 endfunction
 
