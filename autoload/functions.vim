@@ -248,9 +248,11 @@ function! functions#write_note(fname, header)
   execute "write" a:fname
 endfunction
 
-function! functions#SetBufferPWD()
-  if !exists("b:setbufferpwd")
+function! functions#SetBufferCWD()
+  if exists("b:bufferCWD")
+    exec "lcd" b:bufferCWD
+  else
     silent! Glcd
-    let b:setbufferpwd = 1
+    let b:bufferCWD = getcwd()
   endif
 endfunction
