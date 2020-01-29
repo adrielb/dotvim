@@ -73,7 +73,6 @@ let g:neomake_all_maker = {
       \ }
 
 augroup neomake_update
-  au!
   autocmd BufEnter <buffer> let g:neomake_repl_maker['args'] = [b:tmux_session, b:tmux_window]
   autocmd BufEnter <buffer> let g:neomake_all_maker['args'] = [b:tmux_session, b:tmux_window]
 augroup END
