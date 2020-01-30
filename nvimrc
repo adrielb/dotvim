@@ -228,6 +228,7 @@ let g:LanguageClient_serverCommands = {
 \   'python': ['pyls', '-v'],
 \   'julia': ['julia', '--startup-file=no', '--history-file=no', expand('<sfile>:p:h').'/languageserver.jl']
 \}
+let g:jedi#auto_initialization = 0
 " let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#rename_command = ''
