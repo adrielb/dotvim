@@ -185,7 +185,7 @@ function! functions#open_bookmark(fzfout)
   if l:expect == "ctrl-g"
     call functions#Google(0, l:query)
   else
-    exec "!firefox " l:url
+    exec "silent !firefox " l:url
   endif
 endfunction
 
