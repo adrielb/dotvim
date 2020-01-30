@@ -9,7 +9,7 @@ setlocal commentstring=*\ %s
 setlocal nofoldenable
 setlocal conceallevel=1
 
-let s:moz_history_sh = expand('<sfile>:p:h') . '/' . 'moz_history.sh'
+let s:moz_history_sh = expand('<sfile>:p:h:h:h') . '/bin/moz_history.sh'
 
 iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`

@@ -170,6 +170,24 @@ function! functions#CaptureTmux()
   copen
 endfunction
 
+let s:moz_history_sh = expand('<sfile>:p:h:h') . '/bin/moz_history.sh'
+
+command! OpenBookmark call fzf#run({
+        \ 'source': s:moz_history_sh . ' bookmarks',
+        \ 'sink*': function('functions#open_bookmark'),
+        \ 'options': ['--expect=ctrl-g','--print-query']
+        \ })
+
+function! functions#open_bookmark(fzfout)
+  let l:query = a:fzfout[0]
+  let l:expect = a:fzfout[1]
+  let l:url = split(a:fzfout[2], "\t")[2]
+  if l:expect == "ctrl-g"
+    call functions#Google(0, l:query)
+  else
+    exec "!firefox " l:url
+  endif
+endfunction
 
 command! -nargs=1 Google call functions#Google(0, <f-args>)
 command! -nargs=1 GoogleL call functions#Google(1, <f-args>)

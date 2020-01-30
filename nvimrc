@@ -169,7 +169,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>a  :call functions#CaptureTmux()<CR>
-nnoremap <leader>g  :Google<space>
+nnoremap <leader>g  :OpenBookmark<CR>
 nnoremap <leader>G  :Google <C-R><C-W><CR>
 xnoremap <leader>g  y:<C-U>Google<space><C-R>"
 nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR><C-L>
