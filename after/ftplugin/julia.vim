@@ -98,7 +98,7 @@ let g:neomake_julia_mem_profile_maker = {
 
 augroup NeomakeJuliaRepl
   au!
-  autocmd FocusGained * Neomake! repl all
+  autocmd FocusGained *.jl Neomake! repl all
   " autocmd FocusGained * Neomake! repl help all
 augroup END
 

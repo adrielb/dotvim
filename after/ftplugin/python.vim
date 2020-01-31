@@ -67,7 +67,7 @@ let g:neomake_pymode_maker = {
 
 augroup NeomakePyRepl
   au!
-  autocmd FocusGained * Neomake! ipython pymode pylogging
+  autocmd FocusGained *.py Neomake! ipython pymode pylogging
 augroup END
 
 nnoremap <leader>a  :call CaptureTmux()<CR>
