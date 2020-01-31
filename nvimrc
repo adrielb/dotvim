@@ -205,6 +205,7 @@ let g:neomake_enabled_makers=1
 "}}}
 
 " Prose {{{
+let g:ackhighlight = 1
 let g:tex_flavor='latex'
 let g:markdown_folding=1
 let g:vim_markdown_follow_anchor = 1
