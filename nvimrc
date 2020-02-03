@@ -191,8 +191,8 @@ nnoremap <up>       :cprev<BAR>normal! zxzz<CR>
 nnoremap <down>     :cnext<BAR>normal! zxzz<CR>
 nnoremap <left>     :prev<CR>
 nnoremap <right>    :next<CR>
-nnoremap <S-PageUp>   :m0<CR>
-nnoremap <S-PageDown> :m$<CR>
+nnoremap <S-PageUp>   :m0<CR>'.
+nnoremap <S-PageDown> :m$<CR>'.
     vmap <CR>       <Plug>(EasyAlign)
 nnoremap -          :Dirvish %<CR>
 tnoremap <Esc>      <C-\><C-n>
