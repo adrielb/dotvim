@@ -1,3 +1,6 @@
+let s:bin_dir = expand('<sfile>:p:h:h') . '/bin'
+let s:moz_history_sh = s:bin_dir . '/moz_history.sh'
+
 function! functions#ReadLocalVimrc()
   let mylocalvimrc = expand( "%:p:h" ) . "/local.vimrc"
   if filereadable( mylocalvimrc )
@@ -76,9 +79,6 @@ function! functions#CaptureTmux()
   cfile /dev/shm/tmux_capture
   copen
 endfunction
-
-let s:bin_dir = expand('<sfile>:p:h:h') . '/bin'
-let s:moz_history_sh = s:bin_dir . '/moz_history.sh'
 
 command! OpenBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',

@@ -18,6 +18,8 @@ let b:tmux_session = functions#BTmuxSession()
 let b:tmux_window="julia"
 let b:tmux_func="main"
 let b:neomake_open_list=2
+let s:bin_dir = expand('<sfile>:p:h:h:h') . '/bin'
+let s:parse_julia_repl_sh = s_bin_dir . '/parse_julia_repl.sh'
 
 let s:help_efm = ''
 let s:help_efm .= '  [%m at %f:%l%.%#,'
@@ -43,7 +45,7 @@ let s:repl_efm .= '%Cin expression starting at %f:%l%.%#,'
 let s:repl_efm .= '%Z,'
 let s:repl_efm .= '%-G%.%#,'
 let g:neomake_repl_maker = {
-      \ 'exe': 'parse_julia_repl.sh',
+      \ 'exe': s:parse_julia_repl_sh,
       \ 'args': [b:tmux_session, b:tmux_window],
       \ 'append_file': 0,
       \ 'errorformat': s:repl_efm
@@ -66,7 +68,7 @@ let s:all_efm .= '%m at %f:%l%.%#,'
 let s:all_efm .= '%W%.%#Warning: %m,'
 let s:all_efm .= '%Z%.%#@%.%# %f:%l%.%#,'
 let g:neomake_all_maker = {
-      \ 'exe': 'parse_julia_repl.sh',
+      \ 'exe': s:parse_julia_repl_sh,
       \ 'args': [b:tmux_session, b:tmux_window],
       \ 'append_file': 0,
       \ 'errorformat': s:all_efm
