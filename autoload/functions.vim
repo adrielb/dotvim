@@ -170,7 +170,8 @@ function! functions#CaptureTmux()
   copen
 endfunction
 
-let s:moz_history_sh = expand('<sfile>:p:h:h') . '/bin/moz_history.sh'
+let s:bin_dir = expand('<sfile>:p:h:h') . '/bin'
+let s:moz_history_sh = s:bin_dir . '/moz_history.sh'
 
 command! OpenBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',
@@ -273,4 +274,12 @@ function! functions#SetBufferCWD()
     silent! Glcd
     let b:bufferCWD = getcwd()
   endif
+endfunction
+
+
+command! Todo call functions#UpdateTodo()
+
+function! functions#UpdateTodo()
+  exec "!" . s:bin_dir . "/todo.sh"
+  cfile todo.cfile
 endfunction
