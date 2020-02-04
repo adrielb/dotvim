@@ -158,6 +158,7 @@ function! functions#new_note_bookmark(line)
         \ "date: " . l:date . "\n" .
         \ "title: >\n    " . l:title . "\n" .
         \ "refurl: " . l:url . "\n" .
+        \ "tags: [todo]\n" .
         \ "---\n\n"
   let l:fname = expand(g:wiki_location) . "/bookmarks/" . 
         \ functions#webify_filename(l:title) . ".md"
