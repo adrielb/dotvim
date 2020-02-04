@@ -16,13 +16,13 @@ iabbrev <buffer> < `<`
 
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
 nnoremap <buffer> ,i :MozHist image<CR>
-" nnoremap <buffer> ,h :MozHist link<CR>
-nnoremap <buffer> <leader>b  :MozBookmark link<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
-nnoremap <buffer> ,h :NewNoteFromHistory<CR>
-nnoremap <buffer> ,b :NewNoteFromBookmark<CR>
-nnoremap <buffer> ,n :NewNote<space>
-nnoremap <buffer> ,l :WikiLink<CR>
+nnoremap <buffer> ,nh :NewNoteFromHistory<CR>
+nnoremap <buffer> ,nb :NewNoteFromBookmark<CR>
+nnoremap <buffer> ,n  :NewNote<space>
+nnoremap <buffer> ,lh :MozHist link<CR>
+nnoremap <buffer> ,lb :MozBookmark link<CR>
+nnoremap <buffer> ,lw :WikiLink<CR>
 
 
 command! -nargs=* NewNote call functions#new_note(<f-args>)
