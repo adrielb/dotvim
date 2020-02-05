@@ -279,6 +279,15 @@ let g:SignatureIncludeMarks='jkluiopmnhyasdfgqwertzxcvb'
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_improved_warnings=1
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'override' : {
+  \         'error_bg' : ['#ff1500', '232']
+  \       }
+  \     }
+  \   }
+  \ }
 colorscheme PaperColor
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
@@ -289,6 +298,7 @@ let g:semanticEnableFileTypes = {
       \ 'picat' : 'pi',
       \ 'minizinc' : 'mzn'
       \}
+" semanticBlacklistOverride {{{
 let g:semanticBlacklistOverride = {'minizinc': [
       \ 'array',
       \ 'assert',
@@ -372,6 +382,7 @@ let g:semanticBlacklistOverride = {'minizinc': [
       \ 'writeln'
       \ ]
       \ }
+"}}}
 "}}}
 
 " julia {{{
