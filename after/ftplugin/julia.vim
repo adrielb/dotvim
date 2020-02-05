@@ -19,7 +19,7 @@ let b:tmux_window="julia"
 let b:tmux_func="main"
 let b:neomake_open_list=2
 let s:bin_dir = expand('<sfile>:p:h:h:h') . '/bin'
-let s:parse_julia_repl_sh = s_bin_dir . '/parse_julia_repl.sh'
+let s:parse_julia_repl_sh = s:bin_dir . '/parse_julia_repl.sh'
 
 let s:help_efm = ''
 let s:help_efm .= '  [%m at %f:%l%.%#,'
