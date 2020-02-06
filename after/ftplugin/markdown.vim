@@ -26,7 +26,6 @@ nnoremap <buffer> ,lb :MozBookmark link<CR>
 nnoremap <buffer> ,lw :WikiLink<CR>
 
 
-command! -nargs=* NewNote call functions#new_note(<f-args>)
 
 command! NewNoteFromBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',

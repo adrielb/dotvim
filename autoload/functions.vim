@@ -131,6 +131,8 @@ function! functions#webify_filename(title)
   return l:fname
 endfunction
 
+command! -nargs=* NewNote call functions#new_note(<f-args>)
+
 function! functions#new_note(...) abort
   let l:fname = expand(g:wiki_location) . strftime("%F-%H%M")
   if len(a:000) == 0
