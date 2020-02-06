@@ -8,6 +8,7 @@ endsnippet
 
 snippet savefig
 savefig(p, "imgs/`!p snip.rv = snip.basename`_${1:name}.png")
+savefig(p, (@__DIR__) * "${1:name}.png")
 endsnippet
 
 snippet Base.show "show type" b
