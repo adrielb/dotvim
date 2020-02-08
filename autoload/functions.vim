@@ -2,7 +2,7 @@ let s:bin_dir = expand('<sfile>:p:h:h') . '/bin'
 let s:moz_history_sh = s:bin_dir . '/moz_history.sh'
 
 function! functions#ReadLocalVimrc()
-  let mylocalvimrc = expand( "%:p:h" ) . "/local.vimrc"
+  let mylocalvimrc = "local.vimrc"
   if filereadable( mylocalvimrc )
     execute "source " . fnameescape( mylocalvimrc )
     redraw
