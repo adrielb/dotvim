@@ -9,8 +9,10 @@ GREPFILE=$(mktemp /tmp/grepfile-XXX)
 DELETED=$(mktemp /tmp/deleted-XXX)
 CFILEBAK=$(mktemp /tmp/cfile-XXX)
 
+# ag --vimgrep --path-to-ignore .todoignore --ignore $CFILE todo | sort > $GREPFILE
+
 grep --recursive --ignore-case --line-number \
-     --include=\*.md --exclude=todo.md todo > $GREPFILE
+     --include=\*.md --exclude=$CFILE todo > $GREPFILE
 
 # New items found in GREPFILE are appended to CFILE
 comm -13 <(sort $CFILE) <(sort $GREPFILE) >> $CFILE
@@ -27,18 +29,21 @@ cp $CFILE $CFILEBAK
 grep --line-regexp --fixed-strings --invert-match --file=$DELETED $CFILEBAK > $CFILE
 
 # clean up temp files
-# rm $GREPFILE $DELETED $CFILEBAK
+rm $GREPFILE $DELETED $CFILEBAK
+
+exit 0
+
 
 
 # using gawk instead of grep:
 # maintain order in CFILE by
 # BEGIN: add DELETED lines to dictionary
 # if CFILE line $0 in dictionary, do not print
-# gawk -i inplace '
-# BEGIN {
-#   while( (getline deleted_line < "/tmp/del") > 0 ) {
-#     x[deleted_line]++
-#   }
-# }
-# !x[$0]++
-# ' $CFILE
+gawk -i inplace '
+BEGIN {
+  while( (getline deleted_line < "/tmp/del") > 0 ) {
+    x[deleted_line]++
+  }
+}
+!x[$0]++
+' $CFILE

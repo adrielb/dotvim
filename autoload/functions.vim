@@ -190,7 +190,7 @@ endfunction
 command! Todo call functions#UpdateTodo()
 
 function! functions#UpdateTodo()
-  silent exec "!" . s:bin_dir . "/todo.sh"
+  silent exec "!" . s:bin_dir . "/todo.py"
   silent cfile todo.cfile
   copen
 endfunction
