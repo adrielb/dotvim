@@ -10,6 +10,7 @@ from collections import OrderedDict
 RE_LINENUMBER = re.compile(r':(\d+):')
 RE_TODO = r'todo(?!\w).*'
 TODOFILE = "todo.cfile"
+TODOIGNORECFILE = ".todoignore.cfile"
 GREPCMD = ["ag",
            "--vimgrep",
            "--path-to-ignore", ".todoignore",
@@ -24,9 +25,9 @@ def make_dict(lines):
         d[key] = line
     return d
 
-def todotxt():
+def todotxt(filename):
     try:
-        with open(TODOFILE) as fp:
+        with open(filename) as fp:
             txt = fp.read()
     except FileNotFoundError as e:
         return ''
@@ -42,12 +43,15 @@ def write(d):
             print(line, file=fp)
 
 def main():
-    d = make_dict(todotxt())
+    i = make_dict(todotxt(TODOIGNORECFILE))
+    d = make_dict(todotxt(TODOFILE))
     g = make_dict(grep())
 
+    i_set = set(i.keys())
     d_set = set(d.keys())
     g_set = set(g.keys())
 
+    g_set = g_set - i_set  # remove ignored keys from grep set
     deleted_keys = d_set - g_set
     new_keys = g_set - d_set
 
@@ -71,7 +75,7 @@ if __name__ == "__main__":
 
 def test_todotxt(tmp_path):
     # if TODOFILE non-existent, return empty string
-    d = make_dict(todotxt())
+    d = make_dict(todotxt(TODOFILE))
     # TODO: test what happens if TODOFILE non-existent #
 
 
@@ -115,7 +119,7 @@ positive_matches.txt:3:1:delete a relabeled todo item
     # no ignore files are included
     assert num_positive_matches == len(out.split('\n')), out
 
-    d = make_dict(todotxt())
+    d = make_dict(todotxt(TODOFILE))
     print_dict('todo dict', d)
 
     g = make_dict(grep())
