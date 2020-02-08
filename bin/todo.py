@@ -8,7 +8,7 @@ from collections import OrderedDict
 # line numbers can shift between edits and trigger a new/delete
 # instead use the filename and todo text to uniquely identify a task as the key
 RE_LINENUMBER = re.compile(r':(\d+):')
-RE_TODO = r'todo(?!\w)'
+RE_TODO = r'todo(?!\w).*'
 TODOFILE = "todo.cfile"
 GREPCMD = ["ag",
            "--vimgrep",
@@ -25,8 +25,11 @@ def make_dict(lines):
     return d
 
 def todotxt():
-    with open(TODOFILE) as fp:
-        txt = fp.read()
+    try:
+        with open(TODOFILE) as fp:
+            txt = fp.read()
+    except FileNotFoundError as e:
+        return ''
     return txt
 
 def grep():
@@ -65,13 +68,20 @@ if __name__ == "__main__":
     main()
 
 
+
+def test_todotxt(tmp_path):
+    # if TODOFILE non-existent, return empty string
+    d = make_dict(todotxt())
+    # TODO: test what happens if TODOFILE non-existent #
+
+
 def test_todo(tmp_path):
     import os
     os.chdir(tmp_path)
     positive_matches_text = '''todo
 # todo: match this new task
 [tag1,TODO,tag2]
-"todo-this in new too
+"todo-this in new too todo
 '''
     posfile = tmp_path / 'positive_matches.txt'
     posfile.write_text(positive_matches_text)
