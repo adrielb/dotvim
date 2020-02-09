@@ -98,5 +98,5 @@ endfunction
 
 augroup auto-save-markdown
   au!
-  autocmd InsertLeave,TextChanged <buffer> update
+  autocmd InsertLeave,TextChanged *.md update
 augroup END
