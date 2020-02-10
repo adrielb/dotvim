@@ -178,12 +178,13 @@ function! functions#write_note(fname, header)
 endfunction
 
 function! functions#SetBufferCWD()
-  if exists("b:bufferCWD")
-    exec "lcd" b:bufferCWD
+  if exists("b:CWD")
+    exec "lcd" b:CWD
   else
     try
       Glcd
-      let b:bufferCWD = getcwd()
+      let b:CWD = getcwd()
+    catch /.*/
     endtry
   endif
 endfunction
