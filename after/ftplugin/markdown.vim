@@ -25,6 +25,15 @@ nnoremap <buffer> ,lh :MozHist link<CR>
 nnoremap <buffer> ,lb :MozBookmark link<CR>
 nnoremap <buffer> ,lw :WikiLink<CR>
 
+imap <buffer> ,i  <ESC>,i
+imap <buffer> ,lh <ESC>,lh
+imap <buffer> ,lb <ESC>,lb
+imap <buffer> ,lw <ESC>,lw
+
+nmap <buffer> ,hl ,lh
+nmap <buffer> ,bl ,lb
+nmap <buffer> ,wl ,lw
+
 
 
 command! NewNoteFromBookmark call fzf#run({
