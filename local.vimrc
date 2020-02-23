@@ -1,7 +1,12 @@
 " nnoremap <leader>r :!cd ~/.vim/bundle/dotvim && git pull<CR>
 
-""todo.py
-"set makeprg=pytest\ -x\ bin/todo.py
-"nnoremap <leader>m  :silent make!<CR>
-"set efm=%m
+augroup dotvim-local
+  au!
+  autocmd BufEnter bin/todo.py call BufEnterBinTodoPy()
+augroup END
 
+function BufEnterBinTodoPy()
+  setlocal makeprg=pytest\ --exitfirst\ bin/todo.py
+  setlocal efm=%m
+  nnoremap <buffer> <leader>m  :silent make!<CR>
+endfunction
