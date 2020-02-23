@@ -197,3 +197,18 @@ function! functions#UpdateTodo()
   silent cfile todo.cfile
   copen
 endfunction
+
+function! TodoPostpone()
+  let title = getqflist({'title':0}).title
+  echo title == ':  silent cfile todo.cfile'
+  let idx = getqflist({'idx':0,'items':0}).idx
+  let items = getqflist()
+  echo items[idx].text
+  " TODO: verify that 'text' matches cfile text
+  " reload cfile
+  " jump to error idx+1
+endfunction
+
+function! TodoPrioritize()
+ " TODO: send existing task to the top of the queue
+endfunction
