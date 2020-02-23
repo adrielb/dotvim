@@ -47,6 +47,7 @@ Plug 'zchee/deoplete-jedi'
 " Plug 'carlitux/deoplete-ternjs'
 Plug 'mileszs/ack.vim'
 Plug 'chrisbra/csv.vim'
+" Plug 'aklt/plantuml-syntax'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
@@ -296,6 +297,7 @@ let g:semanticEnableFileTypes = {
       \ 'julia': 'jl',
       \ 'python': 'py', 
       \ 'picat' : 'pi',
+      \ 'plantuml' : 'uml',
       \ 'minizinc' : 'mzn'
       \}
 " semanticBlacklistOverride {{{
@@ -336,6 +338,13 @@ let g:semanticBlacklistOverride = {'minizinc': [
       \ 'true',
       \ 'var',
       \ 'where'
+      \],
+      \'plantuml': [
+      \ 'startuml',
+      \ 'enduml',
+      \ 'title',
+      \ 'state',
+      \ 'as',
       \],
       \'picat': [
       \ 'abs',
