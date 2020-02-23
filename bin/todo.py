@@ -72,6 +72,14 @@ if __name__ == "__main__":
     main()
 
 
+def test_nogrepmatch(tmp_path):
+    import os
+    os.chdir(tmp_path)
+    grep()
+    # TODO: catch this exception and return ""
+    print(tmp_path)
+    assert False
+
 
 def test_todotxt(tmp_path):
     # if TODOFILE non-existent, return empty string
