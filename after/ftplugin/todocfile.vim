@@ -1,4 +1,4 @@
-nnoremap <buffer> ,i :normal 0v$hI<CR>
+nnoremap <buffer> ,i :normal 0v$h,i<CR>
 xnoremap <buffer> ,i :<C-U>exec ":'<,'>w! >> " expand('%:p:h')."/.todoignore.cfile"<CR>gvd
 nnoremap <buffer> <PageUp>   :m0<CR>'.
 xnoremap <buffer> <PageUp>   :m0<CR>'.
