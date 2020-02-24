@@ -3,10 +3,7 @@ XDG_NVIM=~/.config/nvim
 all:
 
 link:
-	ln -sf ${PWD}/vimrc ~/.vimrc
-	ln -sf ${PWD}/nvimrc ${XDG_NVIM}/init.vim
-	ln -sf ${PWD} ~/.vim/bundle/
-	ln -sf ${PWD}/UltiSnips-mangle ${XDG_NVIM}/UltiSnips
+	ln -sf ${PWD} ${XDG_NVIM}
 
 thesaurus:
 	wget http://www.gutenberg.org/dirs/etext02/mthes10.zip
