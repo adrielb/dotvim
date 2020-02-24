@@ -200,6 +200,7 @@ tnoremap <Esc>      <C-\><C-n>
 " }}}
 
 " Plugin Options {{{
+let s:dot_dir = expand('<sfile>:p:h')
 
 " neomake {{{
 let g:neomake_enabled_makers=1
@@ -228,7 +229,7 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
 \   'python': ['pyls', '-v'],
-\   'julia': ['julia', '--startup-file=no', '--history-file=no', expand('<sfile>:p:h').'/languageserver.jl']
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', s:dot_dir . '/languageserver.jl']
 \}
 let g:jedi#auto_initialization = 0
 " let g:jedi#completions_enabled = 0
@@ -298,100 +299,15 @@ let g:semanticEnableFileTypes = {
       \ 'python': 'py', 
       \ 'picat' : 'pi',
       \ 'plantuml' : 'uml',
-      \ 'minizinc' : 'mzn'
+      \ 'minizinc' : 'mzn',
+      \ 'graphviz' : 'gv',
       \}
-" semanticBlacklistOverride {{{
-let g:semanticBlacklistOverride = {'minizinc': [
-      \ 'array',
-      \ 'assert',
-      \ 'bool',
-      \ 'ceil',
-      \ 'constraint',
-      \ 'div',
-      \ 'else',
-      \ 'elseif',
-      \ 'endif',
-      \ 'enum',
-      \ 'false',
-      \ 'float',
-      \ 'forall',
-      \ 'if',
-      \ 'in',
-      \ 'include',
-      \ 'int',
-      \ 'max',
-      \ 'maximize',
-      \ 'min',
-      \ 'minimize',
-      \ 'of',
-      \ 'output',
-      \ 'predicate',
-      \ 'satisfy',
-      \ 'set',
-      \ 'show',
-      \ 'show_float',
-      \ 'show_int',
-      \ 'solve',
-      \ 'string',
-      \ 'sum',
-      \ 'then',
-      \ 'true',
-      \ 'var',
-      \ 'where'
-      \],
-      \'plantuml': [
-      \ 'startuml',
-      \ 'enduml',
-      \ 'title',
-      \ 'state',
-      \ 'as',
-      \],
-      \'picat': [
-      \ 'abs',
-      \ 'all_different',
-      \ 'cl',
-      \ 'cp',
-      \ 'debug',
-      \ 'else',
-      \ 'elseif',
-      \ 'end',
-      \ 'fail',
-      \ 'false',
-      \ 'foreach',
-      \ 'get_attr',
-      \ 'if',
-      \ 'import',
-      \ 'in',
-      \ 'integer',
-      \ 'length',
-      \ 'max',
-      \ 'min',
-      \ 'mip',
-      \ 'mod',
-      \ 'name',
-      \ 'new_array',
-      \ 'new_map',
-      \ 'new_struct',
-      \ 'not',
-      \ 'once',
-      \ 'planner',
-      \ 'print',
-      \ 'printf',
-      \ 'println',
-      \ 'put_attr',
-      \ 'report',
-      \ 'sat',
-      \ 'solve',
-      \ 'spy',
-      \ 'sum',
-      \ 'then',
-      \ 'time2',
-      \ 'true',
-      \ 'var',
-      \ 'writeln'
-      \ ]
+let g:semanticBlacklistOverride = {
+      \ 'minizinc': readfile(s:dot_dir . '/after/syntax/minizinc.txt'),
+      \ 'plantuml': readfile(s:dot_dir . '/after/syntax/plantuml.txt'),
+      \ 'picat':    readfile(s:dot_dir . '/after/syntax/picat.txt'),
+      \ 'graphviz': readfile(s:dot_dir . '/after/syntax/graphviz.txt')
       \ }
-"}}}
 "}}}
 
 " julia {{{
