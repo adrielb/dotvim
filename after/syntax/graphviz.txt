@@ -1,2 +1,6 @@
 digraph
+filled
+node
 shape
+style
+subgraph
