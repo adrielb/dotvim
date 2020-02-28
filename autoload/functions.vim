@@ -212,3 +212,7 @@ endfunction
 function! TodoPrioritize()
  " TODO: send existing task to the top of the queue
 endfunction
+
+
+command! YouTubePause silent !xdotool search --name 'YouTube' key --window \%@ k
+command! YouTubeRewind silent !xdotool search --name 'YouTube' key --window \%@ j

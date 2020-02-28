@@ -24,6 +24,8 @@ nnoremap <buffer> ,n  :NewNote<space>
 nnoremap <buffer> ,lh :MozHist link<CR>
 nnoremap <buffer> ,lb :MozBookmark link<CR>
 nnoremap <buffer> ,lw :WikiLink<CR>
+nnoremap <buffer> ,k  :YouTubePause<CR>
+nnoremap <buffer> ,j  :YouTubeRewind<CR>
 
 imap <buffer> ,i  <ESC>,i
 imap <buffer> ,lh <ESC>,lh
