@@ -181,9 +181,10 @@ df = df[cols + list(set(df.columns) - set(cols))]
 endsnippet
 
 snippet autoreload "ipython3 init script autoreload"
-from IPython import get_ipython
-ipython = get_ipython()
-ipython.magic('load_ext autoreload')
-ipython.magic('autoreload 2')
+if '__IPYTHON__' in globals():
+	from IPython import get_ipython
+	ipython = get_ipython()
+	ipython.magic('load_ext autoreload')
+	ipython.magic('autoreload 2')
 endsnippet
 
