@@ -3,6 +3,7 @@
 augroup dotvim-local
   au!
   autocmd BufEnter bin/todo.py call BufEnterBinTodoPy()
+  autocmd BufEnter bin/NewNoteApp.py call functions#SwitchTmux('journal','app')
 augroup END
 
 function BufEnterBinTodoPy()

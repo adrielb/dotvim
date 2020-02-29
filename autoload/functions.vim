@@ -65,6 +65,9 @@ function! functions#SwitchTmux(...)
   if !exists( 'b:tmux_window' )
     return
   endif
+  if exists('a:2')
+    let b:tmux_window = a:2
+  endif
   let l:win = b:tmux_session . ':' . b:tmux_window
   if !exists( 'g:tmux_client' ) || g:tmux_client == ''
     let g:tmux_client = functions#TmuxClient()
