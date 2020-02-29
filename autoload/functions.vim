@@ -150,7 +150,9 @@ function! functions#new_note(...) abort
   call functions#write_note(fname, header)
 endfunction
 
-function! functions#new_note_bookmark(line)
+command! -nargs=* NewNoteBookmark call functions#new_note_bookmark(<q-args>)
+
+function! functions#new_note_bookmark(line) abort
   let l:lines = split(a:line, "\t")
   let l:date = l:lines[0]
   let l:title = l:lines[1]
@@ -175,6 +177,7 @@ function! functions#write_note(fname, header)
   enew
   call append(0, split(a:header,"\n"))
   execute "write" a:fname
+  Gwrite
 endfunction
 
 function! functions#SetBufferCWD()
