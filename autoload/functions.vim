@@ -177,9 +177,8 @@ function! functions#write_note(fname, header)
     exec "edit" a:fname
     return
   endif
-  enew
+  execute "edit" a:fname
   call append(0, split(a:header,"\n"))
-  execute "write" a:fname
   Gwrite
 endfunction
 
