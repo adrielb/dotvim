@@ -65,10 +65,18 @@ let g:neomake_pymode_maker = {
       \ 'postprocess': function('neomake#postprocess#compress_whitespace')
       \ }
 
-augroup NeomakePyRepl
-  au!
-  autocmd FocusGained *.py Neomake! ipython pymode pylogging
-augroup END
+function! ToggleNeomakePyRepl()
+  augroup NeomakePyRepl
+    if !exists('#NeomakePyRepl#FocusGained')
+        autocmd!
+        autocmd FocusGained *.py Neomake! ipython pymode pylogging
+    else
+        autocmd!
+    endif
+  augroup END
+endfunction
+
+command! ToggleNeomakePyRepl call ToggleNeomakePyRepl()
 
 nnoremap <leader>a  :call CaptureTmux()<CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
