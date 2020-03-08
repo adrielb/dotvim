@@ -95,7 +95,7 @@ function! s:inject_mozhist_image(line)
   let l:lines = split(a:line, "\t")
   let l:url = l:lines[2]
   let l:img_dir = "img/"
-  exec "!wget --no-verbose --directory-prefix=" . l:img_dir . " " . l:url
+  exec "!wget --content-disposition --no-verbose --directory-prefix=" . l:img_dir . " " . l:url
   let l:localimg = fnamemodify(l:url,':t')
   let l:md_img = "![FIG: ](/" . l:img_dir . l:localimg . ")"
   call append(line('.'), l:md_img)
