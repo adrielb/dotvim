@@ -14,6 +14,7 @@ let s:moz_history_sh = expand('<sfile>:p:h:h:h') . '/bin/moz_history.sh'
 
 iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`
+iabbrev <buffer> --> ――▶
 
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
 nnoremap <buffer> ,i :MozHist image<CR>
