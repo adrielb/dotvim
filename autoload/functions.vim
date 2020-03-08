@@ -167,8 +167,8 @@ function! functions#new_note_bookmark(line) abort
         \ "refurl: " . l:url . "\n" .
         \ "tags: [todo]\n" .
         \ "---\n\n"
-  let l:fname = expand(g:wiki_location) . "/bookmarks/" . 
-        \ functions#webify_filename(l:title) . ".md"
+  exec "cd" g:wiki_location
+  let l:fname = "bookmarks/" . functions#webify_filename(l:title) . ".md"
   call functions#write_note(fname, header)
 endfunction
 
