@@ -48,6 +48,8 @@ Plug 'zchee/deoplete-jedi'
 Plug 'mileszs/ack.vim'
 Plug 'chrisbra/csv.vim'
 " Plug 'aklt/plantuml-syntax'
+Plug 'mtdl9/vim-log-highlighting'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
