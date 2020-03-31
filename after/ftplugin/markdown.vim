@@ -19,6 +19,7 @@ iabbrev <buffer> --> ――▶
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
 nnoremap <buffer> ,i :MozHist image<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
+nmap     <buffer> <leader>p pgccgww
 nnoremap <buffer> ,nh :NewNoteFromHistory<CR>
 nnoremap <buffer> ,nb :NewNoteFromBookmark<CR>
 nnoremap <buffer> ,n  :NewNote<space>
