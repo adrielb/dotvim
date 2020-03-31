@@ -68,7 +68,7 @@ function! functions#SwitchTmux(...)
   if exists('a:2')
     let b:tmux_window = a:2
   endif
-  let l:win = b:tmux_session . ':' . b:tmux_window
+  let l:win = b:tmux_session . ':' . b:tmux_window . '.0'
   if !exists( 'g:tmux_client' ) || g:tmux_client == ''
     let g:tmux_client = functions#TmuxClient()
   endif
@@ -219,5 +219,5 @@ function! TodoPrioritize()
 endfunction
 
 
-command! YouTubePause  silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ k
+command! YouTubePause  silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ space
 command! YouTubeRewind silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ j
