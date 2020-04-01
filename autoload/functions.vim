@@ -46,7 +46,7 @@ function! functions#BTmuxSession()
   let pat = '\v/home/abergman/projects/([^/]*)/.*'
   let project = substitute(file, pat, '\1', '')
   if project == file
-    return
+    return expand('%:p:h:t')
   endif
   return project
 endfunction
