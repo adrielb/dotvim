@@ -75,3 +75,17 @@ endsnippet
 snippet pip "pip install" Ab
 pip3 install --user --upgrade ${1:package}
 endsnippet
+
+snippet systemd "systemd cmds" b
+cd $0
+systemctl --user enable `pwd`/${1:prog}.timer
+systemctl --user enable `pwd`/$1.service
+systemctl --user daemon-reload
+systemd-analyze verify $1.service
+systemd-analyze verify $1.timer
+systemctl --user start $1.timer
+systemctl --user status $1.timer
+systemctl --user status $1
+journalctl --user --follow --unit $1
+journalctl --user --follow --unit $1.timer
+endsnippet
