@@ -152,6 +152,7 @@ xnoremap g/ y:<C-U>Ack<Space><C-R>"<Space>%:p:h<left><left><left><left><left><le
 nnoremap gaa :argadd %<Bar>silent! next<CR>
 nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
 nnoremap gad :<C-R>=argidx()+1<CR>argdelete<BAR>first<CR>
+nnoremap gC :Commands<CR>
 nnoremap gh :History<CR>
 nnoremap gl :BLines<CR>
 nnoremap go :GitFiles<CR>
