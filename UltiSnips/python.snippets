@@ -188,3 +188,12 @@ if '__IPYTHON__' in globals():
 	ipython.magic('autoreload 2')
 endsnippet
 
+snippet argcomplete "Bash tab completion" b
+#!/usr/bin/env python
+# PYTHON_ARGCOMPLETE_OK
+import argcomplete, argparse
+parser = argparse.ArgumentParser()
+
+argcomplete.autocomplete(parser)
+args = parser.parse_args()
+endsnippet
