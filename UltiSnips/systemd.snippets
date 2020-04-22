@@ -1,4 +1,4 @@
-snippet service "systemd service"
+snippet service "systemd service" b
 [Unit]
 Description=
 
@@ -7,7 +7,7 @@ Type=simple
 ExecStart=$0
 endsnippet
 
-snippet timer "systemd timer"
+snippet timer "systemd timer" b
 [Unit]
 Description=
 
@@ -16,4 +16,15 @@ OnCalendar=$0
 
 [Install]
 WantedBy=timers.target
+endsnippet
+
+snippet path "systemd path" b
+[Unit]
+Description=
+
+[Path]
+PathChanged=$0
+
+[Install]
+WantedBy=multi-user.target
 endsnippet
