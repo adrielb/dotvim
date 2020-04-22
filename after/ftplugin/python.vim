@@ -1,7 +1,8 @@
 setlocal textwidth=79
 setlocal colorcolumn=+1
-setlocal path+=~/.local/lib/python3.7/site-packages/
-setlocal tags+=~/.local/lib/python3.7/site-packages/tags
+setlocal path+=~/.local/lib/python3.8/site-packages/
+setlocal tags+=~/.local/lib/python3.8/site-packages/tags
+setlocal tags+=~/apps/python3/Python-3.8.2/Lib/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window='ipython'
 
