@@ -251,10 +251,10 @@ call deoplete#custom#option({
 call deoplete#custom#source('ultisnips', 'rank', 1000)
 call deoplete#custom#source('buffer', 'rank', 200)
 call deoplete#custom#source('dictionary', 'rank', 1)
-let g:deoplete#ignore_sources = {
+call deoplete#custom#option({'ignore_sources': {
       \ 'python': ['tag'],
       \ 'vim': ['dictionary'],
-      \ 'julia': ['dictionary']}
+      \ 'julia': ['dictionary']}})
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
