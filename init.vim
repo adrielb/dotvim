@@ -246,12 +246,13 @@ let g:jedi#use_tag_stack = 0
 " endif
 " let g:deoplete#sources.sql = ['buffer']
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-call deoplete#custom#option({
-      \ 'camel_case': v:true
-      \})
 call deoplete#custom#source('ultisnips', 'rank', 1000)
 call deoplete#custom#source('buffer', 'rank', 200)
 call deoplete#custom#source('dictionary', 'rank', 1)
+call deoplete#custom#source('dictionary', 'filetypes', ['markdown'])
+call deoplete#custom#option({
+      \ 'camel_case': v:true
+      \})
 call deoplete#custom#option({'ignore_sources': {
       \ 'python': ['tag'],
       \ 'vim': ['dictionary'],
