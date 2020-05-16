@@ -313,6 +313,11 @@ let g:semanticBlacklistOverride = {
       \ 'picat':    readfile(s:dot_dir . '/after/syntax/picat.txt'),
       \ 'graphviz': readfile(s:dot_dir . '/after/syntax/graphviz.txt')
       \ }
+augroup HighlightCursorLine
+  autocmd!
+  autocmd InsertEnter * highlight CursorLine ctermbg=53     guibg=#2B2D44
+  autocmd InsertLeave * highlight CursorLine ctermbg=235    guibg=#262626
+augroup END
 "}}}
 
 " julia {{{
