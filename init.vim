@@ -127,6 +127,7 @@ set sessionoptions-=help
 set wildcharm=<C-z>
 set inccommand=split
 set diffopt+=algorithm:histogram,indent-heuristic,vertical
+set completeopt+=noselect
 " }}}
 
 " Mappings {{{
