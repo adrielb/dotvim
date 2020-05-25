@@ -256,6 +256,7 @@ call deoplete#custom#option({
 call deoplete#custom#option({'ignore_sources': {
       \ 'python': ['tag'],
       \ 'vim': ['dictionary'],
+      \ 'markdown': ['tmux-complete'],
       \ 'julia': ['dictionary']}})
 let g:deoplete#sources#jedi#show_docstring=1
 let g:deoplete#sources#jedi#server_timeout=30
