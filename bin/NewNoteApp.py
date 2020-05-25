@@ -14,5 +14,5 @@ def NewNote():
   logging.info(f'date = {date}')
   logging.info(f'title = {title}')
   logging.info(f'url = {url}')
-  subprocess.run(args=['gnome-terminal','-x','nvim',cmd])
+  subprocess.run(args=['gnome-terminal','-x','nvim',cmd,'+ToggleAutoPaste'])
   return ''
