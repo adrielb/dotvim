@@ -179,6 +179,7 @@ function! functions#write_note(fname, header)
   endif
   execute "edit" a:fname
   call append(0, split(a:header,"\n"))
+  normal! G
   Gwrite
 endfunction
 
@@ -221,3 +222,31 @@ endfunction
 
 command! YouTubePause  silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ space
 command! YouTubeRewind silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ j
+
+"
+" Auto paste
+function! s:auto_paste(timer_id)
+  echo "AutoPaste ON"
+  if @* !=# @0
+    put *
+    let @0=@*
+  endif
+endfunction
+
+function! ToggleAutoPaste()
+  augroup auto_paste
+    if !exists('#auto_paste#FocusGained')
+      autocmd!
+      autocmd FocusGained *.md if exists('g:auto_paste_timer_id') | 
+            \ call timer_stop(g:auto_paste_timer_id) | 
+            \ echo "AutoPaste OFF" |
+            \ endif
+      autocmd FocusLost *.md let @0=@*
+      autocmd FocusLost *.md let g:auto_paste_timer_id = timer_start(1000,function('s:auto_paste'),{'repeat':-1})
+    else
+      autocmd!
+    endif
+  augroup END
+endfunction
+
+command! ToggleAutoPaste call ToggleAutoPaste()
