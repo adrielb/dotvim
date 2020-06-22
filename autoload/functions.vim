@@ -163,7 +163,7 @@ function! functions#new_note_bookmark(line) abort
   let l:header = 
         \ "---\n" .
         \ "date: " . l:date . "\n" .
-        \ "title: >\n    " . l:title . "\n" .
+        \ "title: >-\n    " . l:title . "\n" .
         \ "refurl: " . l:url . "\n" .
         \ "tags: [todo]\n" .
         \ "---\n\n"
