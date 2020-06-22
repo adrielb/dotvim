@@ -24,7 +24,7 @@ let s:parse_julia_repl_sh = s:bin_dir . '/parse_julia_repl.sh'
 let s:help_efm = ''
 let s:help_efm .= '  [%m at %f:%l%.%#,'
 let s:help_efm .= '%-G%.%#,'
-let g:neomake_help_maker = {
+let g:neomake_julia_help_maker = {
       \ 'exe': 'tmux',
       \ 'args': ['capture-pane', '-p', '-S', '-20', '-J', '-t', b:tmux_session . ':' . b:tmux_window],
       \ 'append_file': 0,
@@ -44,7 +44,7 @@ let s:repl_efm .= '%C [%.%# at %f:%l%.%#,'
 let s:repl_efm .= '%Cin expression starting at %f:%l%.%#,'
 let s:repl_efm .= '%Z,'
 let s:repl_efm .= '%-G%.%#,'
-let g:neomake_repl_maker = {
+let g:neomake_julia_repl_maker = {
       \ 'exe': s:parse_julia_repl_sh,
       \ 'args': [b:tmux_session, b:tmux_window],
       \ 'append_file': 0,
@@ -67,7 +67,7 @@ let s:all_efm .= '%\s%#%f\,%m: line %l%.%#,'
 let s:all_efm .= '%m at %f:%l%.%#,'
 let s:all_efm .= '%W%.%#Warning: %m,'
 let s:all_efm .= '%Z%.%#@%.%# %f:%l%.%#,'
-let g:neomake_all_maker = {
+let g:neomake_julia_all_maker = {
       \ 'exe': s:parse_julia_repl_sh,
       \ 'args': [b:tmux_session, b:tmux_window],
       \ 'append_file': 0,
@@ -82,7 +82,7 @@ augroup END
 let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
 let s:profile_efm  = ''
 let s:profile_efm .= '%m at %f:%l'
-let g:neomake_profile_maker = {
+let g:neomake_julia_profile_maker = {
       \ 'exe': s:julia_profile_sh,
       \ 'append_file': 0,
       \ 'errorformat': s:profile_efm
