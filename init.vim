@@ -50,6 +50,7 @@ Plug 'chrisbra/csv.vim'
 " Plug 'aklt/plantuml-syntax'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'hauleth/vim-backscratch'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
