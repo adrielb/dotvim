@@ -147,7 +147,7 @@ function! functions#new_note(...) abort
   endif
   let l:header = 
         \ "---\n" .
-        \ "date: " . strftime("%FT%T%z") . "\n" .
+        \ "date: " . strftime("%FT%T") . "\n" .
         \ "title: " . l:title . "\n" .
         \ "---\n\n"
   call functions#write_note(fname, header)
