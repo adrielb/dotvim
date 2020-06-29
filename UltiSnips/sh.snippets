@@ -48,6 +48,12 @@ if [ -f "${1:file}" ]; then
 fi
 endsnippet
 
+snippet ifdirNOTexists "if dir NOT exists" b
+if [ ! -d "${1:dir}" ]; then
+	${0}
+fi
+endsnippet
+
 snippet tmux "tmux session" b
 #!/usr/bin/env bash
 
