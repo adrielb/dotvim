@@ -134,6 +134,26 @@ function! functions#webify_filename(title)
   return l:fname
 endfunction
 
+function! functions#note_rename()
+  call cursor(1,1)
+  if ! search('^title: ')
+    echo 'No title: field'
+    return
+  endif 
+  normal! Wy$
+  let title = functions#webify_filename(@")
+  let current_fname = expand('%:t')
+  let pat = '^\(\d\d\d\d-\d\d-\d\d-\d\d\d\d\)\?.*md$'
+  let sub = '\1-' . title . '.md'
+  let flags = ''
+  let m = substitute(current_fname,pat,sub,flags)
+  " todo: if capture group \1 does not exist, dont append '-'
+  let m = substitute(m,'^-','','')
+  exec "Rename" m
+endfunction
+
+command! NoteRename call functions#note_rename()
+
 command! -nargs=* NewNote call functions#new_note(<f-args>)
 
 function! functions#new_note(...) abort
