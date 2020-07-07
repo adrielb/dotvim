@@ -209,6 +209,11 @@ let s:dot_dir = expand('<sfile>:p:h')
 
 " neomake {{{
 let g:neomake_enabled_makers=1
+let g:neomake_gitlog_maker = {
+      \ 'exe': 'git',
+      \ 'args': ['log', '--format="%ad, %ar"', '--numstat'],
+      \ 'errorformat': '%m%[\\t]%f'
+      \ }
 "}}}
 
 " Prose {{{
