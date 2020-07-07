@@ -16,29 +16,33 @@ iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`
 iabbrev <buffer> --> ――▶
 
+inoremap <buffer> <CR>       <C-]><C-G>u<CR>
 inoremap <expr>   <c-x><c-p> fzf#vim#complete#path("find . -iname '*.png' -print \| sed 's:^..::'")
-nnoremap <buffer> ,i :MozHist image<CR>
 nnoremap <buffer> <leader>f  :MarkdownFiles<CR>
 nmap     <buffer> <leader>p pgccgww
+nnoremap <buffer> ,k  :YouTubePause<CR>
+nnoremap <buffer> ,j  :YouTubeRewind<CR>
 nnoremap <buffer> ,nh :NewNoteFromHistory<CR>
 nnoremap <buffer> ,nb :NewNoteFromBookmark<CR>
 nnoremap <buffer> ,n  :NewNote<space>
+
+nnoremap <buffer> ,i :MozHist image<CR>
 nnoremap <buffer> ,lh :MozHist link<CR>
 nnoremap <buffer> ,lb :MozBookmark link<CR>
 nnoremap <buffer> ,lw :WikiLink<CR>
-nnoremap <buffer> ,k  :YouTubePause<CR>
-nnoremap <buffer> ,j  :YouTubeRewind<CR>
+
+nmap <buffer> ,hl ,lh
+nmap <buffer> ,bl ,lb
+nmap <buffer> ,wl ,lw
 
 imap <buffer> ,i  <ESC>,i
 imap <buffer> ,lh <ESC>,lh
 imap <buffer> ,lb <ESC>,lb
 imap <buffer> ,lw <ESC>,lw
 
-nmap <buffer> ,hl ,lh
-nmap <buffer> ,bl ,lb
-nmap <buffer> ,wl ,lw
-
-
+imap <buffer> ,hl <ESC>,lh
+imap <buffer> ,bl <ESC>,lb
+imap <buffer> ,wl <ESC>,lw
 
 command! NewNoteFromBookmark call fzf#run({
         \ 'source': s:moz_history_sh . ' bookmarks',
