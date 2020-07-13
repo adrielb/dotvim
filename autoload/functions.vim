@@ -149,7 +149,7 @@ function! functions#note_rename()
   let m = substitute(current_fname,pat,sub,flags)
   " todo: if capture group \1 does not exist, dont append '-'
   let m = substitute(m,'^-','','')
-  exec "Rename" m
+  exec "GRename" m
 endfunction
 
 command! NoteRename call functions#note_rename()
