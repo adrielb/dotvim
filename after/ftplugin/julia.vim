@@ -98,11 +98,18 @@ let g:neomake_julia_mem_profile_maker = {
       \ 'errorformat': '%f.%n.mem:%l:%m'
       \ }
 
-augroup NeomakeJuliaRepl
-  au!
-  autocmd FocusGained *.jl Neomake! repl all
-  " autocmd FocusGained * Neomake! repl help all
-augroup END
+function! ToggleNeomakeJuliaRepl()
+  augroup NeomakeJuliaRepl
+    if !exists('#NeomakeJuliaRepl#FocusGained')
+        autocmd!
+        autocmd FocusGained *.jl Neomake! repl all
+    else
+        autocmd!
+    endif
+  augroup END
+endfunction
+
+command! ToggleNeomakeJuliaRepl call ToggleNeomakeJuliaRepl()
 
 let s:efm  = "%+G %.%# at ./client.jl:%l,"
 let s:efm .= "%+G %.%# at ./loading.jl:%l,"
