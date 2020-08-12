@@ -75,8 +75,8 @@ let g:neomake_julia_all_maker = {
       \ }
 
 augroup neomake_update
-  autocmd BufEnter <buffer> let g:neomake_repl_maker['args'] = [b:tmux_session, b:tmux_window]
-  autocmd BufEnter <buffer> let g:neomake_all_maker['args'] = [b:tmux_session, b:tmux_window]
+  autocmd BufEnter <buffer> let g:neomake_julia_repl_maker['args'] = [b:tmux_session, b:tmux_window]
+  autocmd BufEnter <buffer> let g:neomake_julia_all_maker['args'] = [b:tmux_session, b:tmux_window]
 augroup END
 
 let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
