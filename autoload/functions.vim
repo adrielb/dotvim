@@ -256,6 +256,7 @@ endfunction
 function! ToggleAutoPaste()
   augroup auto_paste
     if !exists('#auto_paste#FocusGained')
+      echo "AutoPaste ON"
       autocmd!
       autocmd FocusGained * if exists('g:auto_paste_timer_id') | 
             \ call timer_stop(g:auto_paste_timer_id) | 
@@ -264,6 +265,7 @@ function! ToggleAutoPaste()
       autocmd FocusLost * let @0=@*
       autocmd FocusLost * let g:auto_paste_timer_id = timer_start(1000,function('s:auto_paste'),{'repeat':-1})
     else
+      echo "AutoPaste OFF"
       autocmd!
     endif
   augroup END
