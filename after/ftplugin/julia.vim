@@ -140,8 +140,8 @@ let s:efm .= 'while loading %f\, %m %l,'
 nnoremap <buffer> ]m /^\<function\><CR>
 nnoremap <buffer> [m ?^\<function\><CR>
 nnoremap <buffer> <leader>f :g/savefig/normal f"gx<CR>
-nnoremap <buffer> <leader>m :JuliaSendTest<CR>:Neomake! repl all<CR>
-nnoremap <buffer> <leader>M :JuliaSetFunc<CR>:JuliaSendTest<CR>:Neomake! repl all<CR>
+nnoremap <buffer> <leader>m :update<bar>JuliaSendTest<CR>:Neomake! repl all<CR>
+nnoremap <buffer> <leader>M :update<bar>JuliaSetFunc<CR>:JuliaSendTest<CR>:Neomake! repl all<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
 nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
