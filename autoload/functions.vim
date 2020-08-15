@@ -52,7 +52,8 @@ function! functions#BTmuxSession()
 endfunction
 
 function! functions#TmuxClient() abort
-  return system('tmux list-clients -F "#{client_tty}" | head -n 1')
+  let client = system('tmux list-clients -F "#{client_tty}" | head -n 1')
+  return trim(client)
 endfunction
 
 function! functions#SwitchTmux(...)
