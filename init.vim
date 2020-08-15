@@ -410,7 +410,7 @@ augroup END
 
 augroup switch_tmux
   autocmd!
-  autocmd BufEnter,WinEnter * call functions#SwitchTmux()
+  autocmd BufEnter,WinEnter * call functions#TmuxSwitchClient()
 augroup END
 
 "}}}

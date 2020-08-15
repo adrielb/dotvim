@@ -41,11 +41,12 @@ function! functions#NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
-function! functions#BTmuxSession()
+function! functions#BTmuxSession_project()
   let file = expand('%:p')
   let pat = '\v/home/abergman/projects/([^/]*)/.*'
   let project = substitute(file, pat, '\1', '')
   if project == file
+    " regex didn't match so use current buffer's subdirectory
     return expand('%:p:h:t')
   endif
   return project
@@ -56,9 +57,9 @@ function! functions#TmuxClient() abort
   return trim(client)
 endfunction
 
-function! functions#SwitchTmux(...)
+function! functions#TmuxCheckVimVars(...)
   if !exists( 'b:tmux_session' )
-    let b:tmux_session = functions#BTmuxSession()
+    let b:tmux_session = functions#BTmuxSession_project()
   endif
   if exists('a:1')
     let b:tmux_session = a:1
@@ -70,13 +71,51 @@ function! functions#SwitchTmux(...)
     let b:tmux_window = a:2
   endif
   let l:win = b:tmux_session . ':' . b:tmux_window . '.0'
-  if !exists( 'g:tmux_client' ) || g:tmux_client == ''
+  let b:slime_config = {'socket_name': 'default'
+                     \ ,'target_pane': l:win }
+endfunction
+
+function! functions#TmuxSwitchClient() abort
+  call functions#TmuxCheckVimVars()
+  if !exists( 'b:slime_config' )
+    return
+  endif
+  let l:win = b:slime_config['target_pane']
+  call system('tmux has-session -t ' . b:tmux_session)
+  if v:shell_error
+    " if session doesn't exist, create it
+    call system('tmux new-session -d -s ' . b:tmux_session)
+  endif
+  let g:tmux_client = functions#TmuxClient()
+  if g:tmux_client ==# ''
+    " client doesn't exist; start a new client; attach
+    let err = system('gnome-terminal --execute tmux attach-session &')
+    if v:shell_error
+      echoerr err
+    endif
+    sleep 100m
     let g:tmux_client = functions#TmuxClient()
   endif
-  call system('tmux switch-client -t ' . l:win . ' -c ' . g:tmux_client)
-  let b:slime_config = {"socket_name": "default"
-                     \ ,"target_pane": l:win }
+  call system('tmux has-session -t ' . b:tmux_session . ':' . b:tmux_window)
+  if v:shell_error
+    " if window doesn't exist, create it and run command
+    let cmd = exists( 'b:tmux_command' ) ? b:tmux_command : ''
+    let err = system('tmux switch-client -t ' . b:tmux_session . 
+          \ ' -c ' . g:tmux_client .  
+          \ ' \; new-window -n ' . b:tmux_window .
+          \ ' \; send-keys "' . b:tmux_command . '" C-m')
+    if v:shell_error
+      echoerr err
+    endif
+  else
+    " session and window exist, switch to it
+    call system('tmux switch-client -t ' . l:win . ' -c ' . g:tmux_client)
+  endif
 endfunction
+
+command! -nargs=1 BTmuxSession call functions#TmuxCheckVimVars(<f-args>)
+
+
 
 function! functions#CaptureTmux()
   silent !tmux capture-pane -p -S -20 -J -t 0 > /dev/shm/tmux_capture

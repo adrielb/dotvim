@@ -5,6 +5,7 @@ setlocal tags+=~/.local/lib/python3.8/site-packages/tags
 setlocal tags+=~/apps/python3/Python-3.8.2/Lib/tags
 setlocal omnifunc=python3complete#Complete
 let b:tmux_window='ipython'
+let b:tmux_command='retry.sh ipython3'
 
 " call neomake#configure#automake('nw')
 
