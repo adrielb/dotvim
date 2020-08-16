@@ -21,8 +21,7 @@ snippet tmux "switch tmux window" b
 let b:auBufEnter='autocmd BufEnter ' . expand('<sfile>:p:h')
 augroup switchtmux-${1:name}
 	au!
-	" exe b:auBufEnter . '/app.py let b:tmux_window="web"'
-	exe b:auBufEnter . '/** call functions#SwitchTmux("$1")'
+	exe b:auBufEnter . '/** let b:tmux_window="${2:window}" | let b:tmux_command="${3:command}"'
 augroup END
 
 let g:slime_python_ipython = 1
