@@ -390,7 +390,7 @@ command! -bang -nargs=* AgPreview call fzf#vim#ag(<q-args>,
 " http://www.bestofvim.com/tip/auto-reload-your-vimrc/
 augroup reload_vimrc
   autocmd!
-  autocmd BufWritePost nvimrc nested source $MYVIMRC
+  autocmd BufWritePost init.vim nested source $MYVIMRC
 augroup END
 
 augroup localvimrc
