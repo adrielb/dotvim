@@ -382,6 +382,7 @@ let g:airline_detect_crypt=0
 "}}}
 
 " vim {{{
+command! LogAutocmds call log_autocmds#log_autocmds_toggle()
 command! CD cd %:p:h
 command! -bang -nargs=* AgPreview call fzf#vim#ag(<q-args>,
       \ fzf#vim#with_preview('left:85'))
