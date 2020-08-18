@@ -56,8 +56,8 @@ command! NewNoteFromHistory call fzf#run({
         \ })
 
 command! MarkdownFiles call fzf#run({
-        \ 'source': "find . \\( -iname '*.md' -or -iname '*.csv' -or -iname '*.png'\\) -printf '\033[32m%Tc\033[0m\t%P\t%P\n'",
-        \ 'sink': function('s:inject_mozhist_link'),
+        \ 'source': "python3 ~/projects/wikiindexer/wikiindexer.py",
+        \ 'sink': function('s:make_link_no_col'),
         \ 'options': '--ansi'
         \ })
 
@@ -71,19 +71,26 @@ command! -nargs=1 MozBookmark call fzf#run({
         \ 'sink': function('s:inject_mozhist_' . <q-args>)
         \ })
 
-function! s:make_link(line)
-  let l:has_column = 1
+function! s:make_link_no_col(line)
+  call s:make_link(a:line, 0)
+endfunction
+
+function! s:make_link_has_col(line)
+  call s:make_link(a:line, 1)
+endfunction
+
+function! s:make_link(line, has_column)
   let parts = split(a:line, '[^:]\zs:\ze[^:]')
   let filename = parts[0]
   let lnum = parts[1]
-  let text = join(parts[(l:has_column ? 3 : 2):], ':')
+  let text = join(parts[(a:has_column ? 3 : 2):], ':')
   let link = "[" . text . "](" . filename . ")"
   put =link
 endfunction
 
 
 command! -bang -nargs=* WikiLink call fzf#vim#ag(<q-args>,
-      \ fzf#vim#with_preview({'sink': function('s:make_link')}, 'left:88'))
+      \ fzf#vim#with_preview({'sink': function('s:make_link_has_col')}, 'left:88'))
 
 
 
