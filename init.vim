@@ -411,7 +411,7 @@ augroup END
 
 augroup switch_tmux
   autocmd!
-  autocmd BufEnter,WinEnter * call functions#TmuxSwitchClient()
+  autocmd BufWinEnter * call functions#TmuxSwitchClient()
 augroup END
 
 "}}}
