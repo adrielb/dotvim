@@ -12,6 +12,7 @@ normal zR
 
 let s:moz_history_sh = expand('<sfile>:p:h:h:h') . '/bin/moz_history.sh'
 
+iabbrev <buffer> teh the
 iabbrev <buffer> > `>`
 iabbrev <buffer> < `<`
 iabbrev <buffer> --> ――▶
