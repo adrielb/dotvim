@@ -14,9 +14,15 @@ setlocal path+=~/apps/julia-bin/julia/share/julia/base/**
 setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
-let b:tmux_session = functions#BTmuxSession_project()
-let b:tmux_window="julia"
-let b:tmux_command="retry.sh julia"
+if !exists('b:tmux_session')
+  let b:tmux_session = functions#BTmuxSession_project()
+endif
+if !exists('b:tmux_window')
+  let b:tmux_window="julia"
+endif
+if !exists('b:tmux_command')
+  let b:tmux_command="retry.sh julia"
+endif
 let b:tmux_func="main"
 let b:neomake_open_list=2
 let s:bin_dir = expand('<sfile>:p:h:h:h') . '/bin'
@@ -76,8 +82,8 @@ let g:neomake_julia_all_maker = {
       \ }
 
 augroup neomake_update
-  autocmd BufEnter <buffer> let g:neomake_julia_repl_maker['args'] = [b:tmux_session, b:tmux_window]
-  autocmd BufEnter <buffer> let g:neomake_julia_all_maker['args'] = [b:tmux_session, b:tmux_window]
+  autocmd BufEnter <buffer> if exists(b:tmux_session) && exists(b:tmux_window) | let g:neomake_julia_repl_maker['args'] = [b:tmux_session, b:tmux_window] | endif
+  autocmd BufEnter <buffer> if exists(b:tmux_session) && exists(b:tmux_window) | let g:neomake_julia_all_maker['args'] = [b:tmux_session, b:tmux_window] | endif
 augroup END
 
 let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
