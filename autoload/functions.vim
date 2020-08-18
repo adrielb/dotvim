@@ -61,6 +61,10 @@ function! functions#TmuxCheckVimVars(...)
   if !exists( 'b:tmux_session' )
     let b:tmux_session = functions#BTmuxSession_project()
   endif
+  if match(b:tmux_session, "^fugitive://") == 0
+    unlet b:tmux_session
+    return
+  endif
   if exists('a:1')
     let b:tmux_session = a:1
   endif
