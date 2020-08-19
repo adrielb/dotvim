@@ -396,7 +396,7 @@ augroup END
 augroup localvimrc
   autocmd!
   autocmd BufEnter * call functions#SetBufferCWD()
-  autocmd VimEnter,BufNewFile,BufReadPost * nested call functions#ReadLocalVimrc()
+  autocmd VimEnter,BufNewFile,BufReadPre * nested call functions#ReadLocalVimrc()
   autocmd BufWritePost local.vimrc nested :bufdo call functions#ReadLocalVimrc()
 augroup END
 
@@ -410,7 +410,7 @@ augroup END
 
 augroup switch_tmux
   autocmd!
-  autocmd BufWinEnter * call functions#TmuxSwitchClient()
+  autocmd BufEnter * call functions#TmuxSwitchClient()
 augroup END
 
 "}}}

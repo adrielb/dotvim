@@ -18,10 +18,10 @@ endif
 endsnippet
 
 snippet tmux "switch tmux window" b
-let b:auBufEnter='autocmd BufEnter ' . expand('<sfile>:p:h')
+let s:cmd='autocmd BufRead,WinEnter ' . expand('<sfile>:p:h')
 augroup switchtmux-${1:name}
 	au!
-	exe b:auBufEnter . '/** let b:tmux_window="${2:window}" | let b:tmux_command="${3:command}"'
+	exe s:cmd . '/** let b:tmux_window="${2:window}" | let b:tmux_command="${3:command}"'
 augroup END
 
 let g:slime_python_ipython = 1
