@@ -81,9 +81,12 @@ let g:neomake_julia_all_maker = {
       \ 'errorformat': s:all_efm
       \ }
 
-augroup neomake_update
-  autocmd BufEnter <buffer> if exists(b:tmux_session) && exists(b:tmux_window) | let g:neomake_julia_repl_maker['args'] = [b:tmux_session, b:tmux_window] | endif
-  autocmd BufEnter <buffer> if exists(b:tmux_session) && exists(b:tmux_window) | let g:neomake_julia_all_maker['args'] = [b:tmux_session, b:tmux_window] | endif
+augroup julia_neomake_maker_update
+  autocmd!
+  autocmd BufEnter *.jl if exists('b:tmux_session') && exists('b:tmux_window') |
+        \ let g:neomake_julia_repl_maker['args'] = [b:tmux_session, b:tmux_window] |
+        \ let g:neomake_julia_all_maker['args'] = [b:tmux_session, b:tmux_window] |
+        \ endif
 augroup END
 
 let s:julia_profile_sh = expand('<sfile>:p:h') . '/' . 'julia_profile.sh'
