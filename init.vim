@@ -156,6 +156,7 @@ nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vs
 nnoremap gad :<C-R>=argidx()+1<CR>argdelete<BAR>first<CR>
 nnoremap gC :Commands<CR>
 nnoremap gh :History<CR>
+nnoremap gH :History:<CR>
 nnoremap gl :BLines<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
