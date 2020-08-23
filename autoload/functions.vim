@@ -61,7 +61,8 @@ function! functions#TmuxCheckVimVars(...)
   if !exists( 'b:tmux_session' )
     let b:tmux_session = functions#BTmuxSession_project()
   endif
-  if match(b:tmux_session, "^fugitive://") == 0
+  if b:tmux_session =~# "^fugitive://" ||
+        \ b:tmux_session ==# "src"
     unlet b:tmux_session
     return
   endif
