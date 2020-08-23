@@ -185,6 +185,7 @@ nnoremap <leader>p  :psearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>r  :NeomakeSh ./%<CR>
 nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
+nnoremap <leader>T  :exec "silent ! gnome-terminal --working-directory=" . expand("%:p:h") . "&"<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
 nnoremap <leader>w  :.w !bash
 nnoremap <leader>/  :Ggrep -i -- 
