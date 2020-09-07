@@ -168,6 +168,7 @@ nnoremap <buffer> ,r :SlimeSend1 include("<C-R>%")<CR>
 nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
 nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
 nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
+nnoremap <buffer> ,v :SlimeSend1 varinfo(<C-R><C-W>)<CR>
 nmap     <buffer> ,w yil:SlimeSend1 @which <C-R>"<CR>
 xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
 xnoremap <buffer> ,f y:<C-U>SlimeSend1 fieldnames(<C-R>")<CR>
