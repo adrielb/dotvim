@@ -1,6 +1,8 @@
 let s:bin_dir = expand('<sfile>:p:h:h') . '/bin'
 let s:moz_history_sh = s:bin_dir . '/moz_history.sh'
 
+command! -nargs=+ SlimeCommand let g:slime_command=<q-args>
+
 function! functions#ReadLocalVimrc()
   let mylocalvimrc = "local.vimrc"
   if filereadable( mylocalvimrc )
