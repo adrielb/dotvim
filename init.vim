@@ -179,6 +179,7 @@ nnoremap <leader>a  :call functions#CaptureTmux()<CR>
 nnoremap <leader>g  :OpenBookmark<CR>
 nnoremap <leader>G  :Google <C-R><C-W><CR>
 xnoremap <leader>g  y:<C-U>Google<space><C-R>"
+nnoremap <leader>j  :update<BAR>exec "SlimeSend1 " . g:slime_command<CR>
 nnoremap <leader>l  :nohlsearch<CR>:checktime<CR>:diffupdate<CR><C-L>
 nnoremap <leader>m  :silent make<BAR>redraw!<BAR>cc<CR>
 nnoremap <leader>p  :psearch <C-R>=expand("<cword>")<CR><CR>
