@@ -155,7 +155,7 @@ nnoremap <buffer> <leader>m :update<bar>JuliaSendTest<CR>:Neomake! repl all<CR>
 nnoremap <buffer> <leader>M :update<bar>JuliaSetFunc<CR>:JuliaSendTest<CR>:Neomake! repl all<CR>
 nnoremap <buffer> <C-]>  :Tags <C-R><C-W><CR>
 nnoremap <buffer> K  :SlimeSend1 ?<C-R><C-W><CR>
-nnoremap <buffer> ,a :read !tmux capture-pane -p -J -t 0<CR>
+nnoremap <buffer> ,a :Neomake! repl all<CR>
 nnoremap <buffer> ,c :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-c" )<CR>
 nnoremap <buffer> ,d :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-d" )<CR>
 nnoremap <buffer> ,h :SlimeSend1 head(<C-R><C-W>)<CR>
