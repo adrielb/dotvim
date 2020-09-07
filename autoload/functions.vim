@@ -100,8 +100,19 @@ function! functions#TmuxSwitchClient() abort
     if v:shell_error
       echoerr err
     endif
-    sleep 100m
-    let g:tmux_client = functions#TmuxClient()
+    let count = 0
+    while 1
+      sleep 10m
+      let g:tmux_client = functions#TmuxClient()
+      if g:tmux_client !=# ''
+        break
+      endif
+      let count += 1
+      if count == 20
+        echoerr "terminal did not open"
+        return
+      endif
+    endwhile
   endif
   call system('tmux has-session -t ' . b:tmux_session . ':' . b:tmux_window)
   if v:shell_error
