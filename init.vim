@@ -309,6 +309,7 @@ colorscheme PaperColor
 set background=dark
 highlight Normal ctermbg=0 guibg=#000000
 " highlight htmlLink guifg=#129793 gui=underline
+let g:semanticPersistCache=0
 let g:semanticEnableFileTypes = { 
       \ 'julia': 'jl',
       \ 'python': 'py', 
