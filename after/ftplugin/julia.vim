@@ -163,7 +163,7 @@ nnoremap <buffer> ,f :SlimeSend1 fieldnames(<C-R><C-W>)<CR>
 nnoremap <buffer> ,j :call julia#toggle_function_blockassign()<CR>
 nnoremap <buffer> ,m :SlimeSend1 methods(<C-R><C-W>)<CR>
 nnoremap <buffer> ,l :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-l" )<CR>
-nnoremap <buffer> ,p :SlimeSend1 display(<C-R><C-W>)<CR>
+nnoremap <buffer> ,p :call system( "tmux send-keys -t " . b:tmux_session . ":" . b:tmux_window . " C-p C-m" )<CR>
 nnoremap <buffer> ,r :SlimeSend1 include("<C-R>%")<CR>
 nnoremap <buffer> ,s :SlimeSend1 typeof(<C-R><C-W>)<CR>
 nnoremap <buffer> ,t :SlimeSend1 tail(<C-R><C-W>)<CR>
@@ -174,7 +174,7 @@ xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
 xnoremap <buffer> ,f y:<C-U>SlimeSend1 fieldnames(<C-R>")<CR>
 xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
 xnoremap <buffer> ,m y:<C-U>SlimeSend1 methods(<C-R>")<CR>
-xnoremap <buffer> ,p y:<C-U>SlimeSend1 display(<C-R>")<CR>
+" xnoremap <buffer> ,p y:<C-U>SlimeSend1 display(<C-R>")<CR>
 xnoremap <buffer> ,s y:<C-U>SlimeSend1 typeof(<C-R>")<CR>
 xnoremap <buffer> ,t y:<C-U>SlimeSend1 tail(<C-R>")<CR>
 xnoremap <buffer> ,u y:<C-U>SlimeSend1 summary(<C-R>")<CR>
