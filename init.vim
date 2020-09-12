@@ -158,6 +158,8 @@ nnoremap gC :Commands<CR>
 nnoremap gh :History<CR>
 nnoremap gH :History:<CR>
 nnoremap gl :BLines<CR>
+nnoremap gL :Lines<CR>
+xnoremap gL y:<C-U>Lines<SPACE><C-R>"<CR>
 nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :Buffers<CR>
