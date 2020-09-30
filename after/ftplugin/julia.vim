@@ -171,6 +171,7 @@ nnoremap <buffer> ,u :SlimeSend1 summary(<C-R><C-W>)<CR>
 nnoremap <buffer> ,v :SlimeSend1 varinfo(<C-R><C-W>)<CR>
 nmap     <buffer> ,w yil:SlimeSend1 @which <C-R>"<CR>
 nnoremap <buffer> ,z Oprintln("marker at ",@__FILE__,":",@__LINE__)<ESC>
+nnoremap <buffer> ,Z :g/println("marker at ",@__FILE__,":",@__LINE__)/d<CR>
 xnoremap <buffer> K  y:<C-U>SlimeSend1 ?<C-R>"<CR>
 xnoremap <buffer> ,f y:<C-U>SlimeSend1 fieldnames(<C-R>")<CR>
 xnoremap <buffer> ,h y:<C-U>SlimeSend1 head(<C-R>")<CR>
