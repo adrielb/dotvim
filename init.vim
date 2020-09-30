@@ -190,6 +190,7 @@ nnoremap <leader>s  :call functions#MySpell()<CR>
 nnoremap <leader>t  :silent ! gnome-terminal &<CR>
 nnoremap <leader>T  :exec "silent ! gnome-terminal --working-directory=" . expand("%:p:h") . "&"<CR>
 nnoremap <leader>v  :vertical resize 88<CR>ze
+nnoremap <leader>V  :vertical resize 128<CR>ze
 nnoremap <leader>w  :.w !bash
 nnoremap <leader>/  :Ggrep -i -- 
 xnoremap <leader>/  y:<C-U>Ggrep <C-R>"<CR>
