@@ -1,6 +1,6 @@
 setlocal wrap
 setlocal linebreak
-setlocal showbreak
+setlocal showbreak=>\ 
 setlocal textwidth=80
 setlocal softtabstop=4
 setlocal tabstop=4
