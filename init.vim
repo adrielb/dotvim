@@ -224,6 +224,7 @@ let g:neomake_gitlog_maker = {
 
 " Prose {{{
 let g:ackhighlight = 1
+let g:ackprg = "ag --vimgrep"
 let g:tex_flavor='latex'
 let g:markdown_folding=1
 let g:vim_markdown_follow_anchor = 1
