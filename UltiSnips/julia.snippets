@@ -1,3 +1,15 @@
+snippet bashshebang "#!/bin/bash" Ab
+#!/bin/bash
+#=
+set -x # log all cmds before executing
+set -e # exit immediately upon failure
+
+julia --load $BASH_SOURCE  -e "server()" & ${1:pid}=$!
+wait $$1
+exec echo "Done"
+=#
+endsnippet
+
 snippet REPL "REPL comment" Ab
 """ REPL {{{
 
@@ -313,7 +325,7 @@ end
 	dummy = 1
 end
 
-function POMDPs.initialstate(mdp::MyMDP, rng::AbstractRNG)
+function POMDPs.initialstate(mdp::MyMDP)
 	s0 = State(0)
 	return s0
 end
