@@ -254,8 +254,10 @@ endif
 
 function! Send_test()
   let current_file = expand('%:t:r')
-  let cmd = 'include("' . expand('%') . '"); ret = ' . current_file . '.' . b:tmux_func . '()'
-  " let cmd = 'ret = ' . current_file . '.' . b:tmux_func . '()'
+  let cmd = 'include("' . expand('%') . '")'
+  if exists('b:tmux_func')
+    let cmd .= '; ret = ' . current_file . '.' . b:tmux_func . '()'
+  endif
   execute 'SlimeSend1 ' . cmd
   sleep 1
 endfunction
@@ -274,6 +276,8 @@ function! Set_Julia_Func()
   echo b:tmux_func
 endfunction
 
+
+command! JuliaUnletTmuxFunc unlet b:tmux_func
 command! JuliaSendTest call Send_test()
 command! JuliaParseREPL call Parse_REPL()
 command! JuliaSetFunc call Set_Julia_Func()
