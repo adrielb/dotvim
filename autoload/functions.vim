@@ -55,8 +55,12 @@ function! functions#BTmuxSession_project()
 endfunction
 
 function! functions#TmuxClient() abort
-  let client = system('tmux list-clients -F "#{client_tty}" | head -n 1')
-  return trim(client)
+  let client = system('tmux list-clients -F "#{client_tty}"')
+  let client = split(client)
+  if len(client) == 0
+    return ''
+  endif
+  return trim(client[0])
 endfunction
 
 function! functions#TmuxCheckVimVars(...)
