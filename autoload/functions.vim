@@ -100,7 +100,7 @@ function! functions#TmuxSwitchClient() abort
   let g:tmux_client = functions#TmuxClient()
   if g:tmux_client ==# ''
     " client doesn't exist; start a new client; attach
-    let err = system('gnome-terminal --execute tmux attach-session &')
+    let err = system('kitty bash -c "TERM=xterm; tmux attach-session" &')
     if v:shell_error
       echoerr err
     endif
@@ -112,7 +112,7 @@ function! functions#TmuxSwitchClient() abort
         break
       endif
       let count += 1
-      if count == 20
+      if count == 100
         echoerr "terminal did not open"
         return
       endif
