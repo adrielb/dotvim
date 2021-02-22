@@ -313,8 +313,8 @@ function! TodoPrioritize()
 endfunction
 
 
-command! YouTubePause  silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ space
-command! YouTubeRewind silent !xdotool search --name 'YouTube - Mozilla' key --window \%@ j
+command! YouTubePause  silent !xdotool search --name '\- YouTube' key --window \%@ space
+command! YouTubeRewind silent !xdotool search --name '\- YouTube' key --window \%@ j
 
 "
 " Auto paste
