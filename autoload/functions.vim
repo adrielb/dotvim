@@ -254,6 +254,17 @@ function! functions#new_note_bookmark(line) abort
   call functions#write_note(fname, header)
 endfunction
 
+command! -nargs=* NewNoteBook call fzf#run({
+        \ 'source': 'cd ~/Downloads; fd --type file --exec-batch ls -u',
+        \ 'options': '--no-sort',
+        \ 'sink': function('functions#new_note_book')
+        \ })
+
+function! functions#new_note_book(line) abort
+  call functions#new_note(a:line)
+  Move books/
+endfunction
+
 function! functions#write_note(fname, header)
   if filereadable(a:fname)
     exec "edit" a:fname
