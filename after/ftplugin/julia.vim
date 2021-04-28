@@ -15,7 +15,7 @@ setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
 if !exists('b:tmux_session')
-  let b:tmux_session = functions#BTmuxSession_project()
+  let b:tmux_session = functions#ValidProjectDir(expand('%:p'))
 endif
 if !exists('b:tmux_window')
   let b:tmux_window="julia"
