@@ -51,6 +51,8 @@ Plug 'chrisbra/csv.vim'
 Plug 'mtdl9/vim-log-highlighting'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'hauleth/vim-backscratch'
+" Plug 'jvirtanen/vim-hcl'
+Plug 'chrisbra/Colorizer'
 
 " Haskell
 " Plug 'raichoo/haskell-vim'
