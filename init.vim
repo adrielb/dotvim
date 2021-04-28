@@ -366,7 +366,7 @@ let g:slime_python_ipython=1
 "}}}
 
 " Airline {{{
-let g:airline_theme='base16_pop'
+let g:airline_theme='base16_google'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#whitespace#enabled = 0
