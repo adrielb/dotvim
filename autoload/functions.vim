@@ -43,14 +43,12 @@ function! functions#NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 
-function! functions#BTmuxSession_project()
-  let file = expand('%:p')
-  let pat = '\v/home/abergman/projects/([^/]*)/.*'
-  let project = substitute(file, pat, '\1', '')
-  if project == file
-    " regex didn't match so use current buffer's subdirectory
-    return expand('%:p:h:t')
-  endif
+function! functions#ValidProjectDir(file)
+  let pat = '\v^/home/abergman/(projects|blog)/([^/]*)/.*'
+  let project = substitute(a:file, pat, '\2', '')
+  if project ==# a:file
+    return ''
+  end
   return project
 endfunction
 
@@ -64,22 +62,22 @@ function! functions#TmuxClient() abort
 endfunction
 
 function! functions#TmuxCheckVimVars(...)
-  if !exists( 'b:tmux_session' )
-    let b:tmux_session = functions#BTmuxSession_project()
-  endif
-  if b:tmux_session =~# "^fugitive://" ||
-        \ b:tmux_session ==# "src"
-    unlet b:tmux_session
-    return
-  endif
   if exists('a:1')
     let b:tmux_session = a:1
   endif
-  if !exists( 'b:tmux_window' )
-    return
+  if !exists( 'b:tmux_session' )
+    let file = expand('%:p')
+    let project = functions#ValidProjectDir(file)
+    if project ==# ''
+      return
+    endif
+    let b:tmux_session = project
   endif
   if exists('a:2')
     let b:tmux_window = a:2
+  endif
+  if !exists( 'b:tmux_window' )
+    return
   endif
   let l:win = b:tmux_session . ':' . b:tmux_window . '.0'
   let b:slime_config = {'socket_name': 'default'
@@ -88,7 +86,7 @@ endfunction
 
 function! functions#TmuxSwitchClient() abort
   call functions#TmuxCheckVimVars()
-  if !exists( 'b:slime_config' )
+  if !exists( 'b:slime_config' ) || !exists( 'b:tmux_session' )
     return
   endif
   let l:win = b:slime_config['target_pane']
