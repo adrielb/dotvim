@@ -8,7 +8,7 @@ SESSION=$1
 WINDOW=$2
 
 sleep 1
-tmux capture-pane -p -S -20 -J -t $SESSION:$WINDOW | \
+tmux capture-pane -p -S -90 -J -t $SESSION:$WINDOW | \
   awk --assign RS='julia> ' \
     'BEGIN { ORS=RS }  
            {b=a; a=$0}  
