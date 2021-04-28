@@ -166,7 +166,7 @@ nnoremap go :GitFiles<CR>
 nnoremap gO :FZF ~/projects/<CR>
 nnoremap gb :Buffers<CR>
 nnoremap gB :Files<CR>
-nnoremap gs :Gstatus<CR>
+nnoremap gs :Git<CR>
 nnoremap gV `[v`]
 nnoremap Q @q
 xnoremap Q :norm @q<CR>
