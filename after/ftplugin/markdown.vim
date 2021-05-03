@@ -9,6 +9,7 @@ setlocal commentstring=*\ %s
 setlocal nofoldenable
 setlocal conceallevel=1
 setlocal linebreak
+setlocal isfname-=#
 normal zR
 
 let s:moz_history_sh = expand('<sfile>:p:h:h:h') . '/bin/moz_history.sh'
