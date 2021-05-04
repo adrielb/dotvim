@@ -9,7 +9,8 @@ setlocal expandtab
 setlocal iskeyword+=!
 setlocal commentstring=#%s
 setlocal include=^\\s*\\(using\\\|import\\)
-setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal includeexpr=substitute(v:fname,'$','.jl','g')
+setlocal path+=src/**
 setlocal path+=~/apps/julia-bin/julia/share/julia/base/**
 setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
