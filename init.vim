@@ -131,6 +131,7 @@ set wildcharm=<C-z>
 set inccommand=split
 set diffopt+=algorithm:histogram,indent-heuristic,vertical
 set completeopt+=noselect
+set shada=!,'1000,<50,s10,h
 " }}}
 
 " Mappings {{{
