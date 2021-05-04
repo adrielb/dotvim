@@ -90,7 +90,7 @@ function! functions#TmuxSwitchClient() abort
     return
   endif
   let l:win = b:slime_config['target_pane']
-  call system('tmux has-session -t ' . b:tmux_session)
+  call system('tmux has-session -t =' . b:tmux_session)
   if v:shell_error
     " if session doesn't exist, create it
     call system('tmux new-session -d -s ' . b:tmux_session)
