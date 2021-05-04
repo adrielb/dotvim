@@ -90,7 +90,7 @@ set norelativenumber
 set cursorline
 set colorcolumn=+1
 set showmatch
-set scrolloff=3
+set scrolloff=0
 set sidescrolloff=3
 set switchbuf=usetab,vsplit
 set hidden
