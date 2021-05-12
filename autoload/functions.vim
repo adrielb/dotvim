@@ -345,4 +345,9 @@ endfunction
 command! ToggleAutoPaste call ToggleAutoPaste()
 
 command! SeleniumRefresh call rpcnotify(0,"SeleniumRefresh")
-command! -nargs=? SeleniumStart call jobstart([s:bin_dir . '/selenium-neovim.py', <q-args>])
+command! -nargs=? SeleniumStart call jobstart(
+      \ s:bin_dir . '/selenium-neovim.py '. <q-args>, 
+      \ {'rpc':v:true, 
+      \  'on_stderr': {j,d,e->execute('echoerr'.string(join(d,'\n')))}
+      \ })
+" command! -nargs=? SeleniumStart call jobstart([s:bin_dir . '/selenium-neovim.py', <q-args>])
