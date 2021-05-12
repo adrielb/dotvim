@@ -95,3 +95,12 @@ systemctl --user status $1
 journalctl --user --follow --unit $1
 journalctl --user --follow --unit $1.timer
 endsnippet
+
+snippet juliaARGS "julia script passing $@ args" b
+#!/bin/bash
+# https://docs.julialang.org/en/v1/manual/faq/#How-do-I-pass-options-to-julia-using-#!/usr/bin/env?
+#=
+exec julia --color=yes --startup-file=no --project "${BASH_SOURCE[0]}" "$@"
+=#
+@show ARGS
+endsnippet
