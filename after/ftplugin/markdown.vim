@@ -7,7 +7,7 @@ setlocal expandtab
 setlocal complete+=k,s
 setlocal commentstring=*\ %s
 setlocal nofoldenable
-setlocal conceallevel=1
+setlocal conceallevel=0
 setlocal linebreak
 setlocal isfname-=#
 normal zR
