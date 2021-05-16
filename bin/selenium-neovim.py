@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 import sys
 import pynvim
+import datetime
 from selenium import webdriver
-driver = webdriver.Firefox()
+ts = str(datetime.datetime.now().replace(microsecond=0).isoformat())
+driver = webdriver.Firefox(service_log_path=f"/tmp/geckodriver.{ts}.log")
+
+
 
 if len(sys.argv) == 2:
     driver.get(sys.argv[1])
