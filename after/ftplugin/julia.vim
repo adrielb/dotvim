@@ -15,9 +15,6 @@ setlocal path+=~/apps/julia-bin/julia/share/julia/base/**
 setlocal path+=~/.julia/packages/**
 setlocal tags+=~/apps/julia-bin/tags
 setlocal tags+=~/.julia/tags
-if !exists('b:tmux_session')
-  let b:tmux_session = functions#ValidProjectDir(expand('%:p'))
-endif
 if !exists('b:tmux_window')
   let b:tmux_window="julia"
 endif
@@ -27,16 +24,6 @@ endif
 let b:neomake_open_list=2
 let s:bin_dir = expand('<sfile>:p:h:h:h') . '/bin'
 let s:parse_julia_repl_sh = s:bin_dir . '/parse_julia_repl.sh'
-
-let s:help_efm = ''
-let s:help_efm .= '  [%m at %f:%l%.%#,'
-let s:help_efm .= '%-G%.%#,'
-let g:neomake_julia_help_maker = {
-      \ 'exe': 'tmux',
-      \ 'args': ['capture-pane', '-p', '-S', '-20', '-J', '-t', b:tmux_session . ':' . b:tmux_window],
-      \ 'append_file': 0,
-      \ 'errorformat': s:help_efm
-      \ }
 
 let s:repl_efm = ''
 let s:repl_efm .= '%+G│%.%#/buildworker%.%#:%.%#,'
@@ -63,7 +50,7 @@ let s:repl_efm .=    '%.%#@ %m %f:%l%.%#,'
 " let s:repl_efm .= '%-G%.%#,'
 let g:neomake_julia_repl_maker = {
       \ 'exe': s:parse_julia_repl_sh,
-      \ 'args': [b:tmux_session, b:tmux_window],
+      \ 'args': [],
       \ 'append_file': 0,
       \ 'errorformat': s:repl_efm
       \ }
@@ -87,7 +74,7 @@ let s:all_efm .= '%E┌ Error:%m,'
 let s:all_efm .= '%Z%.%#@%.%# %f:%l%.%#,'
 let g:neomake_julia_all_maker = {
       \ 'exe': s:parse_julia_repl_sh,
-      \ 'args': [b:tmux_session, b:tmux_window],
+      \ 'args': [],
       \ 'append_file': 0,
       \ 'errorformat': s:all_efm
       \ }
