@@ -155,7 +155,7 @@ nnoremap g/ :AgPreview<CR>
 xnoremap g/ y:<C-U>Ack<Space><C-R>"<Space>%:p:h<left><left><left><left><left><left>
     nmap ga <Plug>(EasyAlign)
 nnoremap gaa :argadd %<Bar>silent! next<CR>
-nnoremap gac :bufdo bd<CR>:rewind<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<CR>
+nnoremap gac :bufdo bd<CR>:rewind<BAR>try<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>vsplit<BAR>next<BAR>catch<BAR>argument<BAR>endtry<CR>
 nnoremap gad :<C-R>=argidx()+1<CR>argdelete<BAR>first<CR>
 nnoremap gC :Commands<CR>
 nnoremap gh :History<CR>
