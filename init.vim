@@ -327,6 +327,7 @@ let g:semanticEnableFileTypes = {
       \ 'graphviz' : 'gv',
       \}
 let g:semanticBlacklistOverride = {
+      \ 'julia':    readfile(s:dot_dir . '/after/syntax/julia.txt'),
       \ 'minizinc': readfile(s:dot_dir . '/after/syntax/minizinc.txt'),
       \ 'plantuml': readfile(s:dot_dir . '/after/syntax/plantuml.txt'),
       \ 'picat':    readfile(s:dot_dir . '/after/syntax/picat.txt'),
