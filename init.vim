@@ -307,7 +307,8 @@ let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default.dark': {
   \       'override' : {
-  \         'error_bg' : ['#ff1500', '232']
+  \         'error_bg' : ['#ff1500', '232'],
+  \         'color00' : ['#000000', '0']
   \       }
   \     }
   \   }
